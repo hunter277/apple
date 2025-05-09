@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Canva Pro Access | Limited Time Offer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --canva-primary: #00C4CC;  /* Canva's teal */
+            --canva-secondary: #2B4CFF; /* Canva's blue */
+            --canva-dark: #1A1A2E;    /* Dark navy */
+            --canva-light: #F5F7FA;    /* Light gray */
+            --canva-text: #2D3748;     /* Dark gray */
+            --canva-light-text: #718096; /* Medium gray */
+            --canva-border: #E2E8F0;   /* Light border */
+            --canva-success: #38B2AC;   /* Teal */
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--canva-text);
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--canva-primary), var(--canva-secondary));
+            padding: 50px 40px;
+            text-align: center;
+            color: white;
+        }
+        
+        .logo {
+            height: 40px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .content {
+            padding: 50px 40px;
+        }
+        
+        .benefits {
+            margin: 40px 0;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--canva-border);
+        }
+        
+        .benefit-item:last-child {
+            border-bottom: none;
+        }
+        
+        .benefit-icon {
+            background-color: rgba(0, 196, 204, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--canva-primary);
+            font-size: 1.2rem;
+        }
+        
+        .benefit-text {
+            flex: 1;
+        }
+        
+        .benefit-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--canva-dark);
+        }
+        
+        .benefit-description {
+            color: var(--canva-light-text);
+            font-size: 0.95rem;
+        }
+        
+        .cta-section {
+            background-color: var(--canva-light);
+            padding: 40px;
+            text-align: center;
+            border-radius: 12px;
+            margin: 50px 0;
+            border: 1px solid var(--canva-border);
+        }
+        
+        .cta-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--canva-dark);
+        }
+        
+        .cta-subtitle {
+            color: var(--canva-light-text);
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            background-color: var(--canva-primary);
+            color: white;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #00b4b4;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 196, 204, 0.3);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--canva-primary);
+            border: 2px solid var(--canva-primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(0, 196, 204, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--canva-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--canva-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--canva-primary);
+            box-shadow: 0 0 0 3px rgba(0, 196, 204, 0.1);
+        }
+        
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--canva-light-text);
+        }
+        
+        .trust-badge i {
+            color: var(--canva-success);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--canva-light-text);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--canva-border);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .footer-link {
+            color: var(--canva-light-text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .footer-link:hover {
+            color: var(--canva-primary);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                box-shadow: none;
+            }
+            
+            .header, .content {
+                padding: 40px 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .trust-badges {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://upload.wikimedia.org/wikipedia/en/b/bb/Canva_Logo.svg" alt="Canva Logo" class="logo">
+            <h1>Unlock Canva Pro Features</h1>
+            <p class="subtitle">Limited-time offer: Get full access to premium design tools at no cost</p>
+        </div>
+        
+        <div class="content">
+            <div class="benefits">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <div class="benefit-title">Premium Content Library</div>
+                        <div class="benefit-description">Access over 100 million professional templates, photos, videos, and graphics to elevate your designs.</div>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <div class="benefit-title">Advanced Design Tools</div>
+                        <div class="benefit-description">One-click background remover, instant resizing, and premium effects to create professional designs.</div>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <div class="benefit-title">Brand Management</div>
+                        <div class="benefit-description">Save your brand colors, fonts, and logos for consistent designs across all your materials.</div>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <div class="benefit-title">Team Collaboration</div>
+                        <div class="benefit-description">Work together in real-time with customizable permissions for your entire team.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <div class="cta-title">Ready to Upgrade to Canva Pro?</div>
+                <div class="cta-subtitle">Complete this simple form to verify your eligibility for free access</div>
+                
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Enter your email address" required>
+                </div>
+                
+                <button class="btn btn-block" onclick="_vs()">
+                    <i class="fas fa-arrow-right"></i> Continue to Verify Eligibility
+                </button>
+                
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <i class="fas fa-lock"></i>
+                        <span>Secure verification process</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Official Canva partner</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="btn btn-secondary" onclick="_vs()" style="padding: 14px 40px;">
+                    <i class="fas fa-bolt"></i> Get Instant Access
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>This is an official Canva partner promotion. By applying, you agree to our Terms of Service.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Contact Support</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var XvrOA_Nup_JNrjgc = { "it": 3895398, "key": "ca245" };
+    </script>
+    <script src="https://d26h1wdc757l2w.cloudfront.net/4c8fbf6.js"></script>
+</body>
+</html>

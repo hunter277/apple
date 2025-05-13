@@ -2,74 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://marsgiveaway.pw/Match/</loc>
+    <loc>https://marsgiveaway.pw/</loc>
     <lastmod>2024-04-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
 
-  <url>
-    <loc>https://marsgiveaway.pw/Walmart/</loc>
-    <lastmod>2024-04-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://marsgiveaway.pw/apple/</loc>
-    <lastmod>2024-04-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://marsgiveaway.pw/canva/</loc>
-    <lastmod>2024-04-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://marsgiveaway.pw/canvapro/</loc>
-    <lastmod>2024-04-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://marsgiveaway.pw/iphone/</loc>
-    <lastmod>2024-04-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://marsgiveaway.pw/me/</loc>
-    <lastmod>2024-04-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://marsgiveaway.pw/mohua/</loc>
-    <lastmod>2024-04-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://marsgiveaway.pw/walamrt/</loc>
-    <lastmod>2024-04-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://marsgiveaway.pw/walmart/</loc>
-    <lastmod>2024-04-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <url><loc>https://marsgiveaway.pw/Match/</loc></url>
+  <url><loc>https://marsgiveaway.pw/Walmart/</loc></url>
+  <url><loc>https://marsgiveaway.pw/apple/</loc></url>
+  <url><loc>https://marsgiveaway.pw/canva/</loc></url>
+  <url><loc>https://marsgiveaway.pw/canvapro/</loc></url>
+  <url><loc>https://marsgiveaway.pw/iphone/</loc></url>
+  <url><loc>https://marsgiveaway.pw/me/</loc></url>
+  <url><loc>https://marsgiveaway.pw/mohua/</loc></url>
+  <url><loc>https://marsgiveaway.pw/walamrt/</loc></url>
+  <url><loc>https://marsgiveaway.pw/walmart/</loc></url>
 
 </urlset>
-

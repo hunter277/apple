@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Health Pro - Complete Financial Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c3e50, #1a2530);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #4CAF50;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background: #3e8e41;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card i {
+            font-size: 40px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .reviews {
+            background: #f1f8e9;
+        }
+        
+        .review-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .review-card .stars {
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+        
+        .review-card p {
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .review-card .client {
+            display: flex;
+            align-items: center;
+        }
+        
+        .review-card .client img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .booking {
+            background: white;
+        }
+        
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+        }
+        
+        .error {
+            color: #ff3860;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .free-trial {
+            text-align: center;
+            background: linear-gradient(135deg, #2c3e50, #1a2530);
+            color: white;
+        }
+        
+        .free-trial h2 {
+            margin-bottom: 30px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: modalopen 0.5s;
+        }
+        
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .success-message {
+            display: none;
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-section p, .footer-section li {
+            margin-bottom: 10px;
+            color: #ecf0f1;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: #4CAF50;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: 200px;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Business Health Pro</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#booking">Consultation</a></li>
+                    <li><a href="#free-trial">Free Trial</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>All-In-One Financial Management for Entrepreneurs</h1>
+            <p>From bookkeeping to profit analysis, business health scoring to loan documentation - we've got you covered</p>
+            <a href="#booking" class="btn">Book a Consultation</a>
+            <a href="#free-trial" class="btn btn-secondary">Start Free Trial</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive financial solutions designed for digital entrepreneurs</p>
+            </div>
+            <div class="services">
+                <div class="service-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Professional Bookkeeping</h3>
+                    <p>Keep your financial records accurate and up-to-date with our expert bookkeeping services.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Profit & Loss Statements</h3>
+                    <p>Get clear, detailed profit and loss statements to understand your business performance.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Business Health Scoring</h3>
+                    <p>Our proprietary scoring system helps you understand the overall health of your business.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Loan Documentation</h3>
+                    <p>Complete support for preparing documentation needed for business loan applications.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Tax Preparation & Support</h3>
+                    <p>Expert tax preparation services to maximize deductions and ensure compliance.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-analytics"></i>
+                    <h3>Financial Analytics</h3>
+                    <p>Deep insights into your financial data to help you make better business decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Reviews</h2>
+                <p>See what our clients have to say about our services</p>
+            </div>
+            <div class="review-cards">
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Business Health Pro transformed how I manage my finances. Their business health score helped me secure a loan I needed for expansion!"</p>
+                    <div class="client">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson">
+                        <div>
+                            <h4>Sarah Johnson</h4>
+                            <p>E-commerce Store Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The tax support alone is worth it! They saved me thousands in deductions I didn't even know about. Highly recommend!"</p>
+                    <div class="client">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                        <div>
+                            <h4>Michael Chen</h4>
+                            <p>Software Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"As a digital entrepreneur, I needed financial services that understood my business model. Business Health Pro delivered exactly what I needed."</p>
+                    <div class="client">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Jessica Williams">
+                        <div>
+                            <h4>Jessica Williams</h4>
+                            <p>Content Creator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book a Consultation</h2>
+                <p>Let's discuss how we can help your business thrive</p>
+            </div>
+            <div class="booking-form">
+                <form id="consultation-form">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" placeholder="Your Name" required>
+                        <div class="error" id="name-error">Please enter your name</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" placeholder="Your Email" required>
+                        <div class="error" id="email-error">Please enter a valid email address</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" placeholder="Your Phone" required>
+                        <div class="error" id="phone-error">Please enter a valid phone number</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service of Interest *</label>
+                        <select id="service" required>
+                            <option value="">Select a service</option>
+                            <option value="bookkeeping">Bookkeeping</option>
+                            <option value="financial-statements">Financial Statements</option>
+                            <option value="business-health">Business Health Score</option>
+                            <option value="loan-docs">Loan Documentation</option>
+                            <option value="tax-support">Tax Support</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error" id="service-error">Please select a service</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="Tell us about your business needs"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Schedule Consultation</button>
+                </form>
+                <div class="success-message" id="consultation-success">
+                    Thank you for your booking request! We'll contact you within 24 hours to confirm your consultation.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="free-trial" class="free-trial">
+        <div class="container">
+            <h2>Start Your Free Trial Today</h2>
+            <p>Experience the benefits of our services with a 14-day free trial</p>
+            <button id="trial-btn" class="btn">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Free Trial Modal -->
+    <div id="trial-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Start Your Free Trial</h2>
+            <p>Fill out the form below to begin your 14-day free trial</p>
+            <form id="trial-form">
+                <div class="form-group">
+                    <label for="trial-name">Full Name *</label>
+                    <input type="text" id="trial-name" placeholder="Your Name" required>
+                    <div class="error" id="trial-name-error">Please enter your name</div>
+                </div>
+                <div class="form-group">
+                    <label for="trial-email">Email Address *</label>
+                    <input type="email" id="trial-email" placeholder="Your Email" required>
+                    <div class="error" id="trial-email-error">Please enter a valid email address</div>
+                </div>
+                <div class="form-group">
+                    <label for="trial-company">Company Name</label>
+                    <input type="text" id="trial-company" placeholder="Your Company Name">
+                </div>
+                <div class="form-group">
+                    <label for="trial-service">Primary Service Interest *</label>
+                    <select id="trial-service" required>
+                        <option value="">Select a service</option>
+                        <option value="bookkeeping">Bookkeeping</option>
+                        <option value="financial-statements">Financial Statements</option>
+                        <option value="business-health">Business Health Score</option>
+                        <option value="loan-docs">Loan Documentation</option>
+                        <option value="tax-support">Tax Support</option>
+                    </select>
+                    <div class="error" id="trial-service-error">Please select a service</div>
+                </div>
+                <button type="submit" class="btn">Start Free Trial</button>
+            </form>
+            <div class="success-message" id="trial-success">
+                Thank you for signing up! Your free trial has been activated. Check your email for login details.
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Business Health Pro</h3>
+                    <p>Comprehensive financial management solutions for digital entrepreneurs.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> info@businesshealthpro.com</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Business Ave, Suite 456</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#booking">Consultation</a></li>
+                        <li><a href="#free-trial">Free Trial</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Business Health Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById("trial-modal");
+        const trialBtn = document.getElementById("trial-btn");
+        const closeBtn = document.getElementsByClassName("close")[0];
+        
+        trialBtn.onclick = function() {
+            modal.style.display = "block";
+        }
+        
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        
+        // Form validation and submission
+        document.getElementById("consultation-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            
+            // Validate name
+            const name = document.getElementById("name");
+            if (!name.value.trim()) {
+                document.getElementById("name-error").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("name-error").style.display = "none";
+            }
+            
+            // Validate email
+            const email = document.getElementById("email");
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.match(emailPattern)) {
+                document.getElementById("email-error").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("email-error").style.display = "none";
+            }
+            
+            // Validate phone
+            const phone = document.getElementById("phone");
+            if (!phone.value.trim()) {
+                document.getElementById("phone-error").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("phone-error").style.display = "none";
+            }
+            
+            // Validate service
+            const service = document.getElementById("service");
+            if (!service.value) {
+                document.getElementById("service-error").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("service-error").style.display = "none";
+            }
+            
+            if (isValid) {
+                // In a real application, you would send the form data to a server here
+                document.getElementById("consultation-success").style.display = "block";
+                this.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(function() {
+                    document.getElementById("consultation-success").style.display = "none";
+                }, 5000);
+            }
+        });
+        
+        document.getElementById("trial-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            
+            // Validate name
+            const name = document.getElementById("trial-name");
+            if (!name.value.trim()) {
+                document.getElementById("trial-name-error").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("trial-name-error").style.display = "none";
+            }
+            
+            // Validate email
+            const email = document.getElementById("trial-email");
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.match(emailPattern)) {
+                document.getElementById("trial-email-error").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("trial-email-error").style.display = "none";
+            }
+            
+            // Validate service
+            const service = document.getElementById("trial-service");
+            if (!service.value) {
+                document.getElementById("trial-service-error").style.display = "block";
+                isValid = false;
+            } else {
+                document.getElementById("trial-service-error").style.display = "none";
+            }
+            
+            if (isValid) {
+                // In a real application, you would send the form data to a server here
+                document.getElementById("trial-success").style.display = "block";
+                this.reset();
+                
+                // Hide modal and success message after 3 seconds
+                setTimeout(function() {
+                    modal.style.display = "none";
+                    document.getElementById("trial-success").style.display = "none";
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

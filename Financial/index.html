@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Health Pro - Complete Financial Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -18,6 +18,7 @@
             background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
@@ -31,6 +32,10 @@
             color: white;
             padding: 20px 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
         
         nav {
@@ -71,13 +76,23 @@
             color: #4CAF50;
         }
         
+        .mobile-nav-toggler {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             color: white;
             text-align: center;
-            padding: 100px 20px;
+            padding: 180px 20px 100px;
+            margin-top: 80px;
         }
         
         .hero h1 {
@@ -103,6 +118,30 @@
             border: none;
             cursor: pointer;
             font-size: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn span {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            border-radius: 50%;
+            animation: ripple 1s linear infinite;
+        }
+        
+        @keyframes ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0.5;
+            }
+            100% {
+                width: 500px;
+                height: 500px;
+                opacity: 0;
+            }
         }
         
         .btn:hover {
@@ -319,6 +358,48 @@
             text-align: center;
         }
         
+        .email-info {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border-left: 4px solid #2196F3;
+        }
+        
+        .email-info h3 {
+            color: #1565C0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .email-info h3 i {
+            margin-right: 10px;
+        }
+        
+        .setup-steps {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .setup-steps ol {
+            padding-left: 20px;
+        }
+        
+        .setup-steps li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+        
+        .setup-steps .highlight {
+            background: #fff8e1;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        
         footer {
             background: #2c3e50;
             color: white;
@@ -373,9 +454,61 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4CAF50;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 999;
+        }
+        
+        .scroll-to-top.show {
+            opacity: 1;
+        }
+        
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .preloader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #4CAF50;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+            }
+            
+            .mobile-nav-toggler {
+                display: block;
             }
             
             .hero h1 {
@@ -395,11 +528,152 @@
             .btn-secondary {
                 margin-left: 0;
             }
+            
+            header {
+                padding: 15px 0;
+            }
+            
+            .hero {
+                padding: 150px 20px 80px;
+            }
+        }
+        
+        /* Animation classes */
+        .wow {
+            visibility: hidden;
+        }
+        
+        .animated {
+            visibility: visible;
+        }
+        
+        .fadeIn {
+            animation: fadeIn 1s;
+        }
+        
+        .fadeInUp {
+            animation: fadeInUp 1s;
+        }
+        
+        .fadeInDown {
+            animation: fadeInDown 1s;
+        }
+        
+        .fadeInLeft {
+            animation: fadeInLeft 1s;
+        }
+        
+        .fadeInRight {
+            animation: fadeInRight 1s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Mobile menu styles */
+        .tgmobile__menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #2c3e50;
+            z-index: 999;
+            display: none;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu-visible .tgmobile__menu {
+            display: block;
+        }
+        
+        .tgmobile__menu-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .tgmobile__menu-content {
+            position: relative;
+            background: white;
+            width: 300px;
+            height: 100%;
+            padding: 30px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu-visible .tgmobile__menu-content {
+            transform: translateX(0);
+        }
+        
+        .tgmobile__menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .tgmobile__menu-nav {
+            margin-top: 50px;
+        }
+        
+        .tgmobile__menu-nav ul {
+            list-style: none;
+        }
+        
+        .tgmobile__menu-nav li {
+            margin-bottom: 15px;
+        }
+        
+        .tgmobile__menu-nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
-    <header>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-spinner"></div>
+    </div>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <header id="sticky-header">
         <div class="container">
             <nav>
                 <div class="logo">
@@ -412,52 +686,73 @@
                     <li><a href="#booking">Consultation</a></li>
                     <li><a href="#free-trial">Free Trial</a></li>
                 </ul>
+                <button class="mobile-nav-toggler">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
 
+    <!-- Mobile Menu -->
+    <div class="tgmobile__menu">
+        <div class="tgmobile__menu-backdrop"></div>
+        <div class="tgmobile__menu-content">
+            <button class="tgmobile__menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="tgmobile__menu-nav">
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#booking">Consultation</a></li>
+                    <li><a href="#free-trial">Free Trial</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <section class="hero">
         <div class="container">
-            <h1>All-In-One Financial Management for Entrepreneurs</h1>
-            <p>From bookkeeping to profit analysis, business health scoring to loan documentation - we've got you covered</p>
-            <a href="#booking" class="btn">Book a Consultation</a>
-            <a href="#free-trial" class="btn btn-secondary">Start Free Trial</a>
+            <h1 class="wow fadeInDown" data-wow-delay="0.3s">All-In-One Financial Management for Entrepreneurs</h1>
+            <p class="wow fadeInDown" data-wow-delay="0.5s">From bookkeeping to profit analysis, business health scoring to loan documentation - we've got you covered</p>
+            <a href="#booking" class="btn wow fadeIn" data-wow-delay="0.7s">Book a Consultation</a>
+            <a href="#free-trial" class="btn btn-secondary wow fadeIn" data-wow-delay="0.9s">Start Free Trial</a>
         </div>
     </section>
 
     <section id="services">
         <div class="container">
             <div class="section-title">
-                <h2>Our Services</h2>
-                <p>Comprehensive financial solutions designed for digital entrepreneurs</p>
+                <h2 data-aos="fade-up">Our Services</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Comprehensive financial solutions designed for digital entrepreneurs</p>
             </div>
             <div class="services">
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="0">
                     <i class="fas fa-book"></i>
                     <h3>Professional Bookkeeping</h3>
                     <p>Keep your financial records accurate and up-to-date with our expert bookkeeping services.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <i class="fas fa-chart-pie"></i>
                     <h3>Profit & Loss Statements</h3>
                     <p>Get clear, detailed profit and loss statements to understand your business performance.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
                     <i class="fas fa-heartbeat"></i>
                     <h3>Business Health Scoring</h3>
                     <p>Our proprietary scoring system helps you understand the overall health of your business.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="0">
                     <i class="fas fa-file-alt"></i>
                     <h3>Loan Documentation</h3>
                     <p>Complete support for preparing documentation needed for business loan applications.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <i class="fas fa-calculator"></i>
                     <h3>Tax Preparation & Support</h3>
                     <p>Expert tax preparation services to maximize deductions and ensure compliance.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
                     <i class="fas fa-analytics"></i>
                     <h3>Financial Analytics</h3>
                     <p>Deep insights into your financial data to help you make better business decisions.</p>
@@ -469,11 +764,11 @@
     <section id="reviews" class="reviews">
         <div class="container">
             <div class="section-title">
-                <h2>Client Reviews</h2>
-                <p>See what our clients have to say about our services</p>
+                <h2 data-aos="fade-up">Client Reviews</h2>
+                <p data-aos="fade-up" data-aos-delay="100">See what our clients have to say about our services</p>
             </div>
             <div class="review-cards">
-                <div class="review-card">
+                <div class="review-card" data-aos="fade-up" data-aos-delay="0">
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -483,14 +778,14 @@
                     </div>
                     <p>"Business Health Pro transformed how I manage my finances. Their business health score helped me secure a loan I needed for expansion!"</p>
                     <div class="client">
-                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Rahim Ahmed">
                         <div>
-                            <h4>Sarah Johnson</h4>
+                            <h4>Rahim Ahmed</h4>
                             <p>E-commerce Store Owner</p>
                         </div>
                     </div>
                 </div>
-                <div class="review-card">
+                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -500,14 +795,14 @@
                     </div>
                     <p>"The tax support alone is worth it! They saved me thousands in deductions I didn't even know about. Highly recommend!"</p>
                     <div class="client">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Tanzid Hasan">
                         <div>
-                            <h4>Michael Chen</h4>
+                            <h4>Tanzid Hasan</h4>
                             <p>Software Developer</p>
                         </div>
                     </div>
                 </div>
-                <div class="review-card">
+                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -517,9 +812,9 @@
                     </div>
                     <p>"As a digital entrepreneur, I needed financial services that understood my business model. Business Health Pro delivered exactly what I needed."</p>
                     <div class="client">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Jessica Williams">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Nusrat Jahan">
                         <div>
-                            <h4>Jessica Williams</h4>
+                            <h4>Nusrat Jahan</h4>
                             <p>Content Creator</p>
                         </div>
                     </div>
@@ -531,29 +826,34 @@
     <section id="booking" class="booking">
         <div class="container">
             <div class="section-title">
-                <h2>Book a Consultation</h2>
-                <p>Let's discuss how we can help your business thrive</p>
+                <h2 data-aos="fade-up">Book a Consultation</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Let's discuss how we can help your business thrive</p>
             </div>
-            <div class="booking-form">
-                <form id="consultation-form">
+            <div class="booking-form" data-aos="fade-up" data-aos-delay="200">
+                <!-- FormSubmit integration with your email -->
+                <form id="contact-form" action="https://formsubmit.co/kamrulhasanbd25533@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New Consultation Request from Business Health Pro">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="#thank-you">
+                    
                     <div class="form-group">
                         <label for="name">Full Name *</label>
-                        <input type="text" id="name" placeholder="Your Name" required>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
                         <div class="error" id="name-error">Please enter your name</div>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address *</label>
-                        <input type="email" id="email" placeholder="Your Email" required>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
                         <div class="error" id="email-error">Please enter a valid email address</div>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" placeholder="Your Phone" required>
+                        <input type="tel" id="phone" name="phone" placeholder="Your Phone" required>
                         <div class="error" id="phone-error">Please enter a valid phone number</div>
                     </div>
                     <div class="form-group">
                         <label for="service">Service of Interest *</label>
-                        <select id="service" required>
+                        <select id="service" name="service" required>
                             <option value="">Select a service</option>
                             <option value="bookkeeping">Bookkeeping</option>
                             <option value="financial-statements">Financial Statements</option>
@@ -566,12 +866,28 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" placeholder="Tell us about your business needs"></textarea>
+                        <textarea id="message" name="message" placeholder="Tell us about your business needs"></textarea>
                     </div>
                     <button type="submit" class="btn">Schedule Consultation</button>
                 </form>
-                <div class="success-message" id="consultation-success">
-                    Thank you for your booking request! We'll contact you within 24 hours to confirm your consultation.
+                
+                <div class="ajax-response" id="form-messages"></div>
+                
+                <div class="email-info">
+                    <h3><i class="fas fa-info-circle"></i> Email Setup Instructions</h3>
+                    <p>Form submissions will be sent directly to your email address via FormSubmit.co. Here's how to set it up:</p>
+                    
+                    <div class="setup-steps">
+                        <ol>
+                            <li><strong>Test the form</strong> by submitting a sample request</li>
+                            <li>Check your email <span class="highlight">kamrulhasanbd25533@gmail.com</span> for a confirmation message from FormSubmit</li>
+                            <li><strong>Click the verification link</strong> in that email to activate the service</li>
+                            <li>After verification, all form submissions will be delivered directly to your inbox</li>
+                            <li>If you don't see the confirmation email, check your spam folder</li>
+                        </ol>
+                    </div>
+                    
+                    <p><strong>Note:</strong> The service is free for up to 50 submissions per month. For higher volume, consider upgrading to a paid plan.</p>
                 </div>
             </div>
         </div>
@@ -579,9 +895,9 @@
 
     <section id="free-trial" class="free-trial">
         <div class="container">
-            <h2>Start Your Free Trial Today</h2>
-            <p>Experience the benefits of our services with a 14-day free trial</p>
-            <button id="trial-btn" class="btn">Get Started</button>
+            <h2 data-aos="fade-up">Start Your Free Trial Today</h2>
+            <p data-aos="fade-up" data-aos-delay="100">Experience the benefits of our services with a 14-day free trial</p>
+            <button id="trial-btn" class="btn" data-aos="fade-up" data-aos-delay="200">Get Started</button>
         </div>
     </section>
 
@@ -591,24 +907,30 @@
             <span class="close">&times;</span>
             <h2>Start Your Free Trial</h2>
             <p>Fill out the form below to begin your 14-day free trial</p>
-            <form id="trial-form">
+            
+            <!-- FormSubmit integration with your email -->
+            <form action="https://formsubmit.co/kamrulhasanbd25533@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New Free Trial Request from Business Health Pro">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="#thank-you">
+                
                 <div class="form-group">
                     <label for="trial-name">Full Name *</label>
-                    <input type="text" id="trial-name" placeholder="Your Name" required>
+                    <input type="text" id="trial-name" name="name" placeholder="Your Name" required>
                     <div class="error" id="trial-name-error">Please enter your name</div>
                 </div>
                 <div class="form-group">
                     <label for="trial-email">Email Address *</label>
-                    <input type="email" id="trial-email" placeholder="Your Email" required>
+                    <input type="email" id="trial-email" name="email" placeholder="Your Email" required>
                     <div class="error" id="trial-email-error">Please enter a valid email address</div>
                 </div>
                 <div class="form-group">
                     <label for="trial-company">Company Name</label>
-                    <input type="text" id="trial-company" placeholder="Your Company Name">
+                    <input type="text" id="trial-company" name="company" placeholder="Your Company Name">
                 </div>
                 <div class="form-group">
                     <label for="trial-service">Primary Service Interest *</label>
-                    <select id="trial-service" required>
+                    <select id="trial-service" name="service" required>
                         <option value="">Select a service</option>
                         <option value="bookkeeping">Bookkeeping</option>
                         <option value="financial-statements">Financial Statements</option>
@@ -620,9 +942,6 @@
                 </div>
                 <button type="submit" class="btn">Start Free Trial</button>
             </form>
-            <div class="success-message" id="trial-success">
-                Thank you for signing up! Your free trial has been activated. Check your email for login details.
-            </div>
         </div>
     </div>
 
@@ -664,125 +983,217 @@
         </div>
     </footer>
 
+    <!-- Thank You Section (hidden by default) -->
+    <section id="thank-you" style="display: none;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Thank You!</h2>
+                <p>We've received your submission and will contact you shortly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/counterup/1.0.0/jquery.counterup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+    
+    <!-- Custom Scripts -->
     <script>
+        // AOS Animation
+        function aosAnimation() {
+            AOS.init({
+                duration: 1000,
+                mirror: true,
+                once: true,
+                disable: 'mobile',
+            });
+        }
+
+        // WOW Animation
+        function wowAnimation() {
+            new WOW({
+                boxClass: 'wow',
+                animateClass: 'animated',
+                offset: 0,
+                mobile: false,
+                live: true
+            }).init();
+        }
+
+        // Preloader
+        function preloader() {
+            $('#preloader').delay(500).fadeOut();
+        }
+
+        // Mobile Menu
+        function initMobileMenu() {
+            $('.mobile-nav-toggler').on('click', function() {
+                $('body').addClass('mobile-menu-visible');
+            });
+            
+            $('.tgmobile__menu-backdrop, .tgmobile__menu-close').on('click', function() {
+                $('body').removeClass('mobile-menu-visible');
+            });
+        }
+
+        // Scroll to Top
+        function initScrollToTop() {
+            $(window).on('scroll', function() {
+                if ($(this).scrollTop() > 300) {
+                    $('.scroll-to-top').addClass('show');
+                } else {
+                    $('.scroll-to-top').removeClass('show');
+                }
+            });
+            
+            $('.scroll-to-top').on('click', function() {
+                $('html, body').animate({scrollTop: 0}, 800);
+                return false;
+            });
+        }
+
+        // Form Validation and AJAX Submission
+        function initForms() {
+            // Consultation form
+            $('#contact-form').on('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                const form = $(this);
+                
+                // Validate name
+                const name = $('#name');
+                if (!name.val().trim()) {
+                    $('#name-error').show();
+                    isValid = false;
+                } else {
+                    $('#name-error').hide();
+                }
+                
+                // Validate email
+                const email = $('#email');
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email.val().match(emailPattern)) {
+                    $('#email-error').show();
+                    isValid = false;
+                } else {
+                    $('#email-error').hide();
+                }
+                
+                // Validate phone
+                const phone = $('#phone');
+                if (!phone.val().trim()) {
+                    $('#phone-error').show();
+                    isValid = false;
+                } else {
+                    $('#phone-error').hide();
+                }
+                
+                // Validate service
+                const service = $('#service');
+                if (!service.val()) {
+                    $('#service-error').show();
+                    isValid = false;
+                } else {
+                    $('#service-error').hide();
+                }
+                
+                if (isValid) {
+                    // AJAX form submission
+                    $.ajax({
+                        type: 'POST',
+                        url: form.attr('action'),
+                        data: form.serialize(),
+                        success: function(response) {
+                            $('#form-messages').removeClass('error').addClass('success').text('Thank you! Your message has been sent.').show();
+                            form.trigger('reset');
+                            
+                            // Scroll to thank you message
+                            $('html, body').animate({
+                                scrollTop: $('#form-messages').offset().top - 100
+                            }, 1000);
+                        },
+                        error: function() {
+                            $('#form-messages').removeClass('success').addClass('error').text('Oops! Something went wrong. Please try again.').show();
+                        }
+                    });
+                }
+            });
+        }
+
         // Modal functionality
-        const modal = document.getElementById("trial-modal");
-        const trialBtn = document.getElementById("trial-btn");
-        const closeBtn = document.getElementsByClassName("close")[0];
-        
-        trialBtn.onclick = function() {
-            modal.style.display = "block";
+        function initModals() {
+            const modal = $('#trial-modal');
+            const trialBtn = $('#trial-btn');
+            const closeBtn = $('.close');
+            
+            trialBtn.on('click', function() {
+                modal.show();
+            });
+            
+            closeBtn.on('click', function() {
+                modal.hide();
+            });
+            
+            $(window).on('click', function(event) {
+                if (event.target == modal[0]) {
+                    modal.hide();
+                }
+            });
         }
-        
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        }
-        
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-        
-        // Form validation and submission
-        document.getElementById("consultation-form").addEventListener("submit", function(e) {
-            e.preventDefault();
-            
-            let isValid = true;
-            
-            // Validate name
-            const name = document.getElementById("name");
-            if (!name.value.trim()) {
-                document.getElementById("name-error").style.display = "block";
-                isValid = false;
-            } else {
-                document.getElementById("name-error").style.display = "none";
-            }
-            
-            // Validate email
-            const email = document.getElementById("email");
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!email.value.match(emailPattern)) {
-                document.getElementById("email-error").style.display = "block";
-                isValid = false;
-            } else {
-                document.getElementById("email-error").style.display = "none";
-            }
-            
-            // Validate phone
-            const phone = document.getElementById("phone");
-            if (!phone.value.trim()) {
-                document.getElementById("phone-error").style.display = "block";
-                isValid = false;
-            } else {
-                document.getElementById("phone-error").style.display = "none";
-            }
-            
-            // Validate service
-            const service = document.getElementById("service");
-            if (!service.value) {
-                document.getElementById("service-error").style.display = "block";
-                isValid = false;
-            } else {
-                document.getElementById("service-error").style.display = "none";
-            }
-            
-            if (isValid) {
-                // In a real application, you would send the form data to a server here
-                document.getElementById("consultation-success").style.display = "block";
-                this.reset();
+
+        // Ripple effect for buttons
+        function initRippleEffect() {
+            $('.btn').on('click', function(e) {
+                const btn = $(this);
+                const x = e.pageX - btn.offset().left;
+                const y = e.pageY - btn.offset().top;
                 
-                // Hide success message after 5 seconds
+                btn.find('span').remove();
+                btn.append('<span></span>');
+                
+                const ripple = btn.find('span');
+                ripple.css({
+                    left: x,
+                    top: y
+                });
+                
                 setTimeout(function() {
-                    document.getElementById("consultation-success").style.display = "none";
-                }, 5000);
-            }
+                    ripple.remove();
+                }, 1000);
+            });
+        }
+
+        // Initialize everything when document is ready
+        $(document).ready(function() {
+            aosAnimation();
+            wowAnimation();
+            initMobileMenu();
+            initScrollToTop();
+            initForms();
+            initModals();
+            initRippleEffect();
+            
+            // Smooth scrolling for anchor links
+            $('a[href*="#"]').on('click', function(e) {
+                e.preventDefault();
+                
+                $('html, body').animate({
+                    scrollTop: $($(this).attr('href')).offset().top - 80
+                }, 1000);
+            });
         });
-        
-        document.getElementById("trial-form").addEventListener("submit", function(e) {
-            e.preventDefault();
-            
-            let isValid = true;
-            
-            // Validate name
-            const name = document.getElementById("trial-name");
-            if (!name.value.trim()) {
-                document.getElementById("trial-name-error").style.display = "block";
-                isValid = false;
-            } else {
-                document.getElementById("trial-name-error").style.display = "none";
-            }
-            
-            // Validate email
-            const email = document.getElementById("trial-email");
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!email.value.match(emailPattern)) {
-                document.getElementById("trial-email-error").style.display = "block";
-                isValid = false;
-            } else {
-                document.getElementById("trial-email-error").style.display = "none";
-            }
-            
-            // Validate service
-            const service = document.getElementById("trial-service");
-            if (!service.value) {
-                document.getElementById("trial-service-error").style.display = "block";
-                isValid = false;
-            } else {
-                document.getElementById("trial-service-error").style.display = "none";
-            }
-            
-            if (isValid) {
-                // In a real application, you would send the form data to a server here
-                document.getElementById("trial-success").style.display = "block";
-                this.reset();
-                
-                // Hide modal and success message after 3 seconds
-                setTimeout(function() {
-                    modal.style.display = "none";
-                    document.getElementById("trial-success").style.display = "none";
-                }, 3000);
-            }
+
+        // Initialize when window is loaded
+        $(window).on('load', function() {
+            preloader();
         });
     </script>
 </body>

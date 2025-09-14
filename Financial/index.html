@@ -158,6 +158,15 @@
             background: rgba(255, 255, 255, 0.1);
         }
         
+        .btn-whatsapp {
+            background: #25D366;
+            margin-left: 15px;
+        }
+        
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+        
         section {
             padding: 80px 0;
         }
@@ -302,6 +311,77 @@
             margin-bottom: 30px;
         }
         
+        .pricing {
+            background: #f1f8e9;
+        }
+        
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid #4CAF50;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.popular::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: #4CAF50;
+            color: white;
+            padding: 5px 40px;
+            font-size: 12px;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+        
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        
+        .price span {
+            font-size: 16px;
+            color: #7f8c8d;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
         .modal {
             display: none;
             position: fixed;
@@ -358,46 +438,25 @@
             text-align: center;
         }
         
-        .email-info {
+        .whatsapp-info {
             background: #e3f2fd;
             padding: 20px;
             border-radius: 8px;
             margin-top: 30px;
-            border-left: 4px solid #2196F3;
+            border-left: 4px solid #25D366;
+            text-align: center;
         }
         
-        .email-info h3 {
-            color: #1565C0;
+        .whatsapp-info h3 {
+            color: #075E54;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
+            justify-content: center;
         }
         
-        .email-info h3 i {
+        .whatsapp-info h3 i {
             margin-right: 10px;
-        }
-        
-        .setup-steps {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-        
-        .setup-steps ol {
-            padding-left: 20px;
-        }
-        
-        .setup-steps li {
-            margin-bottom: 10px;
-            padding-left: 5px;
-        }
-        
-        .setup-steps .highlight {
-            background: #fff8e1;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-family: monospace;
         }
         
         footer {
@@ -476,6 +535,40 @@
             opacity: 1;
         }
         
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        .whatsapp-float i {
+            font-size: 28px;
+        }
+        
         .preloader {
             position: fixed;
             top: 0;
@@ -525,7 +618,7 @@
                 width: 200px;
             }
             
-            .btn-secondary {
+            .btn-secondary, .btn-whatsapp {
                 margin-left: 0;
             }
             
@@ -535,6 +628,10 @@
             
             .hero {
                 padding: 150px 20px 80px;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
             }
         }
         
@@ -660,6 +757,30 @@
             font-size: 18px;
             font-weight: 500;
         }
+        
+        /* Payment methods */
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .payment-method {
+            width: 60px;
+            height: 40px;
+            background: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .payment-method i {
+            font-size: 24px;
+            color: #2c3e50;
+        }
     </style>
 </head>
 <body>
@@ -673,6 +794,11 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
+    <!-- WhatsApp float button -->
+    <a href="https://wa.me/1234567890?text=Hello%20Business%20Health%20Pro,%20I%20would%20like%20to%20know%20more%20about%20your%20services" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <header id="sticky-header">
         <div class="container">
             <nav>
@@ -682,6 +808,7 @@
                 </div>
                 <ul class="nav-links">
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
                     <li><a href="#reviews">Reviews</a></li>
                     <li><a href="#booking">Consultation</a></li>
                     <li><a href="#free-trial">Free Trial</a></li>
@@ -703,6 +830,7 @@
             <div class="tgmobile__menu-nav">
                 <ul>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
                     <li><a href="#reviews">Reviews</a></li>
                     <li><a href="#booking">Consultation</a></li>
                     <li><a href="#free-trial">Free Trial</a></li>
@@ -717,6 +845,9 @@
             <p class="wow fadeInDown" data-wow-delay="0.5s">From bookkeeping to profit analysis, business health scoring to loan documentation - we've got you covered</p>
             <a href="#booking" class="btn wow fadeIn" data-wow-delay="0.7s">Book a Consultation</a>
             <a href="#free-trial" class="btn btn-secondary wow fadeIn" data-wow-delay="0.9s">Start Free Trial</a>
+            <a href="https://wa.me/1234567890?text=Hello%20Business%20Health%20Pro,%20I%20would%20like%20to%20know%20more%20about%20your%20services" class="btn btn-whatsapp wow fadeIn" data-wow-delay="1.1s" target="_blank">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
         </div>
     </section>
 
@@ -756,6 +887,68 @@
                     <i class="fas fa-analytics"></i>
                     <h3>Financial Analytics</h3>
                     <p>Deep insights into your financial data to help you make better business decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Pricing Plans</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Choose the plan that works best for your business needs</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="0">
+                    <h3>Starter</h3>
+                    <div class="price">$49<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Basic Bookkeeping</li>
+                        <li>Monthly P&L Statements</li>
+                        <li>Business Health Score</li>
+                        <li>Email Support</li>
+                        <li>-</li>
+                    </ul>
+                    <button class="btn" onclick="selectPlan('Starter', 49)">Select Plan</button>
+                    <div class="payment-methods">
+                        <div class="payment-method"><i class="fab fa-cc-visa"></i></div>
+                        <div class="payment-method"><i class="fab fa-cc-mastercard"></i></div>
+                        <div class="payment-method"><i class="fab fa-cc-paypal"></i></div>
+                    </div>
+                </div>
+                <div class="pricing-card popular" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Professional</h3>
+                    <div class="price">$99<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Advanced Bookkeeping</li>
+                        <li>Weekly P&L Statements</li>
+                        <li>Detailed Business Health Analysis</li>
+                        <li>Tax Preparation Support</li>
+                        <li>Priority Email & Chat Support</li>
+                    </ul>
+                    <button class="btn" onclick="selectPlan('Professional', 99)">Select Plan</button>
+                    <div class="payment-methods">
+                        <div class="payment-method"><i class="fab fa-cc-visa"></i></div>
+                        <div class="payment-method"><i class="fab fa-cc-mastercard"></i></div>
+                        <div class="payment-method"><i class="fab fa-cc-paypal"></i></div>
+                    </div>
+                </div>
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Enterprise</h3>
+                    <div class="price">$199<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Full-Service Bookkeeping</li>
+                        <li>Daily Financial Reports</li>
+                        <li>Comprehensive Business Health Dashboard</li>
+                        <li>Full Tax Preparation & Filing</li>
+                        <li>24/7 Priority Support</li>
+                    </ul>
+                    <button class="btn" onclick="selectPlan('Enterprise', 199)">Select Plan</button>
+                    <div class="payment-methods">
+                        <div class="payment-method"><i class="fab fa-cc-visa"></i></div>
+                        <div class="payment-method"><i class="fab fa-cc-mastercard"></i></div>
+                        <div class="payment-method"><i class="fab fa-cc-paypal"></i></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -830,12 +1023,7 @@
                 <p data-aos="fade-up" data-aos-delay="100">Let's discuss how we can help your business thrive</p>
             </div>
             <div class="booking-form" data-aos="fade-up" data-aos-delay="200">
-                <!-- FormSubmit integration with your email -->
-                <form id="contact-form" action="https://formsubmit.co/kamrulhasanbd25533@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="New Consultation Request from Business Health Pro">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="#thank-you">
-                    
+                <form id="contact-form">
                     <div class="form-group">
                         <label for="name">Full Name *</label>
                         <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -873,21 +1061,12 @@
                 
                 <div class="ajax-response" id="form-messages"></div>
                 
-                <div class="email-info">
-                    <h3><i class="fas fa-info-circle"></i> Email Setup Instructions</h3>
-                    <p>Form submissions will be sent directly to your email address via FormSubmit.co. Here's how to set it up:</p>
-                    
-                    <div class="setup-steps">
-                        <ol>
-                            <li><strong>Test the form</strong> by submitting a sample request</li>
-                            <li>Check your email <span class="highlight">kamrulhasanbd25533@gmail.com</span> for a confirmation message from FormSubmit</li>
-                            <li><strong>Click the verification link</strong> in that email to activate the service</li>
-                            <li>After verification, all form submissions will be delivered directly to your inbox</li>
-                            <li>If you don't see the confirmation email, check your spam folder</li>
-                        </ol>
-                    </div>
-                    
-                    <p><strong>Note:</strong> The service is free for up to 50 submissions per month. For higher volume, consider upgrading to a paid plan.</p>
+                <div class="whatsapp-info">
+                    <h3><i class="fab fa-whatsapp"></i> Prefer WhatsApp?</h3>
+                    <p>Get immediate assistance by messaging us directly on WhatsApp. We typically respond within minutes during business hours.</p>
+                    <a href="https://wa.me/1234567890?text=Hello%20Business%20Health%20Pro,%20I%20would%20like%20to%20schedule%20a%20consultation" class="btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Message on WhatsApp
+                    </a>
                 </div>
             </div>
         </div>
@@ -908,12 +1087,7 @@
             <h2>Start Your Free Trial</h2>
             <p>Fill out the form below to begin your 14-day free trial</p>
             
-            <!-- FormSubmit integration with your email -->
-            <form action="https://formsubmit.co/kamrulhasanbd25533@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="New Free Trial Request from Business Health Pro">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" value="#thank-you">
-                
+            <form id="trial-form">
                 <div class="form-group">
                     <label for="trial-name">Full Name *</label>
                     <input type="text" id="trial-name" name="name" placeholder="Your Name" required>
@@ -945,6 +1119,44 @@
         </div>
     </div>
 
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Complete Your Purchase</h2>
+            <p>You're subscribing to the <span id="selected-plan">Professional</span> plan for $<span id="selected-price">99</span>/month</p>
+            
+            <form id="payment-form">
+                <div class="form-group">
+                    <label for="card-name">Name on Card *</label>
+                    <input type="text" id="card-name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-number">Card Number *</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-group" style="display: flex; gap: 15px;">
+                    <div style="flex: 1;">
+                        <label for="card-expiry">Expiry Date *</label>
+                        <input type="text" id="card-expiry" placeholder="MM/YY" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="card-cvc">CVC *</label>
+                        <input type="text" id="card-cvc" placeholder="123" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Pay Now</button>
+                
+                <div class="payment-methods" style="margin-top: 20px;">
+                    <div class="payment-method"><i class="fab fa-cc-visa"></i></div>
+                    <div class="payment-method"><i class="fab fa-cc-mastercard"></i></div>
+                    <div class="payment-method"><i class="fab fa-cc-amex"></i></div>
+                    <div class="payment-method"><i class="fab fa-cc-paypal"></i></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -956,12 +1168,14 @@
                     <h3>Contact Us</h3>
                     <p><i class="fas fa-envelope"></i> info@businesshealthpro.com</p>
                     <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fab fa-whatsapp"></i> +1 (555) 123-4567</p>
                     <p><i class="fas fa-map-marker-alt"></i> 123 Business Ave, Suite 456</p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#services">Services</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
                         <li><a href="#reviews">Reviews</a></li>
                         <li><a href="#booking">Consultation</a></li>
                         <li><a href="#free-trial">Free Trial</a></li>
@@ -998,11 +1212,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/counterup/1.0.0/jquery.counterup.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
     
     <!-- Custom Scripts -->
     <script>
@@ -1106,46 +1315,100 @@
                 }
                 
                 if (isValid) {
-                    // AJAX form submission
-                    $.ajax({
-                        type: 'POST',
-                        url: form.attr('action'),
-                        data: form.serialize(),
-                        success: function(response) {
-                            $('#form-messages').removeClass('error').addClass('success').text('Thank you! Your message has been sent.').show();
-                            form.trigger('reset');
-                            
-                            // Scroll to thank you message
-                            $('html, body').animate({
-                                scrollTop: $('#form-messages').offset().top - 100
-                            }, 1000);
-                        },
-                        error: function() {
-                            $('#form-messages').removeClass('success').addClass('error').text('Oops! Something went wrong. Please try again.').show();
-                        }
-                    });
+                    // Create WhatsApp message
+                    const message = `Hello Business Health Pro,%0A%0AI would like to schedule a consultation.%0A%0AName: ${name.val()}%0AEmail: ${email.val()}%0APhone: ${phone.val()}%0AService: ${service.val()}%0AMessage: ${$('#message').val()}`;
+                    
+                    // Redirect to WhatsApp
+                    window.open(`https://wa.me/1234567890?text=${message}`, '_blank');
+                    
+                    // Show success message
+                    $('#form-messages').removeClass('error').addClass('success').text('Redirecting to WhatsApp...').show();
+                    form.trigger('reset');
                 }
             });
+
+            // Trial form
+            $('#trial-form').on('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                const form = $(this);
+                
+                // Validate name
+                const name = $('#trial-name');
+                if (!name.val().trim()) {
+                    $('#trial-name-error').show();
+                    isValid = false;
+                } else {
+                    $('#trial-name-error').hide();
+                }
+                
+                // Validate email
+                const email = $('#trial-email');
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email.val().match(emailPattern)) {
+                    $('#trial-email-error').show();
+                    isValid = false;
+                } else {
+                    $('#trial-email-error').hide();
+                }
+                
+                // Validate service
+                const service = $('#trial-service');
+                if (!service.val()) {
+                    $('#trial-service-error').show();
+                    isValid = false;
+                } else {
+                    $('#trial-service-error').hide();
+                }
+                
+                if (isValid) {
+                    // Create WhatsApp message
+                    const message = `Hello Business Health Pro,%0A%0AI would like to start a free trial.%0A%0AName: ${name.val()}%0AEmail: ${email.val()}%0ACompany: ${$('#trial-company').val()}%0AService: ${service.val()}`;
+                    
+                    // Redirect to WhatsApp
+                    window.open(`https://wa.me/1234567890?text=${message}`, '_blank');
+                    
+                    // Close modal
+                    $('#trial-modal').hide();
+                }
+            });
+
+            // Payment form
+            $('#payment-form').on('submit', function(e) {
+                e.preventDefault();
+                alert('Payment processed successfully! Thank you for your subscription.');
+                $('#payment-modal').hide();
+            });
+        }
+
+        // Plan selection
+        function selectPlan(plan, price) {
+            $('#selected-plan').text(plan);
+            $('#selected-price').text(price);
+            $('#payment-modal').show();
         }
 
         // Modal functionality
         function initModals() {
-            const modal = $('#trial-modal');
+            const modals = $('.modal');
             const trialBtn = $('#trial-btn');
             const closeBtn = $('.close');
             
             trialBtn.on('click', function() {
-                modal.show();
+                $('#trial-modal').show();
             });
             
             closeBtn.on('click', function() {
-                modal.hide();
+                modals.hide();
             });
             
             $(window).on('click', function(event) {
-                if (event.target == modal[0]) {
-                    modal.hide();
-                }
+                modals.each(function() {
+                    if (event.target == this) {
+                        $(this).hide();
+                    }
+                });
             });
         }
 
@@ -1183,6 +1446,8 @@
             
             // Smooth scrolling for anchor links
             $('a[href*="#"]').on('click', function(e) {
+                if ($(this).attr('href') === '#') return;
+                
                 e.preventDefault();
                 
                 $('html, body').animate({

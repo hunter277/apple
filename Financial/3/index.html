@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Health Pro - Complete Financial Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c3e50, #1a2530);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #4CAF50;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+        
+        .mobile-nav-toggler {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 180px 20px 100px;
+            margin-top: 80px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn span {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            border-radius: 50%;
+            animation: ripple 1s linear infinite;
+        }
+        
+        @keyframes ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0.5;
+            }
+            100% {
+                width: 500px;
+                height: 500px;
+                opacity: 0;
+            }
+        }
+        
+        .btn:hover {
+            background: #3e8e41;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn-whatsapp {
+            background: #25D366;
+            margin-left: 15px;
+        }
+        
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card i {
+            font-size: 40px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .reviews {
+            background: #f1f8e9;
+        }
+        
+        .review-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .review-card .stars {
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+        
+        .review-card p {
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .review-card .client {
+            display: flex;
+            align-items: center;
+        }
+        
+        .review-card .client img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .booking {
+            background: white;
+        }
+        
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+        }
+        
+        .error {
+            color: #ff3860;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .free-trial {
+            text-align: center;
+            background: linear-gradient(135deg, #2c3e50, #1a2530);
+            color: white;
+        }
+        
+        .free-trial h2 {
+            margin-bottom: 30px;
+        }
+        
+        .pricing {
+            background: #f1f8e9;
+        }
+        
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid #4CAF50;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.popular::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: #4CAF50;
+            color: white;
+            padding: 5px 40px;
+            font-size: 12px;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+        
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        
+        .price span {
+            font-size: 16px;
+            color: #7f8c8d;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: modalopen 0.5s;
+        }
+        
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .success-message {
+            display: none;
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .whatsapp-info {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border-left: 4px solid #25D366;
+            text-align: center;
+        }
+        
+        .whatsapp-info h3 {
+            color: #075E54;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .whatsapp-info h3 i {
+            margin-right: 10px;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-section p, .footer-section li {
+            margin-bottom: 10px;
+            color: #ecf0f1;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: #4CAF50;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4CAF50;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 999;
+        }
+        
+        .scroll-to-top.show {
+            opacity: 1;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        .whatsapp-float i {
+            font-size: 28px;
+        }
+        
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .preloader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #4CAF50;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* New styles for added sections */
+        .how-it-works {
+            background: white;
+        }
+        
+        .process-steps {
+            counter-reset: step-counter;
+        }
+        
+        .process-step {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            flex: 0 0 60px;
+            height: 60px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-content {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .step-content h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .banner-section {
+            background: linear-gradient(135deg, #2c3e50, #4CAF50);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .banner-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .about-section {
+            background: #f1f8e9;
+        }
+        
+        .team-members {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .team-member img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .team-member-info {
+            padding: 20px;
+        }
+        
+        .team-member-info h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .team-member-info .role {
+            color: #4CAF50;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-nav-toggler {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: 200px;
+            }
+            
+            .btn-secondary, .btn-whatsapp {
+                margin-left: 0;
+            }
+            
+            header {
+                padding: 15px 0;
+            }
+            
+            .hero {
+                padding: 150px 20px 80px;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            
+            .process-step {
+                flex-direction: column;
+            }
+            
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+        
+        /* Animation classes */
+        .wow {
+            visibility: hidden;
+        }
+        
+        .animated {
+            visibility: visible;
+        }
+        
+        .fadeIn {
+            animation: fadeIn 1s;
+        }
+        
+        .fadeInUp {
+            animation: fadeInUp 1s;
+        }
+        
+        .fadeInDown {
+            animation: fadeInDown 1s;
+        }
+        
+        .fadeInLeft {
+            animation: fadeInLeft 1s;
+        }
+        
+        .fadeInRight {
+            animation: fadeInRight 1s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Mobile menu styles */
+        .tgmobile__menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #2c3e50;
+            z-index: 999;
+            display: none;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu-visible .tgmobile__menu {
+            display: block;
+        }
+        
+        .tgmobile__menu-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .tgmobile__menu-content {
+            position: relative;
+            background: white;
+            width: 300px;
+            height: 100%;
+            padding: 30px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu-visible .tgmobile__menu-content {
+            transform: translateX(0);
+        }
+        
+        .tgmobile__menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .tgmobile__menu-nav {
+            margin-top: 50px;
+        }
+        
+        .tgmobile__menu-nav ul {
+            list-style: none;
+        }
+        
+        .tgmobile__menu-nav li {
+            margin-bottom: 15px;
+        }
+        
+        .tgmobile__menu-nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        /* Payment methods */
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .payment-method {
+            width: 60px;
+            height: 40px;
+            background: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .payment-method i {
+            font-size: 24px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-spinner"></div>
+    </div>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- WhatsApp float button -->
+    <a href="https://wa.me/1234567890?text=Hello%20Business%20Health%20Pro,%20I%20would%20like%20to%20know%20more%20about%20your%20services" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header id="sticky-header">
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Business Health Pro</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#booking">Consultation</a></li>
+                    <li><a href="#free-trial">Free Trial</a></li>
+                </ul>
+                <button class="mobile-nav-toggler">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="tgmobile__menu">
+        <div class="tgmobile__menu-backdrop"></div>
+        <div class="tgmobile__menu-content">
+            <button class="tgmobile__menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="tgmobile__menu-nav">
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#booking">Consultation</a></li>
+                    <li><a href="#free-trial">Free Trial</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="wow fadeInDown" data-wow-delay="0.3s">Your Personal Finance Consultant — Just One Step Away</h1>
+            <p class="wow fadeInDown" data-wow-delay="0.5s">Your Finance Partner for Every Stage of Growth. From daily bookkeeping to growth-ready financial reports, we turn your numbers into clear decisions.</p>
+            <a href="#booking" class="btn wow fadeIn" data-wow-delay="0.7s">Book a Consultation</a>
+            <a href="#free-trial" class="btn btn-secondary wow fadeIn" data-wow-delay="0.9s">Start Free Trial</a>
+            <a href="https://wa.me/1234567890?text=Hello%20Business%20Health%20Pro,%20I%20would%20like%20to%20know%20more%20about%20your%20services" class="btn btn-whatsapp wow fadeIn" data-wow-delay="1.1s" target="_blank">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Our Services</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Comprehensive financial solutions designed for digital entrepreneurs</p>
+            </div>
+            <div class="services">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+                    <i class="fas fa-book"></i>
+                    <h3>Full Finance Package</h3>
+                    <p>End-to-end bookkeeping, ledgers, payroll, AP/AR, and monthly reports (P&L, Cash Flow, Balance Sheet).</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>VAT & TDS Compliance</h3>
+                    <p>Monthly returns prepared and filed by our experts to keep you compliant with regulations.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Visual Dashboards</h3>
+                    <p>P&L, cash flow, and Budget vs Actual in clear, decision-ready visual formats.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Monthly Review Calls</h3>
+                    <p>45-minute sessions where we explain insights in plain language and agree on action steps.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Loan & Investor Ready Reports</h3>
+                    <p>Professionally packaged financials for banks, investors, or donors.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-analytics"></i>
+                    <h3>Business Health Scoring</h3>
+                    <p>Our proprietary scoring system helps you understand the overall health of your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">How It Works</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Our simple 8-step process to get your finances in order</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step" data-aos="fade-up" data-aos-delay="0">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Sign Up for a Pilot</h3>
+                        <p>Fill the form or ping us on WhatsApp. We confirm a quick discovery call to understand your needs.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Understand Your Business (20 minutes)</h3>
+                        <p>We learn your transaction flow — sales, expenses, bKash/Nagad, payroll, VAT/TDS — and identify the reports that matter most. You don't need to learn accounting — we shape the numbers for you.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Collect Sample Data</h3>
+                        <p>You share one month of records (Excel file, notebook, or screenshots). That's enough for us to start building your financial picture.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-up" data-aos-delay="0">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>We Build Your Finance Pack</h3>
+                        <p>We prepare clean ledgers and tailored reports: P&L, Cash Flow, Balance Sheet, VAT/TDS summaries — all formatted for banks, partners, or boards. Think of us as your finance team on demand.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Visual Dashboards</h3>
+                        <p>Your P&L is not just rows of numbers. We deliver clear dashboards in Excel or Power BI showing Budget vs Actual, Cash Flow graphs, and profit margin visualizations so you can see trends instantly.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>Easy Handover & Guidance</h3>
+                        <p>We explain the reports in plain language so you know exactly what the visuals mean for your business and can make informed decisions.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-up" data-aos-delay="0">
+                    <div class="step-number">7</div>
+                    <div class="step-content">
+                        <h3>Ongoing Monthly Support + 45-Minute Review Call</h3>
+                        <p>Every month we update reports, refresh dashboards, and highlight risks/opportunities. Then we sit with you for a 45-minute plain-language review call, making sure you understand your numbers and agree on 1–2 clear action points. Like having a CFO on call — without the full-time cost.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">8</div>
+                    <div class="step-content">
+                        <h3>Loan & Growth Ready</h3>
+                        <p>We package your financials so banks and investors see a clear, professional snapshot of your business health. Loan approvals and grants become faster and smoother.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="banner-section">
+        <div class="container">
+            <div class="banner-content" data-aos="fade-up">
+                <p>Even if your business is just starting or still small, you need financial reports. Why? Because it's not about collecting raw information — it's about having that data organized, clear, and decision-ready. We turn scattered transactions into structured reports and dashboards. With everything in order, you can spot risks, compare budget vs actual, and make quick, confident decisions that fuel growth.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Pricing Plans</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Choose the plan that works best for your business needs</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="0">
+                    <h3>Starter</h3>
+                    <div class="price">$49<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Basic Bookkeeping</li>
+                        <li>Monthly P&L Statements</li>
+                        <li>Business Health Score</li>
+                        <li>Email Support</li>
+                        <li>-</li>
+                    </ul>
+                    <button class="btn" onclick="selectPlan('Starter', 49)">Select Plan</button>
+                    <div class="payment-methods">
+                        <div class="payment-method"><i class="fab fa-cc-visa"></i></div>
+                        <div class="payment-method"><i class="fab fa-cc-mastercard"></i></div>
+                        <div class="payment-method"><i class="fab fa-cc-paypal"></i></div>
+                    </div>
+                </div>
+                <div class="pricing-card popular" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Professional</h3>
+                    <div class="price">$99<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Advanced Bookkeeping</li>
+                        <li>Weekly P&L Statements</li>
+                        <li>Detailed Business Health Analysis</li>
+                        <li>Tax Preparation Support</li>
+                        <li>Priority Email & Chat Support</li>
+                    </ul>
+                    <button class="btn" onclick="selectPlan('Professional', 99)">Select Plan</button>
+                    <div class="payment-methods">
+                        <div class="payment-method"><i class="fab fa-cc-visa"></i></div>
+                        <div class="payment-method"><i class="fab fa-cc-mastercard"></i></div>
+                        <div class="payment-method"><i class="fab fa-cc-paypal"></i></div>
+                    </div>
+                </div>
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Enterprise</h3>
+                    <div class="price">$199<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Full-Service Bookkeeping</li>
+                        <li>Daily Financial Reports</li>
+                        <li>Comprehensive Business Health Dashboard</li>
+                        <li>Full Tax Preparation & Filing</li>
+                        <li>24/7 Priority Support</li>
+                    </ul>
+                    <button class="btn" onclick="selectPlan('Enterprise', 199)">Select Plan</button>
+                    <div class="payment-methods">
+                        <div class="payment-method"><i class="fab fa-cc-visa"></i></div>
+                        <div class="payment-method"><i class="fab fa-cc-mastercard"></i></div>
+                        <div class="payment-method"><i class="fab fa-cc-paypal"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Client Reviews</h2>
+                <p data-aos="fade-up" data-aos-delay="100">See what our clients have to say about our services</p>
+            </div>
+            <div class="review-cards">
+                <div class="review-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Business Health Pro transformed how I manage my finances. Their business health score helped me secure a loan I needed for expansion!"</p>
+                    <div class="client">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Rahim Ahmed">
+                        <div>
+                            <h4>Rahim Ahmed</h4>
+                            <p>E-commerce Store Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The tax support alone is worth it! They saved me thousands in deductions I didn't even know about. Highly recommend!"</p>
+                    <div class="client">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Tanzid Hasan">
+                        <div>
+                            <h4>Tanzid Hasan</h4>
+                            <p>Software Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"As a digital entrepreneur, I needed financial services that understood my business model. Business Health Pro delivered exactly what I needed."</p>
+                    <div class="client">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Nusrat Jahan">
+                        <div>
+                            <h4>Nusrat Jahan</h4>
+                            <p>Content Creator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">About Us</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Meet the team behind Business Health Pro</p>
+            </div>
+            <div class="team-members">
+                <div class="team-member" data-aos="fade-up" data-aos-delay="0">
+                    <img src="https://i.imgur.com/qSYvLV1.jpeg" alt="Humyra Anika - Founder">
+                    <div class="team-member-info">
+                        <h3>Humyra Anika</h3>
+                        <span class="role">Founder</span>
+                        <p>Strategic finance professional with 6+ years of experience in audit, tax, and consulting, trained at Baker Tilly affiliate (ACNABIN). She has led cross-functional audits and advised digital entrepreneurs, SMEs, and nonprofits on building reliable reporting systems and financial strategies.</p>
+                        <p>At Business Health Pro, Humyra focuses on turning complex financial data into simple, decision-ready insights that drive growth and funding opportunities. She envisions a future where women in Bangladesh have the financial resources to thrive and lead confidently.</p>
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://i.imgur.com/GjpIf1n.jpeg" alt="Halima Tus Sadia - Co-Founder">
+                    <div class="team-member-info">
+                        <h3>Halima Tus Sadia</h3>
+                        <span class="role">Co-Founder</span>
+                        <p>Finance professional with 6+ years of experience in corporate finance, budgeting, and compliance, also trained at Baker Tilly affiliate (ACNABIN). She has supported large groups of concerns while specializing in financial reporting and process improvements.</p>
+                        <p>At Business Health Pro, Halima brings the rigor of corporate standards to solutions for SMEs and nonprofits. She dreams of seeing women in Bangladesh become strongly financially independent.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">Book a Consultation</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Let's discuss how we can help your business thrive</p>
+            </div>
+            <div class="booking-form" data-aos="fade-up" data-aos-delay="200">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        <div class="error" id="name-error">Please enter your name</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        <div class="error" id="email-error">Please enter a valid email address</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Your Phone" required>
+                        <div class="error" id="phone-error">Please enter a valid phone number</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="business-type">Business Type *</label>
+                        <select id="business-type" name="business-type" required>
+                            <option value="">Select business type</option>
+                            <option value="ecommerce">E-commerce</option>
+                            <option value="saas">SaaS</option>
+                            <option value="consulting">Consulting</option>
+                            <option value="retail">Retail</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error" id="business-type-error">Please select your business type</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transactions">Average Monthly Transactions</label>
+                        <input type="number" id="transactions" name="transactions" placeholder="Approximate number">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your business needs"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Schedule Consultation</button>
+                </form>
+                
+                <div class="ajax-response" id="form-messages"></div>
+                
+                <div class="whatsapp-info">
+                    <h3><i class="fab fa-whatsapp"></i> Prefer WhatsApp?</h3>
+                    <p>Get immediate assistance by messaging us directly on WhatsApp. We typically respond within minutes during business hours.</p>
+                    <a href="https://wa.me/1234567890?text=Hello%20Business%20Health%20Pro,%20I%20would%20like%20to%20schedule%20a%20consultation" class="btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Message on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="free-trial" class="free-trial">
+        <div class="container">
+            <h2 data-aos="fade-up">Start Your Free Trial Today</h2>
+            <p data-aos="fade-up" data-aos-delay="100">Experience the benefits of our services with a 14-day free trial</p>
+            <button id="trial-btn" class="btn" data-aos="fade-up" data-aos-delay="200">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Free Trial Modal -->
+    <div id="trial-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Start Your Free Trial</h2>
+            <p>Fill out the form below to begin your 14-day free trial</p>
+            
+            <form id="trial-form">
+                <div class="form-group">
+                    <label for="trial-name">Full Name *</label>
+                    <input type="text" id="trial-name" name="name" placeholder="Your Name" required>
+                    <div class="error" id="trial-name-error">Please enter your name</div>
+                </div>
+                <div class="form-group">
+                    <label for="trial-email">Email Address *</label>
+                    <input type="email" id="trial-email" name="email" placeholder="Your Email" required>
+                    <div class="error" id="trial-email-error">Please enter a valid email address</div>
+                </div>
+                <div class="form-group">
+                    <label for="trial-company">Company Name</label>
+                    <input type="text" id="trial-company" name="company" placeholder="Your Company Name">
+                </div>
+                <div class="form-group">
+                    <label for="trial-service">Primary Service Interest *</label>
+                    <select id="trial-service" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="bookkeeping">Bookkeeping</option>
+                        <option value="financial-statements">Financial Statements</option>
+                        <option value="business-health">Business Health Score</option>
+                        <option value="loan-docs">Loan Documentation</option>
+                        <option value="tax-support">Tax Support</option>
+                    </select>
+                    <div class="error" id="trial-service-error">Please select a service</div>
+                </div>
+                <button type="submit" class="btn">Start Free Trial</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Complete Your Purchase</h2>
+            <p>You're subscribing to the <span id="selected-plan">Professional</span> plan for $<span id="selected-price">99</span>/month</p>
+            
+            <form id="payment-form">
+                <div class="form-group">
+                    <label for="card-name">Name on Card *</label>
+                    <input type="text" id="card-name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-number">Card Number *</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-group" style="display: flex; gap: 15px;">
+                    <div style="flex: 1;">
+                        <label for="card-expiry">Expiry Date *</label>
+                        <input type="text" id="card-expiry" placeholder="MM/YY" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="card-cvc">CVC *</label>
+                        <input type="text" id="card-cvc" placeholder="123" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Pay Now</button>
+                
+                <div class="payment-methods" style="margin-top: 20px;">
+                    <div class="payment-method"><i class="fab fa-cc-visa"></i></div>
+                    <div class="payment-method"><i class="fab fa-cc-mastercard"></i></div>
+                    <div class="payment-method"><i class="fab fa-cc-amex"></i></div>
+                    <div class="payment-method"><i class="fab fa-cc-paypal"></i></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Business Health Pro</h3>
+                    <p>Comprehensive financial management solutions for digital entrepreneurs.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> info@businesshealthpro.com</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fab fa-whatsapp"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Business Ave, Suite 456</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#booking">Consultation</a></li>
+                        <li><a href="#free-trial">Free Trial</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Business Health Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Thank You Section (hidden by default) -->
+    <section id="thank-you" style="display: none;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Thank You!</h2>
+                <p>We've received your submission and will contact you shortly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script>
+        // AOS Animation
+        function aosAnimation() {
+            AOS.init({
+                duration: 1000,
+                mirror: true,
+                once: true,
+                disable: 'mobile',
+            });
+        }
+
+        // WOW Animation
+        function wowAnimation() {
+            new WOW({
+                boxClass: 'wow',
+                animateClass: 'animated',
+                offset: 0,
+                mobile: false,
+                live: true
+            }).init();
+        }
+
+        // Preloader
+        function preloader() {
+            $('#preloader').delay(500).fadeOut();
+        }
+
+        // Mobile Menu
+        function initMobileMenu() {
+            $('.mobile-nav-toggler').on('click', function() {
+                $('body').addClass('mobile-menu-visible');
+            });
+            
+            $('.tgmobile__menu-backdrop, .tgmobile__menu-close').on('click', function() {
+                $('body').removeClass('mobile-menu-visible');
+            });
+        }
+
+        // Scroll to Top
+        function initScrollToTop() {
+            $(window).on('scroll', function() {
+                if ($(this).scrollTop() > 300) {
+                    $('.scroll-to-top').addClass('show');
+                } else {
+                    $('.scroll-to-top').removeClass('show');
+                }
+            });
+            
+            $('.scroll-to-top').on('click', function() {
+                $('html, body').animate({scrollTop: 0}, 800);
+                return false;
+            });
+        }
+
+        // Form Validation and AJAX Submission
+        function initForms() {
+            // Consultation form
+            $('#contact-form').on('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                const form = $(this);
+                
+                // Validate name
+                const name = $('#name');
+                if (!name.val().trim()) {
+                    $('#name-error').show();
+                    isValid = false;
+                } else {
+                    $('#name-error').hide();
+                }
+                
+                // Validate email
+                const email = $('#email');
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email.val().match(emailPattern)) {
+                    $('#email-error').show();
+                    isValid = false;
+                } else {
+                    $('#email-error').hide();
+                }
+                
+                // Validate phone
+                const phone = $('#phone');
+                if (!phone.val().trim()) {
+                    $('#phone-error').show();
+                    isValid = false;
+                } else {
+                    $('#phone-error').hide();
+                }
+                
+                // Validate business type
+                const businessType = $('#business-type');
+                if (!businessType.val()) {
+                    $('#business-type-error').show();
+                    isValid = false;
+                } else {
+                    $('#business-type-error').hide();
+                }
+                
+                if (isValid) {
+                    // Create WhatsApp message
+                    const message = `Hello Business Health Pro,%0A%0AI would like to schedule a consultation.%0A%0AName: ${name.val()}%0AEmail: ${email.val()}%0APhone: ${phone.val()}%0ABusiness Type: ${businessType.val()}%0AAvg Transactions: ${$('#transactions').val()}%0AMessage: ${$('#message').val()}`;
+                    
+                    // Redirect to WhatsApp
+                    window.open(`https://wa.me/1234567890?text=${message}`, '_blank');
+                    
+                    // Show success message
+                    $('#form-messages').removeClass('error').addClass('success').text('Redirecting to WhatsApp...').show();
+                    form.trigger('reset');
+                }
+            });
+
+            // Trial form
+            $('#trial-form').on('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                const form = $(this);
+                
+                // Validate name
+                const name = $('#trial-name');
+                if (!name.val().trim()) {
+                    $('#trial-name-error').show();
+                    isValid = false;
+                } else {
+                    $('#trial-name-error').hide();
+                }
+                
+                // Validate email
+                const email = $('#trial-email');
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email.val().match(emailPattern)) {
+                    $('#trial-email-error').show();
+                    isValid = false;
+                } else {
+                    $('#trial-email-error').hide();
+                }
+                
+                // Validate service
+                const service = $('#trial-service');
+                if (!service.val()) {
+                    $('#trial-service-error').show();
+                    isValid = false;
+                } else {
+                    $('#trial-service-error').hide();
+                }
+                
+                if (isValid) {
+                    // Create WhatsApp message
+                    const message = `Hello Business Health Pro,%0A%0AI would like to start a free trial.%0A%0AName: ${name.val()}%0AEmail: ${email.val()}%0ACompany: ${$('#trial-company').val()}%0AService: ${service.val()}`;
+                    
+                    // Redirect to WhatsApp
+                    window.open(`https://wa.me/1234567890?text=${message}`, '_blank');
+                    
+                    // Close modal
+                    $('#trial-modal').hide();
+                }
+            });
+
+            // Payment form
+            $('#payment-form').on('submit', function(e) {
+                e.preventDefault();
+                alert('Payment processed successfully! Thank you for your subscription.');
+                $('#payment-modal').hide();
+            });
+        }
+
+        // Plan selection
+        function selectPlan(plan, price) {
+            $('#selected-plan').text(plan);
+            $('#selected-price').text(price);
+            $('#payment-modal').show();
+        }
+
+        // Modal functionality
+        function initModals() {
+            const modals = $('.modal');
+            const trialBtn = $('#trial-btn');
+            const closeBtn = $('.close');
+            
+            trialBtn.on('click', function() {
+                $('#trial-modal').show();
+            });
+            
+            closeBtn.on('click', function() {
+                modals.hide();
+            });
+            
+            $(window).on('click', function(event) {
+                modals.each(function() {
+                    if (event.target == this) {
+                        $(this).hide();
+                    }
+                });
+            });
+        }
+
+        // Ripple effect for buttons
+        function initRippleEffect() {
+            $('.btn').on('click', function(e) {
+                const btn = $(this);
+                const x = e.pageX - btn.offset().left;
+                const y = e.pageY - btn.offset().top;
+                
+                btn.find('span').remove();
+                btn.append('<span></span>');
+                
+                const ripple = btn.find('span');
+                ripple.css({
+                    left: x,
+                    top: y
+                });
+                
+                setTimeout(function() {
+                    ripple.remove();
+                }, 1000);
+            });
+        }
+
+        // Initialize everything when document is ready
+        $(document).ready(function() {
+            aosAnimation();
+            wowAnimation();
+            initMobileMenu();
+            initScrollToTop();
+            initForms();
+            initModals();
+            initRippleEffect();
+            
+            // Smooth scrolling for anchor links
+            $('a[href*="#"]').on('click', function(e) {
+                if ($(this).attr('href') === '#') return;
+                
+                e.preventDefault();
+                
+                $('html, body').animate({
+                    scrollTop: $($(this).attr('href')).offset().top - 80
+                }, 1000);
+            });
+        });
+
+        // Initialize when window is loaded
+        $(window).on('load', function() {
+            preloader();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ledgerly - Your Personal Finance Consultant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@700&family=Playfair+Display:ital@0;1&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #2C3E50;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: #FFFDD0;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 60px;
+            color: #2C3E50;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background-color: #145A32;
+            color: #FFFDD0;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0E4A29;
+            transform: translateY(-3px);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+        }
+        
+        /* Sign Up Form */
+        .signup-section {
+            background-color: #FFFDD0;
+            padding: 80px 0;
+        }
+        
+        .signup-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-confirmation {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #E8F5E9;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            background-color: #FFFDD0;
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 36px;
+            color: #2C3E50;
+            margin-bottom: 15px;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .step {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: #2ECC71;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .step h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2C3E50;
+        }
+        
+        /* Banner Section */
+        .banner {
+            background-color: #FFFDD0;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .banner-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .banner-content p {
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: #FFFDD0;
+            padding: 80px 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .service-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2C3E50;
+        }
+        
+        .service-card ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .service-card li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .service-card li:before {
+            content: "→";
+            color: #2ECC71;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: #145A32;
+            padding: 80px 0;
+            color: #FFFDD0;
+        }
+        
+        .testimonial {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #2ECC71;
+            margin-bottom: 10px;
+        }
+        
+        .stars {
+            color: #2ECC71;
+            margin-bottom: 20px;
+        }
+        
+        /* About Us */
+        .about {
+            background-color: #FFFDD0;
+            padding: 80px 0;
+        }
+        
+        .founders {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .founder {
+            text-align: center;
+            max-width: 300px;
+        }
+        
+        .founder-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .founder h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #2C3E50;
+        }
+        
+        .founder-role {
+            color: #2ECC71;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background-color: #FFFDD0;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #2C3E50;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2C3E50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        footer a {
+            color: #2ECC71;
+            text-decoration: none;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            
+            .signup-form {
+                padding: 20px;
+            }
+            
+            .founders {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Logo */
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo img {
+            max-width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="logo">
+                <img src="https://i.imgur.com/W3VxnX2.jpeg" alt="Ledgerly Logo">
+            </div>
+            <h1>Your Personal Finance Consultant — Just One Step Away</h1>
+            <p>A financial report isn’t just paperwork — it’s your business health check. No matter if your business is just starting out or already booming, you need organized reports at every step for smooth operations. At Ledgerly, we know there’s no one-size-fits-all, so we customize your reports in the language you understand. Who told you that you need to be a pro at accounting? We turn raw numbers into clear dashboards and decision-ready insights — so you can run your business with confidence.</p>
+            <div class="cta-buttons">
+                <a href="#signup" class="btn btn-primary">Request a Pilot</a>
+                <a href="https://wa.me/1234567890" class="btn btn-whatsapp" target="_blank">Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sign Up Form -->
+    <section id="signup" class="signup-section">
+        <div class="container">
+            <div class="signup-form">
+                <h2>Start Your Free Trial</h2>
+                <form id="pilot-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone/WhatsApp</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="business-type">Business Type</label>
+                        <select id="business-type" name="business-type" required>
+                            <option value="">Select Business Type</option>
+                            <option value="ecommerce">E-commerce</option>
+                            <option value="retail">Retail</option>
+                            <option value="service">Service-based</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transactions">Average Monthly Transactions</label>
+                        <select id="transactions" name="transactions" required>
+                            <option value="">Select Volume</option>
+                            <option value="0-50">0-50</option>
+                            <option value="51-200">51-200</option>
+                            <option value="201-500">201-500</option>
+                            <option value="501-1000">501-1000</option>
+                            <option value="1000+">1000+</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Request</button>
+                </form>
+                <div class="form-confirmation" id="confirmation">
+                    Thanks! We'll reach out within 24 hours to set up your free pilot.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Sign Up for a Pilot</h3>
+                    <p>Fill the form or ping us on WhatsApp. We confirm a quick discovery call.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Understand Your Business (20 minutes)</h3>
+                    <p>We learn your transaction flow — sales, expenses, bKash/Nagad, payroll, VAT/TDS — and identify the reports that matter most.</p>
+                    <p>👉 You don't need to learn accounting — we shape the numbers for you.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Collect Sample Data</h3>
+                    <p>You share one month of records (Excel file, notebook, or screenshots). That's enough for us to start.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>We Build Your Finance Pack</h3>
+                    <p>Ledgerly prepares clean ledgers and tailored reports: P&L, Cash Flow, Balance Sheet, VAT/TDS summaries — all formatted for banks, partners, or boards.</p>
+                    <p>👉 Think of us as your finance team on demand.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Visual Dashboards</h3>
+                    <p>Your P&L is not just rows of numbers. We deliver clear dashboards in Excel or Power BI:</p>
+                    <ul>
+                        <li>Budget vs Actual → see if sales and expenses match your plan.</li>
+                        <li>Cash Flow graph → know how much runway you have.</li>
+                        <li>Profit margins visualized → no more guessing, see trends instantly.</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <h3>Easy Handover & Guidance</h3>
+                    <p>We explain the reports in plain language so you know exactly what the visuals mean for your business.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">7</div>
+                    <h3>Ongoing Monthly Support + 45-Minute Review Call</h3>
+                    <p>Every month we update reports, refresh dashboards, and highlight risks/opportunities. Then we sit with you for a 45-minute plain-language review call, making sure you understand your numbers and agree on 1–2 clear action points.</p>
+                    <p>👉 Like having a CFO on call — without the full-time cost.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">8</div>
+                    <h3>Loan & Growth Ready</h3>
+                    <p>We package your financials so banks and investors see a clear, professional snapshot of your business health. Loan approvals and grants become faster and smoother.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <div class="container">
+            <div class="banner-content">
+                <p>"Even if your business is just starting or still small, you need financial reports. Why? Because it's not about collecting raw information — it's about having that data organized, clear, and decision-ready. Ledgerly turns scattered transactions into structured reports and dashboards. With everything in order, you can spot risks, compare budget vs actual, and make quick, confident decisions that fuel growth."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Services / What You Get</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Full Finance Package (Base)</h3>
+                    <p>End-to-end bookkeeping, ledgers, payroll, AP/AR, and monthly reports (P&L, Cash Flow, Balance Sheet).</p>
+                </div>
+                <div class="service-card">
+                    <h3>Add-On Services (as needed)</h3>
+                    <ul>
+                        <li>VAT & TDS Compliance → Monthly returns prepared and filed.</li>
+                        <li>Visual Dashboards → P&L, cash flow, and Budget vs Actual in clear visuals.</li>
+                        <li>45-Minute Monthly Review Call → Insights explained in plain language, action steps agreed.</li>
+                        <li>Loan & Investor Ready Reports → Professionally packaged for banks, investors, or donors.</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; font-style: italic;">Plans are customized for each business. Contact us for a quote.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+            </div>
+            <div class="testimonial">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Ledgerly transformed how I understand my business finances. Their dashboards made complex data simple and actionable."</p>
+                <p class="testimonial-author">Rahim Ahmed, E-commerce Business Owner</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="founders">
+                <div class="founder">
+                    <img src="https://i.imgur.com/qSYvLV1.jpeg" alt="Humyra Anika" class="founder-img">
+                    <h3>Humyra Anika</h3>
+                    <p class="founder-role">Founder</p>
+                    <p>Strategic finance professional with 6+ years of experience in audit, tax, and consulting, trained at Baker Tilly affiliate (ACNABIN). She has led cross-functional audits and advised digital entrepreneurs, SMEs, and nonprofits on building reliable reporting systems and financial strategies.</p>
+                </div>
+                <div class="founder">
+                    <img src="https://i.imgur.com/GjpIf1n.jpeg" alt="Halima Tus Sadia" class="founder-img">
+                    <h3>Halima Tus Sadia</h3>
+                    <p class="founder-role">Co-Founder</p>
+                    <p>Finance professional with 6+ years of experience in corporate finance, budgeting, and compliance, also trained at Baker Tilly affiliate (ACNABIN). She has supported large groups of concerns while specializing in financial reporting and process improvements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to see your business health in numbers?</h2>
+            <div class="cta-buttons">
+                <a href="#signup" class="btn btn-primary">Request a Pilot</a>
+                <a href="https://wa.me/1234567890" class="btn btn-whatsapp" target="_blank">Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Email: <a href="mailto:ledgerlybd@gmail.com">ledgerlybd@gmail.com</a></p>
+            <p>© 2023 Ledgerly. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('pilot-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send this data to your server
+            // For this example, we'll just show the confirmation message
+            document.getElementById('confirmation').style.display = 'block';
+            
+            // Scroll to confirmation message
+            document.getElementById('confirmation').scrollIntoView({ behavior: 'smooth' });
+            
+            // Reset the form
+            this.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

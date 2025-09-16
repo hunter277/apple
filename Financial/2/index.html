@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ledgerly - Your Personal Finance Consultant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@700&family=Playfair+Display:ital@0;1&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #2C3E50;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #FFFDD0 0%, #f8f5c8 100%);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #145A32, #2ECC71, #145A32);
+        }
+        
+        .hero h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 60px;
+            color: #2C3E50;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary {
+            background-color: #145A32;
+            color: #FFFDD0;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0E4A29;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* Sign Up Form */
+        .signup-section {
+            background-color: #f9f7e0;
+            padding: 80px 0;
+        }
+        
+        .signup-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .signup-form::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #145A32, #2ECC71);
+        }
+        
+        .signup-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #145A32;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #2ECC71;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.2);
+        }
+        
+        .form-confirmation {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #E8F5E9;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+            border-left: 4px solid #2ECC71;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            background-color: #FFFDD0;
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 36px;
+            color: #2C3E50;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #145A32, #2ECC71);
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .step {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .step::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #145A32, #2ECC71);
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #145A32, #2ECC71);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .step h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2C3E50;
+        }
+        
+        /* Banner Section */
+        .banner {
+            background: linear-gradient(135deg, #145A32 0%, #1e8449 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .banner-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .banner-content::before,
+        .banner-content::after {
+            content: """;
+            font-family: 'Playfair Display', serif;
+            font-size: 80px;
+            color: rgba(255, 255, 255, 0.1);
+            position: absolute;
+        }
+        
+        .banner-content::before {
+            top: -40px;
+            left: -20px;
+        }
+        
+        .banner-content::after {
+            content: """;
+            bottom: -60px;
+            right: -20px;
+        }
+        
+        .banner-content p {
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: #FFFDD0;
+            padding: 80px 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .service-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2C3E50;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2ECC71;
+        }
+        
+        .service-card ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .service-card li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .service-card li:before {
+            content: "→";
+            color: #2ECC71;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #145A32 0%, #1e8449 100%);
+            padding: 80px 0;
+            color: #FFFDD0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill-opacity="0.05" fill="%23FFFFFF" x="0" y="0" width="100" height="100"/></svg>');
+            background-size: 100px 100px;
+        }
+        
+        .testimonial {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: """;
+            font-size: 80px;
+            color: rgba(46, 204, 113, 0.3);
+            position: absolute;
+            top: -40px;
+            left: -20px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .testimonial-author {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #2ECC71;
+            margin-bottom: 10px;
+        }
+        
+        .stars {
+            color: #2ECC71;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        /* About Us */
+        .about {
+            background-color: #FFFDD0;
+            padding: 80px 0;
+        }
+        
+        .founders {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .founder {
+            text-align: center;
+            max-width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .founder:hover {
+            transform: translateY(-5px);
+        }
+        
+        .founder-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .founder h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #2C3E50;
+        }
+        
+        .founder-role {
+            color: #2ECC71;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, #FFFDD0 0%, #f8f5c8 100%);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .final-cta::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #145A32, #2ECC71, #145A32);
+        }
+        
+        .final-cta h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #2C3E50;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2C3E50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        footer a {
+            color: #2ECC71;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: #FFFDD0;
+            text-decoration: underline;
+        }
+        
+        /* Loading Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            
+            .signup-form {
+                padding: 20px;
+            }
+            
+            .founders {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .step::before {
+                width: 3px;
+            }
+            
+            .banner-content::before,
+            .banner-content::after {
+                display: none;
+            }
+        }
+        
+        /* Logo */
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo img {
+            max-width: 200px;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+        
+        /* Loading spinner for form submission */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #2ECC71;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="logo">
+                <img src="https://i.imgur.com/W3VxnX2.jpeg" alt="Ledgerly Logo" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22200%22 height%3D%2260%22%3E%3Crect fill%3D%22%23145A32%22 width%3D%22200%22 height%3D%2260%22 rx%3D%225%22%2F%3E%3Ctext fill%3D%22%23FFFDD0%22 font-family%3D%22Arial%22 font-size%3D%2220%22 x%3D%2250%25%22 y%3D%2250%25%22 text-anchor%3D%22middle%22 dy%3D%22.3em%22%3ELedgerly%3C%2Ftext%3E%3C%2Fsvg%3E'">
+            </div>
+            <h1>Your Personal Finance Consultant — Just One Step Away</h1>
+            <p>A financial report isn't just paperwork — it's your business health check. No matter if your business is just starting out or already booming, you need organized reports at every step for smooth operations. At Ledgerly, we know there's no one-size-fits-all, so we customize your reports in the language you understand. Who told you that you need to be a pro at accounting? We turn raw numbers into clear dashboards and decision-ready insights — so you can run your business with confidence.</p>
+            <div class="cta-buttons">
+                <a href="#signup" class="btn btn-primary">Request a Pilot</a>
+                <a href="https://wa.me/8801234567890" class="btn btn-whatsapp" target="_blank">Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sign Up Form -->
+    <section id="signup" class="signup-section">
+        <div class="container">
+            <div class="signup-form animate-on-scroll">
+                <h2>Start Your Free Trial</h2>
+                <form id="pilot-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone/WhatsApp</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="business-type">Business Type</label>
+                        <select id="business-type" name="business-type" required>
+                            <option value="">Select Business Type</option>
+                            <option value="ecommerce">E-commerce</option>
+                            <option value="retail">Retail</option>
+                            <option value="service">Service-based</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transactions">Average Monthly Transactions</label>
+                        <select id="transactions" name="transactions" required>
+                            <option value="">Select Volume</option>
+                            <option value="0-50">0-50</option>
+                            <option value="51-200">51-200</option>
+                            <option value="201-500">201-500</option>
+                            <option value="501-1000">501-1000</option>
+                            <option value="1000+">1000+</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Request</button>
+                    <div class="spinner" id="form-spinner"></div>
+                </form>
+                <div class="form-confirmation" id="confirmation">
+                    <i class="fas fa-check-circle"></i> Thanks! We'll reach out within 24 hours to set up your free pilot.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+            </div>
+            <div class="steps">
+                <div class="step animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <h3>Sign Up for a Pilot</h3>
+                    <p>Fill the form or ping us on WhatsApp. We confirm a quick discovery call.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <h3>Understand Your Business (20 minutes)</h3>
+                    <p>We learn your transaction flow — sales, expenses, bKash/Nagad, payroll, VAT/TDS — and identify the reports that matter most.</p>
+                    <p>👉 You don't need to learn accounting — we shape the numbers for you.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <h3>Collect Sample Data</h3>
+                    <p>You share one month of records (Excel file, notebook, or screenshots). That's enough for us to start.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">4</div>
+                    <h3>We Build Your Finance Pack</h3>
+                    <p>Ledgerly prepares clean ledgers and tailored reports: P&L, Cash Flow, Balance Sheet, VAT/TDS summaries — all formatted for banks, partners, or boards.</p>
+                    <p>👉 Think of us as your finance team on demand.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">5</div>
+                    <h3>Visual Dashboards</h3>
+                    <p>Your P&L is not just rows of numbers. We deliver clear dashboards in Excel or Power BI:</p>
+                    <ul>
+                        <li>Budget vs Actual → see if sales and expenses match your plan.</li>
+                        <li>Cash Flow graph → know how much runway you have.</li>
+                        <li>Profit margins visualized → no more guessing, see trends instantly.</li>
+                    </ul>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">6</div>
+                    <h3>Easy Handover & Guidance</h3>
+                    <p>We explain the reports in plain language so you know exactly what the visuals mean for your business.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">7</div>
+                    <h3>Ongoing Monthly Support + 45-Minute Review Call</h3>
+                    <p>Every month we update reports, refresh dashboards, and highlight risks/opportunities. Then we sit with you for a 45-minute plain-language review call, making sure you understand your numbers and agree on 1–2 clear action points.</p>
+                    <p>👉 Like having a CFO on call — without the full-time cost.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">8</div>
+                    <h3>Loan & Growth Ready</h3>
+                    <p>We package your financials so banks and investors see a clear, professional snapshot of your business health. Loan approvals and grants become faster and smoother.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <div class="container">
+            <div class="banner-content animate-on-scroll">
+                <p>"Even if your business is just starting or still small, you need financial reports. Why? Because it's not about collecting raw information — it's about having that data organized, clear, and decision-ready. Ledgerly turns scattered transactions into structured reports and dashboards. With everything in order, you can spot risks, compare budget vs actual, and make quick, confident decisions that fuel growth."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Services / What You Get</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <h3>Full Finance Package (Base)</h3>
+                    <p>End-to-end bookkeeping, ledgers, payroll, AP/AR, and monthly reports (P&L, Cash Flow, Balance Sheet).</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <h3>Add-On Services (as needed)</h3>
+                    <ul>
+                        <li>VAT & TDS Compliance → Monthly returns prepared and filed.</li>
+                        <li>Visual Dashboards → P&L, cash flow, and Budget vs Actual in clear visuals.</li>
+                        <li>45-Minute Monthly Review Call → Insights explained in plain language, action steps agreed.</li>
+                        <li>Loan & Investor Ready Reports → Professionally packaged for banks, investors, or donors.</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; font-style: italic;">Plans are customized for each business. Contact us for a quote.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+            </div>
+            <div class="testimonial animate-on-scroll">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Ledgerly transformed how I understand my business finances. Their dashboards made complex data simple and actionable."</p>
+                <p class="testimonial-author">Rahim Ahmed, E-commerce Business Owner</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="founders">
+                <div class="founder animate-on-scroll">
+                    <img src="https://i.imgur.com/qSYvLV1.jpeg" alt="Humyra Anika" class="founder-img" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22200%22 height%3D%22200%22%3E%3Crect fill%3D%22%23ddd%22 width%3D%22200%22 height%3D%22200%22 rx%3D%22100%22%2F%3E%3Ctext fill%3D%22%23777%22 font-family%3D%22Arial%22 font-size%3D%2220%22 x%3D%2250%25%22 y%3D%2250%25%22 text-anchor%3D%22middle%22 dy%3D%22.3em%22%3EImage%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                    <h3>Humyra Anika</h3>
+                    <p class="founder-role">Founder</p>
+                    <p>Strategic finance professional with 6+ years of experience in audit, tax, and consulting, trained at Baker Tilly affiliate (ACNABIN). She has led cross-functional audits and advised digital entrepreneurs, SMEs, and nonprofits on building reliable reporting systems and financial strategies.</p>
+                </div>
+                <div class="founder animate-on-scroll">
+                    <img src="https://i.imgur.com/GjpIf1n.jpeg" alt="Halima Tus Sadia" class="founder-img" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22200%22 height%3D%22200%22%3E%3Crect fill%3D%22%23ddd%22 width%3D%22200%22 height%3D%22200%22 rx%3D%22100%22%2F%3E%3Ctext fill%3D%22%23777%22 font-family%3D%22Arial%22 font-size%3D%2220%22 x%3D%2250%25%22 y%3D%2250%25%22 text-anchor%3D%22middle%22 dy%3D%22.3em%22%3EImage%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                    <h3>Halima Tus Sadia</h3>
+                    <p class="founder-role">Co-Founder</p>
+                    <p>Finance professional with 6+ years of experience in corporate finance, budgeting, and compliance, also trained at Baker Tilly affiliate (ACNABIN). She has supported large groups of concerns while specializing in financial reporting and process improvements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2 class="animate-on-scroll">Ready to see your business health in numbers?</h2>
+            <div class="cta-buttons animate-on-scroll">
+                <a href="#signup" class="btn btn-primary">Request a Pilot</a>
+                <a href="https://wa.me/8801234567890" class="btn btn-whatsapp" target="_blank">Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Email: <a href="mailto:ledgerlybd@gmail.com">ledgerlybd@gmail.com</a></p>
+            <p>Phone: <a href="tel:+8801234567890">+880 1234 567890</a></p>
+            <p>© 2023 Ledgerly. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('pilot-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading spinner
+            document.getElementById('form-spinner').style.display = 'block';
+            
+            // Simulate form submission
+            setTimeout(function() {
+                // Hide spinner
+                document.getElementById('form-spinner').style.display = 'none';
+                
+                // Show confirmation message
+                document.getElementById('confirmation').style.display = 'block';
+                
+                // Scroll to confirmation message
+                document.getElementById('confirmation').scrollIntoView({ behavior: 'smooth' });
+                
+                // Reset the form
+                document.getElementById('pilot-form').reset();
+            }, 1500);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        function checkVisibility() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                
+                // If element is in viewport
+                if(position.top < window.innerHeight - 100 && position.bottom >= 0) {
+                    element.classList.add('is-visible');
+                }
+            });
+        }
+        
+        // Check visibility on load and scroll
+        window.addEventListener('load', checkVisibility);
+        window.addEventListener('scroll', checkVisibility);
+        
+        // Lazy loading for images
+        if ('IntersectionObserver' in window) {
+            const lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        const lazyImage = entry.target;
+                        lazyImage.src = lazyImage.dataset.src;
+                        lazyImageObserver.unobserve(lazyImage);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('img[data-src]').forEach(function(lazyImage) {
+                lazyImageObserver.observe(lazyImage);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -969,26 +969,6 @@
     <div id="preloader" class="preloader">
         <div class="preloader-spinner"></div>
     </div>
- // Mobile Navigation
-        const mobileNavToggler = document.querySelector('.mobile-nav-toggler');
-        const mobileNav = document.getElementById('mobile-nav');
-        const mobileNavClose = document.querySelector('.mobile-nav-close');
-        const overlay = document.getElementById('overlay');
-
-        mobileNavToggler.addEventListener('click', function() {
-            mobileNav.classList.add('active');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-
-        function closeMobileNav() {
-            mobileNav.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        mobileNavClose.addEventListener('click', closeMobileNav);
-        overlay.addEventListener('click', closeMobileNav);
 
     <!-- Scroll to top button -->
     <div class="scroll-to-top">
@@ -1362,7 +1342,19 @@
             <a href="#signup" class="btn" data-aos="fade-up" data-aos-delay="200">Get Started</a>
         </div>
     </section>
- 
+  <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobile-nav">
+        <button class="mobile-nav-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
     <div class="overlay" id="overlay"></div>
 
     <footer>

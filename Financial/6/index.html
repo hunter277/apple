@@ -969,6 +969,26 @@
     <div id="preloader" class="preloader">
         <div class="preloader-spinner"></div>
     </div>
+ // Mobile Navigation
+        const mobileNavToggler = document.querySelector('.mobile-nav-toggler');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavClose = document.querySelector('.mobile-nav-close');
+        const overlay = document.getElementById('overlay');
+
+        mobileNavToggler.addEventListener('click', function() {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        function closeMobileNav() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileNavClose.addEventListener('click', closeMobileNav);
+        overlay.addEventListener('click', closeMobileNav);
 
     <!-- Scroll to top button -->
     <div class="scroll-to-top">

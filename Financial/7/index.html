@@ -445,26 +445,71 @@
             margin-right: 15px;
         }
         
-        /* Styles for Video Review */
-        .video-review-container {
+        .video-thumbnail-container {
             position: relative;
-            padding-bottom: 177.77%; /* 9:16 Aspect Ratio for Shorts */
-            height: 0;
-            overflow: hidden;
-            width: 100%;
+            cursor: pointer;
             border-radius: 8px;
+            overflow: hidden;
             margin-bottom: 20px;
         }
+        .video-thumbnail-container img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+        .video-thumbnail-container .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s;
+        }
+        .video-thumbnail-container:hover .play-icon {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
 
-        .video-review-container iframe {
+        .video-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.85);
+            align-items: center;
+            justify-content: center;
+        }
+        .video-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 420px;
+        }
+        .video-modal-content .video-container {
+            position: relative;
+            padding-bottom: 177.77%; /* 9:16 aspect ratio */
+            height: 0;
+        }
+        .video-modal-content iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: 0;
         }
-        /* End of Styles */
+        .video-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
         .booking {
             background: white;
@@ -1348,19 +1393,30 @@
                     </div>
                 </div>
                 <div class="review-card" data-aos="fade-up" data-aos-delay="300">
-                     <div class="video-review-container">
-                        <iframe src="https://www.youtube.com/embed/z4WWvrsCVW4" title="Client Video Review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="video-thumbnail-container" data-video-id="z4WWvrsCVW4">
+                        <img src="https://img.youtube.com/vi/z4WWvrsCVW4/0.jpg" alt="Video Review Thumbnail">
+                        <i class="fas fa-play play-icon"></i>
                     </div>
                     <div class="client">
                         <div>
                             <h4>Client Video Review</h4>
-                            <p style="font-style: normal;">Watch what our client has to say about their experience with Ledgerly!</p>
+                            <p style="font-style: normal;">Watch what our client has to say!</p>
                         </div>
                     </div>
                 </div>
                 </div>
         </div>
     </section>
+
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="video-modal-close">&times;</span>
+            <div class="video-container">
+                <iframe id="youtubeVideo" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
 
     <section id="free-trial" class="free-trial">
         <div class="container">
@@ -1552,6 +1608,34 @@
             });
         }
 
+        // Video Modal Logic
+        function initVideoModal() {
+            const modal = $('#videoModal');
+            const iframe = $('#youtubeVideo');
+            const closeBtn = $('.video-modal-close');
+
+            $('.video-thumbnail-container').on('click', function() {
+                const videoId = $(this).data('video-id');
+                const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                iframe.attr('src', videoUrl);
+                modal.css('display', 'flex');
+            });
+
+            function closeModal() {
+                modal.fadeOut();
+                iframe.attr('src', '');
+            }
+
+            closeBtn.on('click', closeModal);
+
+            modal.on('click', function(e) {
+                if ($(e.target).is(modal)) {
+                    closeModal();
+                }
+            });
+        }
+
+
         // Initialize everything when document is ready
         $(document).ready(function() {
             aosAnimation();
@@ -1560,7 +1644,8 @@
             initScrollToTop();
             initForms();
             initRippleEffect();
-
+            initVideoModal(); // <-- Initialize the new video modal function
+            
             // Smooth scrolling for anchor links
             $('a[href*="#"]').on('click', function(e) {
                 if ($(this).attr('href') === '#') return;

@@ -444,6 +444,27 @@
             object-fit: cover;
             margin-right: 15px;
         }
+        
+        /* Styles for Video Review */
+        .video-review-container {
+            position: relative;
+            padding-bottom: 177.77%; /* 9:16 Aspect Ratio for Shorts */
+            height: 0;
+            overflow: hidden;
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .video-review-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        /* End of Styles */
 
         .booking {
             background: white;
@@ -1261,7 +1282,7 @@
                         <h3>Halima Tus Sadia</h3>
                         <div class="member-role">Co-Founder</div>
                         <p>Finance professional with 6+ years of experience in corporate finance, budgeting, and compliance, also trained at Baker Tilly affiliate (ACNABIN). She has supported large groups of concerns while specializing in financial reporting and process improvements.</p>
-                        <p>At Ledgerly, Halima brings the rigor of corporate standards to solutions for SMEs and nonprofits. She dreams of seeing women in Bangladesh become strongly financially independent.</p>
+                        <p>At Ledgerly, Halima brings the rigor of corporate standards to solutions for SMEs and nonprofits. She dreams of seeing women become strongly financially independent.</p>
                     </div>
                 </div>
             </div>
@@ -1326,7 +1347,18 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="300">
+                     <div class="video-review-container">
+                        <iframe src="https://www.youtube.com/embed/z4WWvrsCVW4" title="Client Video Review" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="client">
+                        <div>
+                            <h4>Client Video Review</h4>
+                            <p style="font-style: normal;">Watch what our client has to say about their experience with Ledgerly!</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
         </div>
     </section>
 

@@ -1349,9 +1349,9 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p>"At first, I thought a bookkeeper only records transactions. But during my consultation call with Ledgerly, they showed me how financials reveal blind spots I couldn’t see. They helped me think long-term — how today’s choices affect my business in 10 years. That one call gave me clarity on investments, how to prepare for growth, and even helped me secure investor interest. Other firms only cared about my transaction volume; Ledgerly treated me like a partner, and now I’m planning to open a new branch in Chittagong."</p>
+                    <p>"At first, I thought a bookkeeper only records transactions... Ledgerly treated me like a partner, and now I’m planning to open a new branch in Chittagong."</p>
                     <div class="client">
-                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Anim Das">
+                        <img src="https://images.unsplash.com/photo-1610056153613-58363a2039a7?auto=format&fit=crop&w=150&q=80" alt="Anim Das">
                         <div>
                             <h4>Anim Das</h4>
                             <p>Fast food chain</p>
@@ -1366,9 +1366,9 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p>"Before Ledgerly, I always lost track of who owed me money and which vendors I needed to pay. It was stressful and messy. Now I can see all my receivables and vendor bills in one place. It’s easier to collect payments on time, keep suppliers happy, and sleep without worrying about missing something important."</p>
+                    <p>"Before Ledgerly, I always lost track of who owed me money and which vendors I needed to pay. It was stressful and messy... sleep without worrying about missing something important."</p>
                     <div class="client">
-                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Tanzina binte Haque">
+                        <img src="https://images.unsplash.com/photo-1615165922116-42424681938a?auto=format&fit=crop&w=150&q=80" alt="Tanzina binte Haque">
                         <div>
                             <h4>Tanzina binte Haque</h4>
                             <p>Owns skin care line</p>
@@ -1383,9 +1383,9 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <p>"বিয়ের পর পড়াশোনা বন্ধ হয়ে গিয়েছিল, আর কখনো ভাবিনি ব্যবসা করব। পরে ছোট একটা ব্যবসা শুরু করি, কিন্তু ঠিকমতো লাভ হচ্ছিল না—প্রফিট আছে মনে হতো, কিন্তু কোথাও না কোথাও লিকেজ হচ্ছিল যা বুঝতে পারতাম না। এক বন্ধু Ledgerly-র কথা বলল, প্রথমে ভয় লাগছিল কারণ ভেবেছিলাম খুব স্মার্ট না হলে বুঝব না। কিন্তু তারা অনেক সহজ ভাষায় আমাকে বোঝাল, এমনকি ইংরেজি টার্মগুলোর বাংলা লিস্টও দিল যাতে আমি সহজে বুঝতে পারি। আমি সত্যিই অবাক হয়েছি—ওরা শুধু ব্যবসার লোক না, আমাদের মানুষ হিসেবে সম্মান দেয়। এখন আমার ব্যবসা ভালো চলছে, আর আমি নতুন ব্রাঞ্চ খোলার কথাও ভাবছি।"</p>
+                    <p>"বিয়ের পর পড়াশোনা বন্ধ হয়ে গিয়েছিল... এখন আমার ব্যবসা ভালো চলছে, আর আমি নতুন ব্রাঞ্চ খোলার কথাও ভাবছি।"</p>
                     <div class="client">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Maisha Tasnim">
+                        <img src="https://images.unsplash.com/photo-1620051921345-31627b13b1ca?auto=format&fit=crop&w=150&q=80" alt="Maisha Tasnim">
                         <div>
                             <h4>Maisha Tasnim</h4>
                             <p>Owns Crafting and Candle making</p>
@@ -1404,7 +1404,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="video-thumbnail-container" data-video-id="REPLACE_WITH_YOUTUBE_ID">
+                        <img src="https://via.placeholder.com/480x854.png?text=Next+Video+Review" alt="Placeholder for next video review">
+                        <i class="fas fa-play play-icon"></i>
+                    </div>
+                    <div class="client">
+                        <div>
+                            <h4>Another Happy Client</h4>
+                            <p style="font-style: normal;">More video testimonials coming soon!</p>
+                        </div>
+                    </div>
                 </div>
+            </div>
         </div>
     </section>
 
@@ -1616,9 +1628,11 @@
 
             $('.video-thumbnail-container').on('click', function() {
                 const videoId = $(this).data('video-id');
-                const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-                iframe.attr('src', videoUrl);
-                modal.css('display', 'flex');
+                if (videoId && videoId !== "REPLACE_WITH_YOUTUBE_ID") {
+                    const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                    iframe.attr('src', videoUrl);
+                    modal.css('display', 'flex');
+                }
             });
 
             function closeModal() {

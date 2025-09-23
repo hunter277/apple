@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Interest Calculator - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>Compound Interest Calculator</h1>
+            <p>Calculate the future value of your investment with the power of compound interest.</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="principal" class="form-label">Principal Amount:</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" id="principal" class="form-control" placeholder="10000">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rate" class="form-label">Annual Interest Rate:</label>
+                        <div class="input-group">
+                            <input type="number" id="rate" class="form-control" placeholder="5">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="years" class="form-label">Years to Grow:</label>
+                        <input type="number" id="years" class="form-control" placeholder="10">
+                    </div>
+                    <div class="mb-3">
+                        <label for="compounding" class="form-label">Compounding Frequency:</label>
+                        <select id="compounding" class="form-select">
+                            <option value="1">Annually</option>
+                            <option value="2">Semi-Annually</option>
+                            <option value="4">Quarterly</option>
+                            <option value="12" selected>Monthly</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" onclick="calculateCompoundInterest()">Calculate</button>
+            <div id="compoundResult" class="result-box" style="display:none;"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div>
+    </footer>
+
+    <script>
+        function calculateCompoundInterest() {
+            const principal = parseFloat(document.getElementById('principal').value);
+            const rate = parseFloat(document.getElementById('rate').value);
+            const years = parseFloat(document.getElementById('years').value);
+            const n = parseFloat(document.getElementById('compounding').value);
+            const resultDiv = document.getElementById('compoundResult');
+
+            if (isNaN(principal) || isNaN(rate) || isNaN(years) || principal <= 0 || rate <= 0 || years <= 0) {
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = '<p style="color: red;">Please enter valid positive numbers in all fields.</p>';
+                return;
+            }
+
+            const rateDecimal = rate / 100;
+            // Formula: A = P(1 + r/n)^(nt)
+            const futureValue = principal * Math.pow(1 + rateDecimal / n, n * years);
+            const interestEarned = futureValue - principal;
+
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `
+                <div class="emi-results-display">
+                    <p>Future Value: <strong>$${futureValue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</strong></p>
+                    <hr class="my-2">
+                    <p>Principal Amount: <span>$${principal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span></p>
+                    <p>Total Interest Earned: <span>$${interestEarned.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span></p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

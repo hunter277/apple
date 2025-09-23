@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="tool-container text-center">
+            <h1>Live Weather Dashboard</h1>
+            <p>Current weather conditions for Dhaka, Bangladesh.</p>
+            
+            <div id="weatherResult" class="result-box mt-3">
+                Click "Refresh" to get the latest weather data.
+            </div>
+            <button class="btn btn-primary mt-3" onclick="fetchWeather()">
+                <i class="fas fa-sync-alt me-2"></i>Refresh
+            </button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div>
+    </footer>
+
+    <script>
+        // Fetches weather data when the page loads
+        document.addEventListener('DOMContentLoaded', fetchWeather);
+
+        async function fetchWeather() {
+            const resultDiv = document.getElementById('weatherResult');
+            resultDiv.innerHTML = 'Fetching weather... <i class="fas fa-spinner fa-spin"></i>';
+
+            // Latitude & Longitude for Dhaka, Bangladesh
+            const lat = 23.77;
+            const lon = 90.39;
+            const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('Failed to fetch data.');
+                
+                const data = await response.json();
+                const weather = data.current_weather;
+                const weatherInfo = getWeatherInfo(weather.weathercode);
+
+                resultDiv.innerHTML = `
+                    <h3>Dhaka, Bangladesh</h3>
+                    <div class="display-1">${weather.temperature}°C</div>
+                    <div>
+                        <i class="fas ${weatherInfo.icon} fa-3x my-3" style="color: ${weatherInfo.color};"></i>
+                        <h4>${weatherInfo.description}</h4>
+                    </div>
+                    <div class="mt-3">
+                        <strong>Wind Speed:</strong> ${weather.windspeed} km/h
+                    </div>
+                `;
+
+            } catch (error) {
+                resultDiv.innerHTML = 'Could not fetch weather data. Please try again later.';
+                console.error("Weather fetch error:", error);
+            }
+        }
+
+        function getWeatherInfo(code) {
+            // This function maps the API's weather code to a description and an icon.
+            const weatherMap = {
+                0: { description: 'Clear sky', icon: 'fa-sun', color: '#ffc107' },
+                1: { description: 'Mainly clear', icon: 'fa-cloud-sun', color: '#ffc107' },
+                2: { description: 'Partly cloudy', icon: 'fa-cloud-sun', color: '#6c757d' },
+                3: { description: 'Overcast', icon: 'fa-cloud', color: '#6c757d' },
+                45: { description: 'Fog', icon: 'fa-smog', color: '#adb5bd' },
+                48: { description: 'Depositing rime fog', icon: 'fa-smog', color: '#adb5bd' },
+                51: { description: 'Light drizzle', icon: 'fa-cloud-rain', color: '#0dcaf0' },
+                53: { description: 'Moderate drizzle', icon: 'fa-cloud-rain', color: '#0dcaf0' },
+                55: { description: 'Dense drizzle', icon: 'fa-cloud-showers-heavy', color: '#0dcaf0' },
+                61: { description: 'Slight rain', icon: 'fa-cloud-rain', color: '#0d6efd' },
+                63: { description: 'Moderate rain', icon: 'fa-cloud-showers-heavy', color: '#0d6efd' },
+                65: { description: 'Heavy rain', icon: 'fa-cloud-pour-rain', color: '#0d6efd' },
+                80: { description: 'Slight rain showers', icon: 'fa-cloud-showers-heavy', color: '#0d6efd' },
+                81: { description: 'Moderate rain showers', icon: 'fa-cloud-showers-heavy', color: '#0d6efd' },
+                82: { description: 'Violent rain showers', icon: 'fa-cloud-pour-rain', color: '#0d6efd' },
+                95: { description: 'Thunderstorm', icon: 'fa-bolt', color: '#3f37c9' }
+            };
+            return weatherMap[code] || { description: 'Unknown', icon: 'fa-question-circle', color: '#6c757d' };
+        }
+    </script>
+</body>
+</html>

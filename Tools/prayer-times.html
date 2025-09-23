@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Prayer Times - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1><i class="fas fa-mosque"></i> Daily Prayer Times</h1>
+            <p>Get today's prayer schedule for Dhaka, Bangladesh.</p>
+            <button id="fetchBtn" class="btn btn-primary" onclick="getPrayerTimes()">Get Today's Prayer Times</button>
+            <div id="prayerTimesResult" class="result-box mt-3" style="display:none;"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div>
+    </footer>
+
+    <script>
+        // An 'async' function allows us to use 'await', which makes handling API calls much cleaner.
+        async function getPrayerTimes() {
+            const resultDiv = document.getElementById('prayerTimesResult');
+            const button = document.getElementById('fetchBtn');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = 'Fetching data... <i class="fas fa-spinner fa-spin"></i>';
+            button.disabled = true;
+
+            // This is the API endpoint. We are asking for the timings in Dhaka, Bangladesh.
+            const apiUrl = 'https://api.aladhan.com/v1/timingsByCity?city=Dhaka&country=Bangladesh&method=8';
+
+            try {
+                // 'await fetch()' sends a request to the API and waits for the response.
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok.');
+                }
+                // 'await response.json()' parses the JSON data from the response.
+                const data = await response.json();
+                
+                const timings = data.data.timings;
+                const date = data.data.date.readable;
+
+                // Create a clean HTML table to display the data.
+                let html = `<h5>Prayer Times for ${date}</h5>`;
+                html += '<table class="table table-striped mt-3">';
+                html += `
+                    <tbody>
+                        <tr><td>Fajr</td><td>${timings.Fajr}</td></tr>
+                        <tr><td>Dhuhr</td><td>${timings.Dhuhr}</td></tr>
+                        <tr><td>Asr</td><td>${timings.Asr}</td></tr>
+                        <tr><td>Maghrib</td><td>${timings.Maghrib}</td></tr>
+                        <tr><td>Isha</td><td>${timings.Isha}</td></tr>
+                    </tbody>
+                `;
+                html += '</table>';
+                
+                resultDiv.innerHTML = html;
+
+            } catch (error) {
+                // If anything goes wrong (e.g., no internet), we show an error message.
+                resultDiv.innerHTML = 'Failed to fetch prayer times. Please try again later.';
+                console.error('Error fetching prayer times:', error);
+            } finally {
+                button.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

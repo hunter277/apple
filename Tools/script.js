@@ -99,7 +99,7 @@ function getThumbnails() {
     let html = '<div class="thumbnail-grid">';
     for (const [quality, file] of Object.entries(resolutions)) {
         const thumbUrl = `https://img.youtube.com/vi/${videoId}/${file}`;
-        html += `<div class="thumbnail-item"><p><strong>${quality}</strong></p><a href="${thumbUrl}" target="_blank"><img src="${thumbUrl}"></a><a href="${thumbUrl}" class="btn btn-success btn-sm" target="_blank" download>Download</a></div>`;
+        html += `<div class="thumbnail-item"><p><strong>${quality}</strong></p><a href="${thumbUrl}" target="_blank"><img src="${thumbUrl}" alt="${quality} thumbnail"></a><a href="${thumbUrl}" class="btn btn-success btn-sm" target="_blank" download>Download</a></div>`;
     }
     html += '</div>';
     resultsDiv.style.display = 'block';
@@ -124,27 +124,32 @@ function initializeTest() {
     const randomParagraph = paragraphs[Math.floor(Math.random() * paragraphs.length)];
     textToTypeElement.innerHTML = '';
     randomParagraph.split('').forEach(char => { const charSpan = document.createElement('span'); charSpan.innerText = char; textToTypeElement.appendChild(charSpan); });
-    textToTypeElement.children[0].classList.add('current');
+    if(textToTypeElement.children.length > 0) {
+        textToTypeElement.children[0].classList.add('current');
+    }
     timerElement.innerHTML = `<strong>Time:</strong> ${timeLeft}s`;
     wpmElement.innerHTML = '<strong>WPM:</strong> 0';
     accuracyElement.innerHTML = '<strong>Accuracy:</strong> 100%';
     restartBtn.innerText = 'Start Test';
+    document.removeEventListener('keydown', handleKeyPress); // Remove old listener before adding new
     document.addEventListener('keydown', handleKeyPress);
 }
 function handleKeyPress(event) {
-    if (event.key.length > 1 && event.key !== ' ') return;
+    if (!textToTypeElement || !isTestActive && event.key.length !== 1) return; // Don't start on Shift, etc.
     if (!isTestActive) { isTestActive = true; restartBtn.innerText = 'Restart Test'; startTimer(); }
     const charSpans = textToTypeElement.children;
     if (currentIndex >= charSpans.length) return;
-    const expectedChar = charSpans[currentIndex].innerText;
     const typedChar = event.key;
+    if (typedChar.length > 1) return; // Ignore control keys
+    
     totalTyped++;
+    const expectedChar = charSpans[currentIndex].innerText;
     if (typedChar === expectedChar) { charSpans[currentIndex].classList.add('correct'); } else { charSpans[currentIndex].classList.add('incorrect'); errors++; }
     charSpans[currentIndex].classList.remove('current');
     currentIndex++;
     if (currentIndex === charSpans.length) { endTest(); return; }
     charSpans[currentIndex].classList.add('current');
-    const accuracy = Math.round(((totalTyped - errors) / totalTyped) * 100);
+    const accuracy = totalTyped > 0 ? Math.round(((totalTyped - errors) / totalTyped) * 100) : 100;
     accuracyElement.innerHTML = `<strong>Accuracy:</strong> ${accuracy}%`;
 }
 function startTimer() {
@@ -152,16 +157,21 @@ function startTimer() {
         timeLeft--;
         timerElement.innerHTML = `<strong>Time:</strong> ${timeLeft}s`;
         const timeElapsedMinutes = (60 - timeLeft) / 60;
-        const wpm = Math.round(((currentIndex - errors) / 5) / timeElapsedMinutes);
-        wpmElement.innerHTML = `<strong>WPM:</strong> ${wpm || 0}`;
+        const correctChars = totalTyped - errors;
+        const wpm = timeElapsedMinutes > 0 ? Math.round((correctChars / 5) / timeElapsedMinutes) : 0;
+        wpmElement.innerHTML = `<strong>WPM:</strong> ${wpm}`;
         if (timeLeft <= 0) { endTest(); }
     }, 1000);
 }
 function endTest() {
     clearInterval(timer);
-    document.removeEventListener('keydown', handleKeyPress);
     isTestActive = false;
+    document.removeEventListener('keydown', handleKeyPress);
     restartBtn.innerText = 'Try Again';
 }
 restartBtn.addEventListener('click', initializeTest);
-document.addEventListener('DOMContentLoaded', initializeTest);
+document.addEventListener('DOMContentLoaded', function() {
+    if(textToTypeElement) { // Make sure the element exists before initializing
+        initializeTest();
+    }
+});

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>Unit Converter</h1>
+            <p>Quickly convert between different units of measurement.</p>
+            
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="category" class="form-label">Category:</label>
+                    <select id="category" class="form-select" onchange="updateUnits()"></select>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-md-5">
+                    <label for="fromValue" class="form-label">From:</label>
+                    <div class="input-group">
+                        <input type="number" id="fromValue" class="form-control" value="1" oninput="convert()">
+                        <select id="fromUnit" class="form-select" onchange="convert()"></select>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center fs-2">=</div>
+                <div class="col-md-5">
+                    <label for="toValue" class="form-label">To:</label>
+                    <div class="input-group">
+                        <input type="number" id="toValue" class="form-control" readonly>
+                        <select id="toUnit" class="form-select" onchange="convert()"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2025 ToolHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const units = {
+            length: { meter: 1, kilometer: 1000, centimeter: 0.01, millimeter: 0.001, mile: 1609.34, yard: 0.9144, foot: 0.3048, inch: 0.0254 },
+            mass: { gram: 1, kilogram: 1000, milligram: 0.001, pound: 453.592, ounce: 28.3495 },
+            temperature: { celsius: 'c', fahrenheit: 'f', kelvin: 'k' }
+        };
+
+        const categorySelect = document.getElementById('category');
+        const fromUnitSelect = document.getElementById('fromUnit');
+        const toUnitSelect = document.getElementById('toUnit');
+
+        // Populate categories
+        for (const category in units) {
+            const option = document.createElement('option');
+            option.value = category;
+            option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+            categorySelect.appendChild(option);
+        }
+
+        function updateUnits() {
+            const category = categorySelect.value;
+            fromUnitSelect.innerHTML = '';
+            toUnitSelect.innerHTML = '';
+            for (const unit in units[category]) {
+                const fromOption = document.createElement('option');
+                fromOption.value = unit;
+                fromOption.textContent = unit;
+                fromUnitSelect.appendChild(fromOption);
+
+                const toOption = document.createElement('option');
+                toOption.value = unit;
+                toOption.textContent = unit;
+                toUnitSelect.appendChild(toOption);
+            }
+            toUnitSelect.children[1].selected = true; // Select the second unit by default
+            convert();
+        }
+
+        function convert() {
+            const fromValue = parseFloat(document.getElementById('fromValue').value);
+            const toValueInput = document.getElementById('toValue');
+            const category = categorySelect.value;
+            const fromUnit = fromUnitSelect.value;
+            const toUnit = toUnitSelect.value;
+
+            if (isNaN(fromValue)) {
+                toValueInput.value = '';
+                return;
+            }
+
+            let result;
+            if (category === 'temperature') {
+                // Temperature conversion logic
+                let tempInC;
+                if (fromUnit === 'celsius') tempInC = fromValue;
+                if (fromUnit === 'fahrenheit') tempInC = (fromValue - 32) * 5 / 9;
+                if (fromUnit === 'kelvin') tempInC = fromValue - 273.15;
+
+                if (toUnit === 'celsius') result = tempInC;
+                if (toUnit === 'fahrenheit') result = (tempInC * 9 / 5) + 32;
+                if (toUnit === 'kelvin') result = tempInC + 273.15;
+            } else {
+                // Other conversions
+                const baseValue = fromValue * units[category][fromUnit];
+                result = baseValue / units[category][toUnit];
+            }
+            
+            toValueInput.value = result.toFixed(4);
+        }
+
+        // Initial setup
+        updateUnits();
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top"><div class="container"><a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a></div></nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>BMI Calculator</h1>
+            <p>Calculate your Body Mass Index (BMI) to assess your weight status.</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="weight" class="form-label">Your Weight (in kg):</label>
+                        <input type="number" id="weight" class="form-control" placeholder="e.g., 70">
+                    </div>
+                    <div class="mb-3">
+                        <label for="height" class="form-label">Your Height (in cm):</label>
+                        <input type="number" id="height" class="form-control" placeholder="e.g., 175">
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" onclick="calculateBMI()">Calculate BMI</button>
+            <div id="bmiResult" class="result-box" style="display:none;"></div>
+        </div>
+    </main>
+
+    <footer class="footer"><div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div></footer>
+
+    <script>
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const heightCm = parseFloat(document.getElementById('height').value);
+            const resultDiv = document.getElementById('bmiResult');
+
+            if (isNaN(weight) || isNaN(heightCm) || weight <= 0 || heightCm <= 0) {
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = '<p style="color: red;">Please enter valid positive numbers for weight and height.</p>';
+                return;
+            }
+
+            const heightM = heightCm / 100;
+            // Formula: BMI = weight (kg) / [height (m)]^2
+            const bmi = weight / (heightM * heightM);
+            const bmiFormatted = bmi.toFixed(1);
+
+            let category = '';
+            let color = '';
+
+            if (bmi < 18.5) {
+                category = 'Underweight';
+                color = '#0dcaf0'; // Info blue
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                category = 'Normal weight';
+                color = '#198754'; // Success green
+            } else if (bmi >= 25 && bmi <= 29.9) {
+                category = 'Overweight';
+                color = '#ffc107'; // Warning yellow
+            } else {
+                category = 'Obesity';
+                color = '#dc3545'; // Danger red
+            }
+            
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `
+                <div style="font-size: 1.2rem;">
+                    Your BMI is: <strong>${bmiFormatted}</strong>
+                    <div style="font-size: 1.1rem; color: ${color}; margin-top: 10px;">
+                        Status: <strong>${category}</strong>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

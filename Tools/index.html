@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-in-One Online Tools</title>
+    <meta name="description" content="A complete suite of free online tools including calculators, text tools, media converters, and more.">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    </head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Online Tools Hub</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#calculators">Calculators</a></li>
+                <li><a href="#text-tools">Text Tools</a></li>
+                <li><a href="#media-tools">Media Tools</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>The Ultimate Online Toolkit</h1>
+            <p>Your one-stop solution for everyday digital tasks.</p>
+        </div>
+
+        <h2 id="calculators">🧮 Calculators & Converters</h2>
+        <div class="row">
+            
+            <div class="col-sm-6 col-md-4">
+                <div class="tool-card">
+                    <h3>Age Calculator</h3>
+                    <p>Find your exact age from your date of birth.</p>
+                    <div class="form-group">
+                        <label for="dob">Enter your Date of Birth:</label>
+                        <input type="date" id="dob" class="form-control">
+                    </div>
+                    <button class="btn btn-primary" onclick="calculateAge()">Calculate Age</button>
+                    <div id="ageResult" class="result-box"></div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                <div class="tool-card">
+                    <h3>Currency Converter</h3>
+                    <p>Live exchange rates for BDT, USD, INR, and more.</p>
+                    <a href="#" class="btn btn-default disabled">Coming Soon</a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+                <div class="tool-card">
+                    <h3>BMI Calculator</h3>
+                    <p>Check your Body Mass Index.</p>
+                    <a href="#" class="btn btn-default disabled">Coming Soon</a>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        
+        <h2 id="text-tools">📝 Writing & Text Tools</h2>
+        <div class="row">
+             <div class="col-sm-6 col-md-4">
+                <div class="tool-card">
+                    <h3>Word & Character Counter</h3>
+                    <p>Count words and characters in your text.</p>
+                    <a href="#" class="btn btn-default disabled">Coming Soon</a>
+                </div>
+            </div>
+            </div>
+        
+        </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">&copy; 2025 Online Tools Hub. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

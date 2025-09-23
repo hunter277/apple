@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Quiz Maker - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top"><div class="container"><a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a></div></nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>MCQ Quiz Maker</h1>
+            <p>Create and save your own multiple-choice quizzes. Your quiz is saved in your browser automatically.</p>
+            
+            <div class="p-3 border rounded mb-4">
+                <h5 class="mb-3">Add a New Question</h5>
+                <div class="mb-2">
+                    <label for="questionText" class="form-label">Question:</label>
+                    <input type="text" id="questionText" class="form-control" placeholder="e.g., What is the capital of Bangladesh?">
+                </div>
+                <div class="row g-2 mb-2">
+                    <div class="col-md-6"><input type="text" id="option1" class="form-control" placeholder="Option 1"></div>
+                    <div class="col-md-6"><input type="text" id="option2" class="form-control" placeholder="Option 2"></div>
+                    <div class="col-md-6"><input type="text" id="option3" class="form-control" placeholder="Option 3"></div>
+                    <div class="col-md-6"><input type="text" id="option4" class="form-control" placeholder="Option 4"></div>
+                </div>
+                <div class="mb-2">
+                    <label for="correctAnswer" class="form-label">Correct Answer:</label>
+                    <select id="correctAnswer" class="form-select">
+                        <option value="0">Option 1</option>
+                        <option value="1">Option 2</option>
+                        <option value="2">Option 3</option>
+                        <option value="3">Option 4</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" id="addQuestionBtn">Add Question</button>
+            </div>
+
+            <div>
+                <h5 class="mb-3">Current Quiz Questions</h5>
+                <div id="quizList" class="list-group">
+                    </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer"><div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div></footer>
+
+    <script>
+        const addQuestionBtn = document.getElementById('addQuestionBtn');
+        const quizListDiv = document.getElementById('quizList');
+        let quizData = [];
+
+        // Load quiz from localStorage when the page loads
+        document.addEventListener('DOMContentLoaded', loadQuiz);
+
+        addQuestionBtn.addEventListener('click', () => {
+            const questionText = document.getElementById('questionText').value.trim();
+            const options = [
+                document.getElementById('option1').value.trim(),
+                document.getElementById('option2').value.trim(),
+                document.getElementById('option3').value.trim(),
+                document.getElementById('option4').value.trim()
+            ];
+            const answerIndex = document.getElementById('correctAnswer').value;
+
+            if (!questionText || options.some(opt => opt === '')) {
+                alert('Please fill in the question and all four options.');
+                return;
+            }
+
+            const newQuestion = {
+                question: questionText,
+                options: options,
+                answer: parseInt(answerIndex)
+            };
+
+            quizData.push(newQuestion);
+            saveQuiz();
+            renderQuizList();
+            
+            // Clear input fields
+            document.getElementById('questionText').value = '';
+            for(let i = 1; i <= 4; i++) {
+                document.getElementById(`option${i}`).value = '';
+            }
+        });
+
+        function renderQuizList() {
+            quizListDiv.innerHTML = '';
+            if (quizData.length === 0) {
+                quizListDiv.innerHTML = '<p class="text-muted">No questions added yet. Your quiz will appear here.</p>';
+                return;
+            }
+            quizData.forEach((q, index) => {
+                const questionElement = document.createElement('div');
+                questionElement.className = 'list-group-item';
+                questionElement.innerHTML = `
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6 class="mb-1">${index + 1}. ${q.question}</h6>
+                        <button class="btn-close" onclick="deleteQuestion(${index})"></button>
+                    </div>
+                    <small>Correct Answer: ${q.options[q.answer]}</small>
+                `;
+                quizListDiv.appendChild(questionElement);
+            });
+        }
+
+        function deleteQuestion(index) {
+            quizData.splice(index, 1); // Remove the question from the array
+            saveQuiz();
+            renderQuizList();
+        }
+
+        function saveQuiz() {
+            localStorage.setItem('userQuiz', JSON.stringify(quizData));
+        }
+
+        function loadQuiz() {
+            const savedQuiz = localStorage.getItem('userQuiz');
+            if (savedQuiz) {
+                quizData = JSON.parse(savedQuiz);
+            }
+            renderQuizList();
+        }
+    </script>
+</body>
+</html>

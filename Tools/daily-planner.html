@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Planner / To-Do List - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific styles for the to-do list */
+        #taskList li {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #eee;
+        }
+        #taskList li.completed span {
+            text-decoration: line-through;
+            color: var(--gray);
+        }
+        #taskList li span {
+            flex-grow: 1;
+            cursor: pointer;
+        }
+        #taskList li .delete-btn {
+            background: none;
+            border: none;
+            color: #dc3545;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+        #taskList li:hover .delete-btn {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>Daily Planner / To-Do List</h1>
+            <p>Organize your tasks. Your list is automatically saved in your browser.</p>
+            
+            <form id="taskForm" class="input-group mb-3">
+                <input type="text" id="taskInput" class="form-control" placeholder="Enter a new task..." required>
+                <button class="btn btn-primary" type="submit">Add Task</button>
+            </form>
+
+            <ul id="taskList" class="list-group">
+                </ul>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div>
+    </footer>
+
+    <script>
+        const taskForm = document.getElementById('taskForm');
+        const taskInput = document.getElementById('taskInput');
+        const taskList = document.getElementById('taskList');
+
+        // Load tasks from localStorage when the page loads
+        document.addEventListener('DOMContentLoaded', loadTasks);
+
+        // Add a new task
+        taskForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const taskText = taskInput.value.trim();
+            if (taskText === '') return;
+
+            addTask(taskText, false);
+            taskInput.value = '';
+            saveTasks();
+        });
+
+        function addTask(text, isCompleted) {
+            const li = document.createElement('li');
+            li.className = 'list-group-item';
+            if (isCompleted) {
+                li.classList.add('completed');
+            }
+
+            const span = document.createElement('span');
+            span.textContent = text;
+            span.addEventListener('click', () => {
+                li.classList.toggle('completed');
+                saveTasks();
+            });
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+            deleteBtn.addEventListener('click', () => {
+                taskList.removeChild(li);
+                saveTasks();
+            });
+
+            li.appendChild(span);
+            li.appendChild(deleteBtn);
+            taskList.appendChild(li);
+        }
+
+        function saveTasks() {
+            const tasks = [];
+            document.querySelectorAll('#taskList li').forEach(li => {
+                tasks.push({
+                    text: li.querySelector('span').textContent,
+                    completed: li.classList.contains('completed')
+                });
+            });
+            // localStorage can only store strings, so we convert the array to a JSON string
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function loadTasks() {
+            // Get the string from localStorage and convert it back to an array
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.forEach(task => addTask(task.text, task.completed));
+        }
+    </script>
+</body>
+</html>

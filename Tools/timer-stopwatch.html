@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer & Stopwatch - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .timer-display { font-size: 4rem; font-family: 'Courier New', monospace; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top"><div class="container"><a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a></div></nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>Countdown Timer & Stopwatch</h1>
+            <p>Your simple solution for time tracking needs.</p>
+
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation"><button class="nav-link active" id="countdown-tab" data-bs-toggle="tab" data-bs-target="#countdown" type="button">Countdown</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="stopwatch-tab" data-bs-toggle="tab" data-bs-target="#stopwatch" type="button">Stopwatch</button></li>
+            </ul>
+
+            <div class="tab-content p-3 border border-top-0 rounded-bottom">
+                <div class="tab-pane fade show active" id="countdown">
+                    <div class="timer-display text-center my-3" id="countdownDisplay">00:00:00</div>
+                    <div class="row g-2 justify-content-center">
+                        <div class="col-auto"><input type="number" id="cd_hours" class="form-control" placeholder="H" min="0"></div>
+                        <div class="col-auto"><input type="number" id="cd_minutes" class="form-control" placeholder="M" min="0"></div>
+                        <div class="col-auto"><input type="number" id="cd_seconds" class="form-control" placeholder="S" min="0"></div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-success" id="cd_start">Start</button>
+                        <button class="btn btn-warning" id="cd_pause">Pause</button>
+                        <button class="btn btn-danger" id="cd_reset">Reset</button>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="stopwatch">
+                    <div class="timer-display text-center my-3" id="stopwatchDisplay">00:00:00</div>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-success" id="sw_start">Start</button>
+                        <button class="btn btn-warning" id="sw_stop">Stop</button>
+                        <button class="btn btn-danger" id="sw_reset">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer"><div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div></footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // --- Countdown Logic ---
+        let countdownInterval;
+        let secondsRemaining = 0;
+
+        const cdDisplay = document.getElementById('countdownDisplay');
+        document.getElementById('cd_start').onclick = () => {
+            const hours = parseInt(document.getElementById('cd_hours').value) || 0;
+            const minutes = parseInt(document.getElementById('cd_minutes').value) || 0;
+            const seconds = parseInt(document.getElementById('cd_seconds').value) || 0;
+            secondsRemaining = hours * 3600 + minutes * 60 + seconds;
+            if (secondsRemaining > 0) {
+                clearInterval(countdownInterval);
+                countdownInterval = setInterval(updateCountdown, 1000);
+            }
+        };
+        document.getElementById('cd_pause').onclick = () => clearInterval(countdownInterval);
+        document.getElementById('cd_reset').onclick = () => {
+            clearInterval(countdownInterval);
+            secondsRemaining = 0;
+            updateCountdownDisplay();
+        };
+
+        function updateCountdown() {
+            if (secondsRemaining > 0) {
+                secondsRemaining--;
+                updateCountdownDisplay();
+            } else {
+                clearInterval(countdownInterval);
+                alert('Time is up!');
+            }
+        }
+        function updateCountdownDisplay() {
+            const h = Math.floor(secondsRemaining / 3600);
+            const m = Math.floor((secondsRemaining % 3600) / 60);
+            const s = secondsRemaining % 60;
+            cdDisplay.textContent = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+
+        // --- Stopwatch Logic ---
+        let stopwatchInterval;
+        let stopwatchStartTime;
+        let stopwatchElapsedTime = 0;
+
+        const swDisplay = document.getElementById('stopwatchDisplay');
+        document.getElementById('sw_start').onclick = () => {
+            if (!stopwatchInterval) {
+                stopwatchStartTime = Date.now() - stopwatchElapsedTime;
+                stopwatchInterval = setInterval(updateStopwatch, 10);
+            }
+        };
+        document.getElementById('sw_stop').onclick = () => {
+            clearInterval(stopwatchInterval);
+            stopwatchInterval = null;
+        };
+        document.getElementById('sw_reset').onclick = () => {
+            clearInterval(stopwatchInterval);
+            stopwatchInterval = null;
+            stopwatchElapsedTime = 0;
+            updateStopwatchDisplay(0);
+        };
+        
+        function updateStopwatch() {
+            const currentTime = Date.now();
+            stopwatchElapsedTime = currentTime - stopwatchStartTime;
+            updateStopwatchDisplay(stopwatchElapsedTime);
+        }
+
+        function updateStopwatchDisplay(time) {
+            const totalSeconds = Math.floor(time / 1000);
+            const minutes = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+            const seconds = (totalSeconds % 60).toString().padStart(2, '0');
+            const milliseconds = Math.floor((time % 1000) / 10).toString().padStart(2, '0');
+            swDisplay.textContent = `${minutes}:${seconds}:${milliseconds}`;
+        }
+    </script>
+</body>
+</html>

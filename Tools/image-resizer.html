@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Resizer & Compressor - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>Image Resizer & Compressor</h1>
+            <p>Resize, compress, and optimize your images directly in your browser. Fast, secure, and private.</p>
+            
+            <div class="mb-3">
+                <label for="imageUpload" class="form-label">1. Upload an Image:</label>
+                <input type="file" id="imageUpload" class="form-control" accept="image/*">
+            </div>
+
+            <div id="settingsArea" class="mt-4" style="display:none;">
+                <h5>2. Adjust Settings</h5>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="widthInput" class="form-label">Width (px)</label>
+                        <input type="number" id="widthInput" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="heightInput" class="form-label">Height (px)</label>
+                        <input type="number" id="heightInput" class="form-control">
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="aspectRatioCheck" checked>
+                            <label class="form-check-label" for="aspectRatioCheck">Maintain Aspect Ratio</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <label for="qualitySlider" class="form-label">JPEG Quality: <span id="qualityValue">90</span>%</label>
+                    <input type="range" class="form-range" id="qualitySlider" min="10" max="100" value="90">
+                </div>
+                <button class="btn btn-primary mt-3" id="resizeBtn">Resize & Compress Image</button>
+            </div>
+
+            <div id="resultArea" class="mt-4" style="display:none;">
+                <h5>3. Your Result</h5>
+                <div class="text-center">
+                    <img id="imagePreview" src="#" alt="Resized Image Preview" class="img-fluid rounded border mb-3" style="max-height: 300px;">
+                </div>
+                <div class="alert alert-info" id="sizeInfo"></div>
+                <a id="downloadBtn" class="btn btn-success" download="resized-image.jpg"><i class="fas fa-download me-2"></i>Download Image</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer"><div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div></footer>
+
+    <script>
+        const imageUpload = document.getElementById('imageUpload');
+        const settingsArea = document.getElementById('settingsArea');
+        const resultArea = document.getElementById('resultArea');
+        const widthInput = document.getElementById('widthInput');
+        const heightInput = document.getElementById('heightInput');
+        const aspectRatioCheck = document.getElementById('aspectRatioCheck');
+        const qualitySlider = document.getElementById('qualitySlider');
+        const qualityValue = document.getElementById('qualityValue');
+        const resizeBtn = document.getElementById('resizeBtn');
+        const imagePreview = document.getElementById('imagePreview');
+        const sizeInfo = document.getElementById('sizeInfo');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        let originalImage = null;
+        let originalWidth, originalHeight, originalFile;
+
+        imageUpload.addEventListener('change', (e) => {
+            originalFile = e.target.files[0];
+            if (!originalFile) return;
+
+            originalImage = new Image();
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                originalImage.src = event.target.result;
+                originalImage.onload = () => {
+                    originalWidth = originalImage.width;
+                    originalHeight = originalImage.height;
+                    widthInput.value = originalWidth;
+                    heightInput.value = originalHeight;
+                    settingsArea.style.display = 'block';
+                    resultArea.style.display = 'none';
+                };
+            };
+            reader.readAsDataURL(originalFile);
+        });
+
+        widthInput.addEventListener('input', () => {
+            if (aspectRatioCheck.checked) {
+                heightInput.value = Math.round((widthInput.value / originalWidth) * originalHeight);
+            }
+        });
+
+        heightInput.addEventListener('input', () => {
+            if (aspectRatioCheck.checked) {
+                widthInput.value = Math.round((heightInput.value / originalHeight) * originalWidth);
+            }
+        });
+
+        qualitySlider.addEventListener('input', () => {
+            qualityValue.textContent = qualitySlider.value;
+        });
+        
+        resizeBtn.addEventListener('click', () => {
+            const newWidth = parseInt(widthInput.value);
+            const newHeight = parseInt(heightInput.value);
+            const quality = parseInt(qualitySlider.value) / 100;
+
+            if (!originalImage || !newWidth || !newHeight) {
+                alert('Please upload an image and set dimensions.');
+                return;
+            }
+
+            const canvas = document.createElement('canvas');
+            canvas.width = newWidth;
+            canvas.height = newHeight;
+            const ctx = canvas.getContext('2d');
+            
+            ctx.drawImage(originalImage, 0, 0, newWidth, newHeight);
+
+            const dataUrl = canvas.toDataURL('image/jpeg', quality);
+            imagePreview.src = dataUrl;
+            downloadBtn.href = dataUrl;
+
+            // Calculate and display file sizes
+            const originalSize = (originalFile.size / 1024).toFixed(2); // in KB
+            const newData = dataUrl.split(',')[1];
+            const newSize = ((newData.length * 3) / 4 / 1024).toFixed(2); // in KB
+            
+            sizeInfo.innerHTML = `<strong>Original Size:</strong> ${originalSize} KB | <strong>New Size:</strong> ${newSize} KB`;
+            resultArea.style.display = 'block';
+        });
+
+    </script>
+</body>
+</html>

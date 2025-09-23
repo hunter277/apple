@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top"><div class="container"><a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a></div></nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>Meme Generator</h1>
+            <p>Create your own memes by uploading an image and adding text.</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="imageUpload" class="form-label">1. Upload Your Image:</label>
+                        <input type="file" id="imageUpload" class="form-control" accept="image/*">
+                    </div>
+                    <div class="mb-3">
+                        <label for="topText" class="form-label">2. Top Text:</label>
+                        <input type="text" id="topText" class="form-control" placeholder="Top Text Here">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bottomText" class="form-label">3. Bottom Text:</label>
+                        <input type="text" id="bottomText" class="form-control" placeholder="Bottom Text Here">
+                    </div>
+                     <a id="downloadBtn" class="btn btn-success" download="meme.png">Download Meme</a>
+                </div>
+                <div class="col-md-6">
+                    <canvas id="memeCanvas" style="width: 100%; border: 1px solid #ccc;"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer"><div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div></footer>
+
+    <script>
+        const imageUpload = document.getElementById('imageUpload');
+        const topTextInput = document.getElementById('topText');
+        const bottomTextInput = document.getElementById('bottomText');
+        const canvas = document.getElementById('memeCanvas');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const ctx = canvas.getContext('2d');
+        let currentImage = null;
+
+        function renderMeme() {
+            if (!currentImage) return;
+
+            // Set canvas size to match image
+            canvas.width = currentImage.width;
+            canvas.height = currentImage.height;
+
+            // Draw the image
+            ctx.drawImage(currentImage, 0, 0);
+
+            // Style the text
+            const fontSize = canvas.width / 10;
+            ctx.font = `${fontSize}px Impact`;
+            ctx.fillStyle = 'white';
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = fontSize / 20;
+            ctx.textAlign = 'center';
+
+            // Draw top text
+            const topText = topTextInput.value.toUpperCase();
+            ctx.textBaseline = 'top';
+            ctx.fillText(topText, canvas.width / 2, 10);
+            ctx.strokeText(topText, canvas.width / 2, 10);
+            
+            // Draw bottom text
+            const bottomText = bottomTextInput.value.toUpperCase();
+            ctx.textBaseline = 'bottom';
+            ctx.fillText(bottomText, canvas.width / 2, canvas.height - 10);
+            ctx.strokeText(bottomText, canvas.width / 2, canvas.height - 10);
+        }
+
+        imageUpload.addEventListener('change', (e) => {
+            const reader = new FileReader();
+            reader.onload = () => {
+                const img = new Image();
+                img.onload = () => {
+                    currentImage = img;
+                    renderMeme();
+                };
+                img.src = reader.result;
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        });
+
+        topTextInput.addEventListener('input', renderMeme);
+        bottomTextInput.addEventListener('input', renderMeme);
+
+        downloadBtn.addEventListener('click', () => {
+            const dataUrl = canvas.toDataURL('image/png');
+            downloadBtn.href = dataUrl;
+        });
+
+    </script>
+</body>
+</html>

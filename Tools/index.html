@@ -3,157 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All-in-One Online Tools</title>
-    <meta name="description" content="A complete suite of free online tools including calculators, text tools, media converters, and more.">
+    <title>ToolHub - Free All-in-One Online Tools</title>
+    <meta name="description" content="Your one-stop destination for hundreds of free and simple online tools, including calculators, converters, text tools, media utilities, and more.">
     
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta property="og:title" content="ToolHub - Free All-in-One Online Tools"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://yourwebsite.com/"/>
+    <meta property="og:description" content="Your one-stop destination for free online tools for calculations, conversions, content creation, and more."/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <nav class="navbar navbar-inverse navbar-static-top">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Online Tools Hub</a>
+            <a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tools">All Tools</a></li>
+                </ul>
             </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#calculators">Calculators</a></li>
-                <li><a href="#text-tools">Text Tools</a></li>
-                <li><a href="#media-tools">Media Tools</a></li>
-                <li><a href="#dev-tools">Developer Tools</a></li>
-                <li><a href="#productivity-tools">Productivity</a></li>
-            </ul>
         </div>
     </nav>
 
-    <div class="container">
-        <div class="jumbotron text-center">
-            <h1>The Ultimate Online Toolkit</h1>
-            <p>Your one-stop solution for everyday digital tasks.</p>
+    <section class="hero-section">
+        <div class="container">
+            <h1>All Your Essential Tools in One Place</h1>
+            <p>ToolHub offers free online tools for calculations, conversions, file management, content creation, and more. No downloads required!</p>
         </div>
+    </section>
 
-        <h2 id="calculators">🧮 Calculators & Converters</h2>
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="tool-card">
-                    <h3>Age Calculator</h3>
-                    <p>Find your exact age from your date of birth.</p>
-                    <div class="form-group">
-                        <label for="dob">Enter your Date of Birth:</label>
-                        <input type="date" id="dob" class="form-control">
+    <section id="tools" class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-md-8 mx-auto">
+                    <h2 class="mb-3">Browse All Available Tools</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="category-card">
+                        <div class="category-header">
+                            <i class="fas fa-calculator"></i>
+                            <h3>Calculators & Converters</h3>
+                        </div>
+                        <div class="tool-list">
+                            <a href="age-calculator.html" class="tool-item"><i class="fas fa-birthday-cake"></i>Age Calculator</a>
+                            <a href="loan-calculator.html" class="tool-item"><i class="fas fa-hand-holding-usd"></i>Loan / EMI Calculator</a>
+                            <a href="percentage-calculator.html" class="tool-item"><i class="fas fa-percentage"></i>Percentage Calculator</a>
+                        </div>
                     </div>
-                    <button class="btn btn-primary" onclick="calculateAge()">Calculate Age</button>
-                    <div id="ageResult" class="result-box"></div>
                 </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="tool-card">
-                    <h3>Loan / EMI Calculator</h3>
-                    <p>Calculate your monthly loan payments.</p>
-                    <div class="form-group"><label>Loan Amount:</label><div class="input-group"><span class="input-group-addon">৳</span><input type="number" id="loanAmount" class="form-control" placeholder="500000"></div></div>
-                    <div class="form-group"><label>Annual Interest Rate (%):</label><div class="input-group"><input type="number" id="interestRate" class="form-control" placeholder="9.5"><span class="input-group-addon">%</span></div></div>
-                    <div class="form-group"><label>Loan Tenure (Years):</label><div class="input-group"><input type="number" id="loanTenure" class="form-control" placeholder="5"><span class="input-group-addon">Yrs</span></div></div>
-                    <button class="btn btn-primary" onclick="calculateEMI()">Calculate</button>
-                    <div id="emiResults" class="result-box" style="display: none;"></div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4"><div class="tool-card"><h3>Unit Converter</h3><p>Length, weight, temperature...</p><a href="#" class="btn btn-default disabled">Coming Soon</a></div></div>
-        </div>
-
-        <hr>
-        
-        <h2 id="text-tools">📝 Writing & Text Tools</h2>
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="tool-card">
-                    <h3>Word & Character Counter</h3>
-                    <p>Instantly count words and characters as you type.</p>
-                    <div class="form-group"><textarea id="textInput" class="form-control" rows="4" placeholder="Paste your text here..." oninput="updateCounts()"></textarea></div>
-                    <div id="textCountsResult" class="result-box"><strong>Words:</strong> <span id="wordCount">0</span><br><strong>Characters:</strong> <span id="charCount">0</span></div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="tool-card">
-                    <h3>Case Converter</h3>
-                    <p>Convert text to UPPERCASE, lowercase, Title Case, etc.</p>
-                    <div class="form-group"><textarea id="caseInput" class="form-control" rows="4" placeholder="Type or paste text here..."></textarea></div>
-                    <div class="btn-group" role="group"><button class="btn btn-default" onclick="convertCase('upper')">UPPER</button><button class="btn btn-default" onclick="convertCase('lower')">lower</button><button class="btn btn-default" onclick="convertCase('sentence')">Sentence</button><button class="btn btn-default" onclick="convertCase('title')">Title</button></div>
-                </div>
-            </div>
-             <div class="col-sm-6 col-md-4"><div class="tool-card"><h3>Password Generator</h3><p>Create strong, random passwords.</p><a href="#" class="btn btn-default disabled">Coming Soon</a></div></div>
-        </div>
-
-        <hr>
-
-        <h2 id="media-tools">🎨 Media Tools</h2>
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="tool-card">
-                    <h3>QR Code Generator</h3>
-                    <p>Enter any URL or text to create a QR code.</p>
-                    <div class="form-group"><input type="text" id="qrInput" class="form-control" placeholder="https://google.com"></div>
-                    <button class="btn btn-primary" onclick="generateQRCode()">Generate</button>
-                    <div id="qrcode" class="result-box"></div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="tool-card">
-                    <h3>YouTube Thumbnail Downloader</h3>
-                    <p>Paste a YouTube video URL to get its thumbnails.</p>
-                    <div class="form-group"><input type="text" id="youtubeUrl" class="form-control" placeholder="https://www.youtube.com/watch?v=..."></div>
-                    <button class="btn btn-primary" onclick="getThumbnails()">Get Thumbnails</button>
-                    <div id="thumbnailResults" class="result-box" style="display: none; padding: 0;"></div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4"><div class="tool-card"><h3>Image Compressor</h3><p>Reduce the file size of images.</p><a href="#" class="btn btn-default disabled">Coming Soon</a></div></div>
-        </div>
-
-        <hr>
-
-        <h2 id="dev-tools">🔧 Developer & Technical Tools</h2>
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="tool-card">
-                    <h3>JSON Validator & Formatter</h3>
-                    <p>Paste your JSON to validate and beautify it.</p>
-                    <div class="form-group"><textarea id="jsonInput" class="form-control" rows="6" placeholder='{"name":"John","age":30}'></textarea></div>
-                    <div id="jsonResult" class="result-box">Ready to validate...</div>
-                    <div class="btn-group" role="group"><button class="btn btn-primary" onclick="formatJSON()">Validate & Format</button><button class="btn btn-default" onclick="clearJSON()">Clear</button></div>
-                </div>
-            </div>
-        </div>
-
-        <hr>
-
-        <h2 id="productivity-tools">🧠 Education & Productivity</h2>
-        <div class="row">
-            <div class="col-sm-12 col-md-8 col-md-offset-2">
-                <div class="tool-card text-center">
-                    <h3>Typing Speed Test</h3><p>How fast can you type? Test your skills below.</p>
-                    <div class="typing-test-container">
-                        <div class="stats-bar"><div id="timer"><strong>Time:</strong> 60s</div><div id="wpm"><strong>WPM:</strong> 0</div><div id="accuracy"><strong>Accuracy:</strong> 100%</div></div>
-                        <div id="textToType" class="text-display">Click "Start Test" to begin.</div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="category-card">
+                        <div class="category-header">
+                            <i class="fas fa-pen"></i>
+                            <h3>Writing & Text Tools</h3>
+                        </div>
+                        <div class="tool-list">
+                            <a href="word-counter.html" class="tool-item"><i class="fas fa-file-word"></i>Word & Character Counter</a>
+                            <a href="case-converter.html" class="tool-item"><i class="fas fa-text-height"></i>Case Converter</a>
+                            <a href="password-generator.html" class="tool-item"><i class="fas fa-key"></i>Password Generator</a>
+                        </div>
                     </div>
-                    <button id="restartBtn" class="btn btn-primary" style="margin-top: 15px;">Start Test</button>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="category-card">
+                        <div class="category-header">
+                            <i class="fas fa-photo-video"></i>
+                            <h3>Media Tools</h3>
+                        </div>
+                        <div class="tool-list">
+                             <a href="qr-code-generator.html" class="tool-item"><i class="fas fa-qrcode"></i>QR Code Generator</a>
+                             <a href="youtube-thumbnail.html" class="tool-item"><i class="fab fa-youtube"></i>YouTube Thumbnail Downloader</a>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="col-lg-4 col-md-6">
+                    <div class="category-card">
+                        <div class="category-header">
+                            <i class="fas fa-code"></i>
+                            <h3>Developer Tools</h3>
+                        </div>
+                        <div class="tool-list">
+                           <a href="json-formatter.html" class="tool-item"><i class="fas fa-sitemap"></i>JSON Validator & Formatter</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="category-card">
+                        <div class="category-header">
+                            <i class="fas fa-rocket"></i>
+                            <h3>Productivity Tools</h3>
+                        </div>
+                        <div class="tool-list">
+                           <a href="typing-test.html" class="tool-item"><i class="fas fa-keyboard"></i>Typing Speed Test</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        
-    </div>
+    </section>
 
     <footer class="footer">
-        <div class="container">
-            <p class="text-muted">&copy; 2025 Online Tools Hub. All Rights Reserved.</p>
+        <div class="container text-center">
+            <p>&copy; 2025 ToolHub. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
-    
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

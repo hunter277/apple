@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to PDF Converter - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>Image to PDF Converter</h1>
+            <p>Convert your JPG, PNG, or other image files into a PDF document.</p>
+            
+            <div class="mb-3">
+                <label for="imageUpload" class="form-label">1. Choose an Image File:</label>
+                <input type="file" id="imageUpload" class="form-control" accept="image/*">
+            </div>
+
+            <div id="settingsArea" class="mt-4" style="display:none;">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="pageOrientation" class="form-label">2. Page Orientation:</label>
+                        <select id="pageOrientation" class="form-select">
+                            <option value="portrait" selected>Portrait</option>
+                            <option value="landscape">Landscape</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <h5 class="mt-3">3. Image Preview:</h5>
+                <img id="imagePreview" src="#" alt="Your selected image" class="img-fluid rounded border mb-3" style="max-height: 300px;">
+                
+                <button id="convertBtn" class="btn btn-success"><i class="fas fa-file-pdf me-2"></i>Convert & Download PDF</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script>
+        const imageUpload = document.getElementById('imageUpload');
+        const settingsArea = document.getElementById('settingsArea');
+        const imagePreview = document.getElementById('imagePreview');
+        const convertBtn = document.getElementById('convertBtn');
+        
+        let imageDataUrl = null;
+
+        imageUpload.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                imageDataUrl = event.target.result;
+                imagePreview.src = imageDataUrl;
+                settingsArea.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        });
+
+        convertBtn.addEventListener('click', () => {
+            if (!imageDataUrl) {
+                alert('Please select an image first.');
+                return;
+            }
+            
+            // This line is needed for jsPDF to work
+            const { jsPDF } = window.jspdf;
+
+            const orientation = document.getElementById('pageOrientation').value;
+
+            // Create a new jsPDF instance
+            const doc = new jsPDF({
+                orientation: orientation,
+                unit: 'mm',
+                format: 'a4'
+            });
+
+            const img = new Image();
+            img.src = imageDataUrl;
+            img.onload = () => {
+                const imgWidth = img.width;
+                const imgHeight = img.height;
+                const page_width = doc.internal.pageSize.getWidth();
+                const page_height = doc.internal.pageSize.getHeight();
+
+                // Calculate the aspect ratio
+                const ratio = imgWidth / imgHeight;
+
+                // Scale the image to fit the page while maintaining aspect ratio
+                let pdfImgWidth = page_width - 20; // with some margin
+                let pdfImgHeight = pdfImgWidth / ratio;
+
+                if (pdfImgHeight > page_height - 20) {
+                    pdfImgHeight = page_height - 20;
+                    pdfImgWidth = pdfImgHeight * ratio;
+                }
+                
+                // Center the image
+                const x = (page_width - pdfImgWidth) / 2;
+                const y = (page_height - pdfImgHeight) / 2;
+
+                doc.addImage(imageDataUrl, 'JPEG', x, y, pdfImgWidth, pdfImgHeight);
+                doc.save('converted-image.pdf');
+            };
+        });
+    </script>
+</body>
+</html>

@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     
     <link rel="stylesheet" href="style.css">
-
-    </head>
+</head>
 <body>
 
     <nav class="navbar navbar-inverse navbar-static-top">
@@ -23,6 +22,8 @@
                 <li><a href="#calculators">Calculators</a></li>
                 <li><a href="#text-tools">Text Tools</a></li>
                 <li><a href="#media-tools">Media Tools</a></li>
+                <li><a href="#dev-tools">Developer Tools</a></li>
+                <li><a href="#productivity-tools">Productivity</a></li>
             </ul>
         </div>
     </nav>
@@ -35,7 +36,6 @@
 
         <h2 id="calculators">🧮 Calculators & Converters</h2>
         <div class="row">
-            
             <div class="col-sm-6 col-md-4">
                 <div class="tool-card">
                     <h3>Age Calculator</h3>
@@ -48,48 +48,24 @@
                     <div id="ageResult" class="result-box"></div>
                 </div>
             </div>
-
             <div class="col-sm-6 col-md-4">
                 <div class="tool-card">
-                    <h3>Currency Converter</h3>
-                    <p>Live exchange rates for BDT, USD, INR, and more.</p>
-                    <a href="#" class="btn btn-default disabled">Coming Soon</a>
+                    <h3>Loan / EMI Calculator</h3>
+                    <p>Calculate your monthly loan payments.</p>
+                    <div class="form-group"><label>Loan Amount:</label><div class="input-group"><span class="input-group-addon">৳</span><input type="number" id="loanAmount" class="form-control" placeholder="500000"></div></div>
+                    <div class="form-group"><label>Annual Interest Rate (%):</label><div class="input-group"><input type="number" id="interestRate" class="form-control" placeholder="9.5"><span class="input-group-addon">%</span></div></div>
+                    <div class="form-group"><label>Loan Tenure (Years):</label><div class="input-group"><input type="number" id="loanTenure" class="form-control" placeholder="5"><span class="input-group-addon">Yrs</span></div></div>
+                    <button class="btn btn-primary" onclick="calculateEMI()">Calculate</button>
+                    <div id="emiResults" class="result-box" style="display: none;"></div>
                 </div>
             </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="tool-card">
-                    <h3>BMI Calculator</h3>
-                    <p>Check your Body Mass Index.</p>
-                    <a href="#" class="btn btn-default disabled">Coming Soon</a>
-                </div>
-            </div>
+            <div class="col-sm-6 col-md-4"><div class="tool-card"><h3>Unit Converter</h3><p>Length, weight, temperature...</p><a href="#" class="btn btn-default disabled">Coming Soon</a></div></div>
         </div>
 
         <hr>
         
         <h2 id="text-tools">📝 Writing & Text Tools</h2>
         <div class="row">
-             <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-4">
                 <div class="tool-card">
-                    <h3>Word & Character Counter</h3>
-                    <p>Count words and characters in your text.</p>
-                    <a href="#" class="btn btn-default disabled">Coming Soon</a>
-                </div>
-            </div>
-            </div>
-        
-        </div>
-
-    <footer class="footer">
-        <div class="container">
-            <p class="text-muted">&copy; 2025 Online Tools Hub. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-    <script src="script.js"></script>
-</body>
-</html>
+                    <h3>Word & Character

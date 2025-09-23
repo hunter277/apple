@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to Base64 Converter - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>Image to Base64 Converter</h1>
+            <p>Convert any image (JPG, PNG, GIF) into a Base64 text string.</p>
+            
+            <div class="mb-3">
+                <label for="imageUpload" class="form-label">Select an image file:</label>
+                <input type="file" id="imageUpload" class="form-control" accept="image/*">
+            </div>
+
+            <div id="resultArea" style="display:none;">
+                <h5 class="mt-4">Image Preview:</h5>
+                <img id="imagePreview" src="#" alt="Image Preview" class="img-fluid rounded mb-3" style="max-height: 200px;">
+                
+                <h5 class="mt-4">Base64 String:</h5>
+                <textarea id="base64Output" class="form-control" rows="6" readonly></textarea>
+                <button id="copyBtn" class="btn btn-success mt-2">
+                    <i class="fas fa-copy"></i> Copy to Clipboard
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div>
+    </footer>
+
+    <script>
+        const imageUpload = document.getElementById('imageUpload');
+        const resultArea = document.getElementById('resultArea');
+        const imagePreview = document.getElementById('imagePreview');
+        const base64Output = document.getElementById('base64Output');
+        const copyBtn = document.getElementById('copyBtn');
+
+        imageUpload.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+
+            // This event fires when the file is successfully read
+            reader.onload = function(event) {
+                const base64String = event.target.result;
+                
+                // Show the results
+                resultArea.style.display = 'block';
+                imagePreview.src = base64String;
+                base64Output.value = base64String;
+            };
+            
+            // This starts the file reading process
+            reader.readAsDataURL(file);
+        });
+
+        copyBtn.addEventListener('click', () => {
+            base64Output.select();
+            navigator.clipboard.writeText(base64Output.value).then(() => {
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minimal Test</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body { padding: 50px; }
+        .tool-card { border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tool-card">
+            <h3>Age Calculator Test</h3>
+            <p>If this works, your setup is correct.</p>
+            <div class="form-group">
+                <label for="dob">Enter your Date of Birth:</label>
+                <input type="date" id="dob" class="form-control">
+            </div>
+            <button class="btn btn-primary" onclick="calculateAge()">Calculate Age</button>
+            <div id="ageResult" style="margin-top: 15px; font-weight: bold;"></div>
+        </div>
+    </div>
+
+    <script src="minimal.js"></script>
+</body>
+</html>

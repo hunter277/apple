@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Dictionary - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>Online English Dictionary</h1>
+            <p>Get definitions, phonetics, and examples for any English word.</p>
+            
+            <form id="searchForm" class="input-group mb-3">
+                <input type="text" id="wordInput" class="form-control" placeholder="Search for a word..." required>
+                <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i> Search</button>
+            </form>
+
+            <div id="resultContainer" class="mt-4"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div>
+    </footer>
+
+    <script>
+        const searchForm = document.getElementById('searchForm');
+        const wordInput = document.getElementById('wordInput');
+        const resultContainer = document.getElementById('resultContainer');
+
+        searchForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const word = wordInput.value.trim();
+            if (!word) return;
+
+            resultContainer.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin fa-2x"></i></div>';
+
+            try {
+                const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+                if (!response.ok) {
+                    throw new Error('Word not found. Check your spelling.');
+                }
+                const data = await response.json();
+                displayResults(data[0]);
+            } catch (error) {
+                resultContainer.innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
+            }
+        });
+
+        function displayResults(wordData) {
+            let html = `<h2>${wordData.word} <small class="text-muted">${wordData.phonetic || ''}</small></h2>`;
+            
+            wordData.meanings.forEach(meaning => {
+                html += `<hr><h4><em>${meaning.partOfSpeech}</em></h4>`;
+                meaning.definitions.forEach((def, index) => {
+                    html += `
+                        <p><strong>${index + 1}.</strong> ${def.definition}</p>
+                        ${def.example ? `<p class="text-muted ps-3"><em>e.g., "${def.example}"</em></p>` : ''}
+                    `;
+                });
+            });
+
+            resultContainer.innerHTML = html;
+        }
+    </script>
+</body>
+</html>

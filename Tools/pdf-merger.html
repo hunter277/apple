@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Merger - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>PDF Merger</h1>
+            <p>Combine multiple PDF files into a single document. Files are merged in the order you select them.</p>
+            
+            <div class="mb-3">
+                <label for="pdfUpload" class="form-label">1. Choose PDF Files (select multiple):</label>
+                <input type="file" id="pdfUpload" class="form-control" accept=".pdf" multiple>
+            </div>
+
+            <div id="fileListArea" class="mt-3">
+                <h5>Selected Files:</h5>
+                <ul id="fileList" class="list-group"></ul>
+            </div>
+            
+            <button class="btn btn-success mt-3" id="mergeBtn" disabled><i class="fas fa-object-group me-2"></i>Merge PDFs & Download</button>
+        </div>
+    </main>
+
+    <footer class="footer"><div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+
+    <script>
+        const pdfUpload = document.getElementById('pdfUpload');
+        const fileList = document.getElementById('fileList');
+        const mergeBtn = document.getElementById('mergeBtn');
+
+        pdfUpload.addEventListener('change', () => {
+            fileList.innerHTML = '';
+            if (pdfUpload.files.length > 0) {
+                Array.from(pdfUpload.files).forEach(file => {
+                    const listItem = document.createElement('li');
+                    listItem.className = 'list-group-item';
+                    listItem.textContent = file.name;
+                    fileList.appendChild(listItem);
+                });
+                mergeBtn.disabled = false;
+            } else {
+                mergeBtn.disabled = true;
+            }
+        });
+
+        mergeBtn.addEventListener('click', async () => {
+            if (pdfUpload.files.length < 2) {
+                alert('Please select at least two PDF files to merge.');
+                return;
+            }
+
+            mergeBtn.disabled = true;
+            mergeBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Merging...';
+            
+            try {
+                const mergedPdf = await PDFLib.PDFDocument.create();
+                
+                for (const file of pdfUpload.files) {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const pdf = await PDFLib.PDFDocument.load(arrayBuffer);
+                    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+                    copiedPages.forEach(page => mergedPdf.addPage(page));
+                }
+
+                const pdfBytes = await mergedPdf.save();
+                download(pdfBytes, 'merged.pdf', 'application/pdf');
+
+            } catch (error) {
+                alert('An error occurred while merging the PDFs. Please ensure all files are valid.');
+                console.error(error);
+            } finally {
+                mergeBtn.disabled = false;
+                mergeBtn.innerHTML = '<i class="fas fa-object-group me-2"></i>Merge PDFs & Download';
+            }
+        });
+
+        function download(bytes, filename, type) {
+            const blob = new Blob([bytes], { type: type });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>

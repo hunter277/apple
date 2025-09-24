@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Thumbnail Maker - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@700&family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top"><div class="container"><a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a></div></nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>YouTube Thumbnail Maker</h1>
+            <p>Create a custom 1280x720 thumbnail for your videos.</p>
+            
+            <div class="row">
+                <div class="col-md-5">
+                    <h5>1. Controls</h5>
+                    <div class="mb-3">
+                        <label for="bgUpload" class="form-label">Background Image:</label>
+                        <input type="file" id="bgUpload" class="form-control" accept="image/*">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mainText" class="form-label">Main Text:</label>
+                        <input type="text" id="mainText" class="form-control" value="YOUR TITLE HERE">
+                    </div>
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label for="fontFamily" class="form-label">Font:</label>
+                            <select id="fontFamily" class="form-select">
+                                <option value="Anton">Anton</option>
+                                <option value="Oswald">Oswald</option>
+                                <option value="Roboto">Roboto</option>
+                            </select>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="textColor" class="form-label">Text Color:</label>
+                            <input type="color" id="textColor" class="form-control form-control-color" value="#FFFFFF">
+                        </div>
+                    </div>
+                    <a id="downloadBtn" class="btn btn-success"><i class="fas fa-download me-2"></i>Download Thumbnail</a>
+                </div>
+                <div class="col-md-7">
+                    <h5>2. Preview</h5>
+                    <canvas id="thumbnailCanvas" width="1280" height="720" style="width: 100%; border: 1px solid #ccc;"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer"><div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div></footer>
+
+    <script>
+        const bgUpload = document.getElementById('bgUpload');
+        const mainTextInput = document.getElementById('mainText');
+        const fontFamilySelect = document.getElementById('fontFamily');
+        const textColorInput = document.getElementById('textColor');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const canvas = document.getElementById('thumbnailCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let backgroundImage = new Image();
+        backgroundImage.onload = renderThumbnail;
+
+        function renderThumbnail() {
+            // Clear canvas and draw background
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#333';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            if (backgroundImage.src) {
+                // Draw image cover
+                const hRatio = canvas.width / backgroundImage.width;
+                const vRatio = canvas.height / backgroundImage.height;
+                const ratio = Math.max(hRatio, vRatio);
+                const centerShift_x = (canvas.width - backgroundImage.width * ratio) / 2;
+                const centerShift_y = (canvas.height - backgroundImage.height * ratio) / 2;
+                ctx.drawImage(backgroundImage, 0, 0, backgroundImage.width, backgroundImage.height, centerShift_x, centerShift_y, backgroundImage.width * ratio, backgroundImage.height * ratio);
+            }
+
+            // Draw Text
+            const text = mainTextInput.value.toUpperCase();
+            const font = fontFamilySelect.value;
+            const color = textColorInput.value;
+            const fontSize = 130;
+
+            ctx.font = `900 ${fontSize}px ${font}`;
+            ctx.fillStyle = color;
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 10;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            // Wrap text if needed
+            const lines = wrapText(text, canvas.width - 100);
+            const lineHeight = fontSize * 1.1;
+            const totalHeight = lines.length * lineHeight;
+            let startY = (canvas.height - totalHeight) / 2 + (lineHeight / 2);
+
+            lines.forEach(line => {
+                ctx.strokeText(line, canvas.width / 2, startY);
+                ctx.fillText(line, canvas.width / 2, startY);
+                startY += lineHeight;
+            });
+        }
+        
+        function wrapText(text, maxWidth) {
+            const words = text.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                const word = words[i];
+                const width = ctx.measureText(currentLine + " " + word).width;
+                if (width < maxWidth) {
+                    currentLine += " " + word;
+                } else {
+                    lines.push(currentLine);
+                    currentLine = word;
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        bgUpload.addEventListener('change', (e) => {
+            const reader = new FileReader();
+            reader.onload = () => { backgroundImage.src = reader.result; };
+            reader.readAsDataURL(e.target.files[0]);
+        });
+        
+        [mainTextInput, fontFamilySelect, textColorInput].forEach(el => el.addEventListener('input', renderThumbnail));
+        downloadBtn.addEventListener('click', () => { downloadBtn.href = canvas.toDataURL('image/jpeg', 0.9); });
+        
+        // Initial Render
+        renderThumbnail();
+    </script>
+</body>
+</html>

@@ -20,7 +20,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a>
+            <a class="navbar-brand" href="index.html"><i class="fas fa-tools"></i>ToolHub</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -28,6 +28,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tools">All Tools</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#featured">Featured</a></li>
                 </ul>
             </div>
         </div>
@@ -35,25 +36,64 @@
 
     <section class="hero-section">
         <div class="container">
-            <h1>All Your Essential Tools in One Place</h1>
-            <p>ToolHub offers free online tools for calculations, conversions, file management, content creation, and more. No downloads required!</p>
+            <h1 class="fade-in">All Your Essential Tools in One Place</h1>
+            <p class="fade-in delay-1">ToolHub offers free online tools for calculations, conversions, file management, content creation, and more. No downloads required!</p>
+            <div class="search-box fade-in delay-2">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search for a tool (e.g., 'pdf', 'color')...">
+                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section id="featured" class="featured-tools">
+        <div class="container">
+            <div class="section-title">
+                <h2>Most Popular Tools</h2>
+                <p>These are our most frequently used tools that help thousands of users every day.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="featured-card fade-in">
+                        <i class="fas fa-file-pdf"></i>
+                        <h4>PDF Tools</h4>
+                        <p>Merge, split, and convert your PDF files. All done securely in your browser.</p>
+                        <a href="#pdf-tools-anchor" class="btn btn-primary">View Tools</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="featured-card fade-in delay-1">
+                        <i class="fas fa-calculator"></i>
+                        <h4>Financial Calculators</h4>
+                        <p>From simple tips to complex loan and interest calculations, manage your finances with ease.</p>
+                        <a href="#calculators-anchor" class="btn btn-primary">View Tools</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="featured-card fade-in delay-2">
+                        <i class="fas fa-palette"></i>
+                        <h4>Creative Tools</h4>
+                        <p>Generate memes, create color palettes, and build custom YouTube thumbnails.</p>
+                        <a href="#media-tools-anchor" class="btn btn-primary">View Tools</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="tools" class="py-5">
         <div class="container">
-            <div class="row text-center mb-5">
-                <div class="col-md-8 mx-auto">
-                    <h2 class="mb-3">Browse All Available Tools</h2>
-                </div>
+            <div class="section-title">
+                <h2>Browse All Available Tools</h2>
+                <p>Organized collections of tools for every need and purpose.</p>
             </div>
             
             <div class="row">
                 <div class="col-lg-4 col-md-6">
-                    <div class="category-card">
+                    <div class="category-card fade-in" id="calculators-anchor">
                         <div class="category-header">
                             <i class="fas fa-calculator"></i>
                             <h3>Calculators & Converters</h3>
+                            <div class="tool-count"></div>
                         </div>
                         <div class="tool-list">
                             <a href="age-calculator.html" class="tool-item"><i class="fas fa-birthday-cake"></i>Age Calculator</a>
@@ -69,10 +109,11 @@
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="category-card">
+                    <div class="category-card fade-in delay-1">
                         <div class="category-header">
                             <i class="fas fa-pen"></i>
                             <h3>Writing & Text Tools</h3>
+                            <div class="tool-count"></div>
                         </div>
                         <div class="tool-list">
                             <a href="word-counter.html" class="tool-item"><i class="fas fa-file-word"></i>Word & Character Counter</a>
@@ -84,10 +125,11 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6">
-                    <div class="category-card">
+                    <div class="category-card fade-in delay-2" id="pdf-tools-anchor">
                         <div class="category-header">
                             <i class="fas fa-file-alt"></i>
                             <h3>File & PDF Management</h3>
+                            <div class="tool-count"></div>
                         </div>
                         <div class="tool-list">
                             <a href="image-to-pdf.html" class="tool-item"><i class="fas fa-file-image"></i>Image to PDF Converter</a>
@@ -99,10 +141,11 @@
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="category-card">
+                    <div class="category-card fade-in" id="media-tools-anchor">
                         <div class="category-header">
                             <i class="fas fa-photo-video"></i>
                             <h3>Media Tools</h3>
+                            <div class="tool-count"></div>
                         </div>
                         <div class="tool-list">
                              <a href="qr-code-generator.html" class="tool-item"><i class="fas fa-qrcode"></i>QR Code Generator</a>
@@ -116,10 +159,11 @@
                 </div>
 
                  <div class="col-lg-4 col-md-6">
-                    <div class="category-card">
+                    <div class="category-card fade-in delay-1">
                         <div class="category-header">
                             <i class="fas fa-code"></i>
                             <h3>Developer Tools</h3>
+                            <div class="tool-count"></div>
                         </div>
                         <div class="tool-list">
                            <a href="json-formatter.html" class="tool-item"><i class="fas fa-sitemap"></i>JSON Validator & Formatter</a>
@@ -130,10 +174,11 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6">
-                    <div class="category-card">
+                    <div class="category-card fade-in delay-2">
                         <div class="category-header">
                             <i class="fas fa-rocket"></i>
                             <h3>Education & Productivity</h3>
+                            <div class="tool-count"></div>
                         </div>
                         <div class="tool-list">
                            <a href="typing-test.html" class="tool-item"><i class="fas fa-keyboard"></i>Typing Speed Test</a>
@@ -146,10 +191,11 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6">
-                    <div class="category-card">
+                    <div class="category-card fade-in">
                         <div class="category-header">
                             <i class="fas fa-calendar-alt"></i>
                             <h3>Daily Life & Information</h3>
+                            <div class="tool-count"></div>
                         </div>
                         <div class="tool-list">
                             <a href="prayer-times.html" class="tool-item"><i class="fas fa-mosque"></i>Daily Prayer Times</a>
@@ -158,17 +204,159 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <div class="container text-center">
-            <p>&copy; 2025 ToolHub. All rights reserved.</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 text-center text-lg-start">
+                    <h3><i class="fas fa-tools me-2"></i>ToolHub</h3>
+                    <p>Your one-stop destination for all online tools. Free, fast, and reliable tools for everyday tasks.</p>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 text-center">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 text-center">
+                     <h5>Follow Us</h5>
+                     <div class="social-links mt-2">
+                        <a href="#" class="text-light"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3">
+            <div class="text-center">
+                <p>&copy; 2025 ToolHub. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success text-white">
+                <strong class="me-auto">Notification</strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Search feature is for demonstration.
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Back to top button
+            const backToTopButton = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('active');
+                } else {
+                    backToTopButton.classList.remove('active');
+                }
+            });
+            backToTopButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Tool counter (dynamic)
+            document.querySelectorAll('.category-card').forEach(card => {
+                const count = card.querySelectorAll('.tool-item').length;
+                card.querySelector('.tool-count').textContent = `${count} tools`;
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            const toastElement = document.getElementById('liveToast');
+            const toast = new bootstrap.Toast(toastElement);
+
+            const performSearch = () => {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+                if (!searchTerm) {
+                    // Show all cards if search is empty
+                    document.querySelectorAll('.category-card').forEach(card => card.parentElement.style.display = 'block');
+                    return;
+                }
+                
+                document.querySelectorAll('.category-card').forEach(card => {
+                    let cardHasMatch = false;
+                    card.querySelectorAll('.tool-item').forEach(item => {
+                        const toolName = item.textContent.trim().toLowerCase();
+                        if (toolName.includes(searchTerm)) {
+                            item.style.display = 'flex';
+                            cardHasMatch = true;
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+
+                    if (cardHasMatch) {
+                        card.parentElement.style.display = 'block';
+                    } else {
+                        card.parentElement.style.display = 'none';
+                    }
+                });
+            };
+            
+            searchInput.addEventListener('input', performSearch);
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Fade in animation on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeElements.forEach(element => {
+                element.style.opacity = "0";
+                element.style.transform = "translateY(20px)";
+                element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+                observer.observe(element);
+            });
+        });
+    </script>
 </body>
 </html>

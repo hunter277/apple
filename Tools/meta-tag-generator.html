@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Tag Generator - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #google-preview {
+            border: 1px solid #dfe1e5;
+            border-radius: 8px;
+            padding: 16px;
+            max-width: 600px;
+            font-family: Arial, sans-serif;
+        }
+        #preview-url { color: #202124; font-size: 14px; }
+        #preview-title { color: #1a0dab; font-size: 20px; text-decoration: none; }
+        #preview-title:hover { text-decoration: underline; }
+        #preview-description { color: #4d5156; font-size: 14px; }
+        #code-output {
+            background-color: #282c34;
+            color: #abb2bf;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top"><div class="container"><a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a></div></nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>Meta Tag & Preview Generator</h1>
+            <p>Create SEO-friendly meta tags and see a live preview of how your page will look on Google.</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Enter Your Page Details</h5>
+                    <div class="mb-3">
+                        <label for="pageTitle" class="form-label">Page Title (Max 60 chars)</label>
+                        <input type="text" id="pageTitle" class="form-control" maxlength="60">
+                    </div>
+                     <div class="mb-3">
+                        <label for="pageUrl" class="form-label">Page URL</label>
+                        <input type="url" id="pageUrl" class="form-control" placeholder="https://yourwebsite.com/page">
+                    </div>
+                    <div class="mb-3">
+                        <label for="pageDescription" class="form-label">Page Description (Max 160 chars)</label>
+                        <textarea id="pageDescription" class="form-control" rows="3" maxlength="160"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h5>Google Search Preview</h5>
+                    <div id="google-preview">
+                        <div id="preview-url">https://yourwebsite.com</div>
+                        <a href="#" id="preview-title">Your Page Title Will Appear Here</a>
+                        <p id="preview-description" class="mt-1">Your meta description will appear here. This text is important for attracting clicks from search results.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            <h5>Generated Meta Tags</h5>
+            <div id="code-output" class="result-box">
+                </div>
+            <button class="btn btn-success mt-2" id="copyCodeBtn"><i class="fas fa-copy me-2"></i>Copy Code</button>
+        </div>
+    </main>
+
+    <footer class="footer"><div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div></footer>
+
+    <script>
+        const titleInput = document.getElementById('pageTitle');
+        const urlInput = document.getElementById('pageUrl');
+        const descriptionInput = document.getElementById('pageDescription');
+        const previewTitle = document.getElementById('preview-title');
+        const previewUrl = document.getElementById('preview-url');
+        const previewDescription = document.getElementById('preview-description');
+        const codeOutput = document.getElementById('code-output');
+        const copyCodeBtn = document.getElementById('copyCodeBtn');
+
+        function updateAll() {
+            // Update Preview
+            previewTitle.textContent = titleInput.value || 'Your Page Title...';
+            previewUrl.textContent = urlInput.value || 'https://yourwebsite.com/page';
+            previewDescription.textContent = descriptionInput.value || 'Your meta description will appear here...';
+
+            // Generate Code
+            const title = titleInput.value.replace(/"/g, '&quot;');
+            const description = descriptionInput.value.replace(/"/g, '&quot;');
+            
+            const metaTags = `
+<title>${title}</title>
+<meta name="title" content="${title}">
+<meta name="description" content="${description}">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="${urlInput.value}">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${description}">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="${urlInput.value}">
+<meta property="twitter:title" content="${title}">
+<meta property="twitter:description" content="${description}">
+            `.trim();
+            
+            codeOutput.textContent = metaTags;
+        }
+
+        titleInput.addEventListener('input', updateAll);
+        urlInput.addEventListener('input', updateAll);
+        descriptionInput.addEventListener('input', updateAll);
+
+        copyCodeBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(codeOutput.textContent).then(() => {
+                const originalText = copyCodeBtn.innerHTML;
+                copyCodeBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => { copyCodeBtn.innerHTML = originalText; }, 2000);
+            });
+        });
+        
+        // Initial call
+        updateAll();
+    </script>
+</body>
+</html>

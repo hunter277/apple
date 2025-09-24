@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA / CGPA Calculator - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>GPA / CGPA Calculator</h1>
+            <p>Calculate your Grade Point Average by adding your courses, credits, and grades.</p>
+            
+            <div id="course-list">
+                </div>
+
+            <button class="btn btn-secondary mt-3" id="addCourseBtn"><i class="fas fa-plus me-2"></i>Add Course</button>
+            <hr>
+            <button class="btn btn-primary btn-lg" id="calculateGpaBtn">Calculate GPA</button>
+            
+            <div id="gpaResult" class="result-box mt-3" style="display:none;"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div>
+    </footer>
+
+    <script>
+        const addCourseBtn = document.getElementById('addCourseBtn');
+        const calculateGpaBtn = document.getElementById('calculateGpaBtn');
+        const courseListDiv = document.getElementById('course-list');
+        const gpaResultDiv = document.getElementById('gpaResult');
+
+        let courseCount = 0;
+
+        function addCourseRow() {
+            courseCount++;
+            const row = document.createElement('div');
+            row.className = 'row g-2 mb-2 align-items-center';
+            row.innerHTML = `
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="Course Name (Optional)">
+                </div>
+                <div class="col-md-3">
+                    <input type="number" class="form-control credit-hours" placeholder="Credits (e.g., 3)" min="0">
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select grade">
+                        <option value="4.0">A+</option>
+                        <option value="3.75">A</option>
+                        <option value="3.50">A-</option>
+                        <option value="3.25">B+</option>
+                        <option value="3.0">B</option>
+                        <option value="2.75">B-</option>
+                        <option value="2.50">C+</option>
+                        <option value="2.25">C</option>
+                        <option value="2.0">D</option>
+                        <option value="0">F</option>
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-danger btn-sm" onclick="this.parentElement.parentElement.remove()">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+            courseListDiv.appendChild(row);
+        }
+
+        calculateGpaBtn.addEventListener('click', () => {
+            let totalCredits = 0;
+            let totalPoints = 0;
+
+            const creditInputs = document.querySelectorAll('.credit-hours');
+            const gradeSelects = document.querySelectorAll('.grade');
+
+            for (let i = 0; i < creditInputs.length; i++) {
+                const credits = parseFloat(creditInputs[i].value);
+                const grade = parseFloat(gradeSelects[i].value);
+
+                if (!isNaN(credits) && credits > 0) {
+                    totalCredits += credits;
+                    totalPoints += credits * grade;
+                }
+            }
+
+            if (totalCredits === 0) {
+                gpaResultDiv.innerHTML = 'Please enter valid credits for at least one course.';
+                gpaResultDiv.style.display = 'block';
+                return;
+            }
+
+            const gpa = totalPoints / totalCredits;
+            gpaResultDiv.innerHTML = `Your GPA is: <strong>${gpa.toFixed(2)}</strong>`;
+            gpaResultDiv.style.display = 'block';
+        });
+
+        addCourseBtn.addEventListener('click', addCourseRow);
+
+        // Add a few rows to start with
+        addCourseRow();
+        addCourseRow();
+        addCourseRow();
+    </script>
+</body>
+</html>

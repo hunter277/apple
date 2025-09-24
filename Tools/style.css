@@ -256,6 +256,54 @@ body {
     transition: var(--transition);
 }
 
+/* --- Featured Tools Section --- */
+.featured-tools {
+    padding: 80px 0;
+    background: white;
+    margin: 60px 0;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+}
+.featured-card {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    height: 100%;
+    transition: var(--transition);
+    border: 1px solid #f0f0f0;
+}
+
+.featured-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.featured-card i {
+    font-size: 3.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.featured-card:hover i {
+    transform: scale(1.1);
+    color: var(--secondary);
+}
+
+.featured-card h4 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.featured-card p {
+    color: var(--gray);
+    margin-bottom: 20px;
+}
+
 /* --- Tool Pages --- */
 .tool-container {
     background-color: white;
@@ -301,6 +349,8 @@ body {
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
 
 .back-to-top {
     position: fixed;

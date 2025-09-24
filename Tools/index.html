@@ -169,6 +169,7 @@
                            <a href="json-formatter.html" class="tool-item"><i class="fas fa-sitemap"></i>JSON Validator & Formatter</a>
                            <a href="meta-tag-generator.html" class="tool-item"><i class="fas fa-tags"></i>Meta Tag & Preview Generator</a>
                            <a href="markdown-editor.html" class="tool-item"><i class="fab fa-markdown"></i>Markdown Editor</a>
+                           <a href="image-to-base64.html" class="tool-item"><i class="fas fa-image"></i>Image to Base64 Converter</a>
                         </div>
                     </div>
                 </div>
@@ -204,6 +205,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -241,19 +243,7 @@
     </footer>
 
     <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
-
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header bg-success text-white">
-                <strong class="me-auto">Notification</strong>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                Search feature is for demonstration.
-            </div>
-        </div>
-    </div>
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -281,47 +271,41 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // Tool counter (dynamic)
+            // Dynamic Tool Counter
             document.querySelectorAll('.category-card').forEach(card => {
                 const count = card.querySelectorAll('.tool-item').length;
-                card.querySelector('.tool-count').textContent = `${count} tools`;
+                const countElement = card.querySelector('.tool-count');
+                if (countElement) {
+                    countElement.textContent = `${count} tools`;
+                }
             });
             
-            // Search functionality
+            // Live Search/Filter
             const searchInput = document.getElementById('searchInput');
-            const toastElement = document.getElementById('liveToast');
-            const toast = new bootstrap.Toast(toastElement);
+            if (searchInput) {
+                searchInput.addEventListener('input', () => {
+                    const searchTerm = searchInput.value.trim().toLowerCase();
+                    document.querySelectorAll('.category-card').forEach(card => {
+                        let cardHasMatch = false;
+                        card.querySelectorAll('.tool-item').forEach(item => {
+                            const toolName = item.textContent.trim().toLowerCase();
+                            if (toolName.includes(searchTerm)) {
+                                item.style.display = 'flex';
+                                cardHasMatch = true;
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
 
-            const performSearch = () => {
-                const searchTerm = searchInput.value.trim().toLowerCase();
-                if (!searchTerm) {
-                    // Show all cards if search is empty
-                    document.querySelectorAll('.category-card').forEach(card => card.parentElement.style.display = 'block');
-                    return;
-                }
-                
-                document.querySelectorAll('.category-card').forEach(card => {
-                    let cardHasMatch = false;
-                    card.querySelectorAll('.tool-item').forEach(item => {
-                        const toolName = item.textContent.trim().toLowerCase();
-                        if (toolName.includes(searchTerm)) {
-                            item.style.display = 'flex';
-                            cardHasMatch = true;
+                        if (cardHasMatch) {
+                            card.parentElement.style.display = 'block';
                         } else {
-                            item.style.display = 'none';
+                            card.parentElement.style.display = 'none';
                         }
                     });
-
-                    if (cardHasMatch) {
-                        card.parentElement.style.display = 'block';
-                    } else {
-                        card.parentElement.style.display = 'none';
-                    }
                 });
-            };
+            }
             
-            searchInput.addEventListener('input', performSearch);
-
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -331,7 +315,7 @@
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 80,
+                            top: targetElement.offsetTop - 80, // Adjust for sticky navbar height
                             behavior: 'smooth'
                         });
                     }

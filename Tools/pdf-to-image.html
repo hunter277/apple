@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Image Converter - ToolHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top"><div class="container"><a class="navbar-brand" href="index.html"><i class="fas fa-tools me-2"></i>ToolHub</a></div></nav>
+
+    <main class="container my-5">
+        <div class="tool-container">
+            <h1>PDF to Image Converter</h1>
+            <p>Convert a single page of a PDF document into a high-quality JPG image.</p>
+            
+            <div class="mb-3">
+                <label for="pdfUpload" class="form-label">1. Upload a PDF File:</label>
+                <input type="file" id="pdfUpload" class="form-control" accept=".pdf">
+            </div>
+
+            <div id="settingsArea" class="mt-4" style="display:none;">
+                <div id="fileInfo" class="alert alert-info"></div>
+                <div class="mb-3">
+                    <label for="pageNum" class="form-label">2. Page to Convert:</label>
+                    <input type="number" id="pageNum" class="form-control" min="1" value="1">
+                </div>
+                <button class="btn btn-primary" id="convertBtn"><i class="fas fa-file-image me-2"></i>Convert to JPG</button>
+            </div>
+
+            <div id="resultArea" class="mt-4" style="display:none;">
+                <h5 class="mt-3">3. Image Preview & Download:</h5>
+                <img id="imagePreview" src="#" alt="Converted Image Preview" class="img-fluid rounded border mb-3">
+                <a id="downloadBtn" class="btn btn-success" download="converted-page.jpg"><i class="fas fa-download me-2"></i>Download JPG</a>
+            </div>
+             <canvas id="pdfCanvas" style="display:none;"></canvas>
+        </div>
+    </main>
+
+    <footer class="footer"><div class="container text-center"><p>&copy; 2025 ToolHub. All rights reserved.</p></div></footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js`;
+
+        const pdfUpload = document.getElementById('pdfUpload');
+        const settingsArea = document.getElementById('settingsArea');
+        const fileInfo = document.getElementById('fileInfo');
+        const pageNumInput = document.getElementById('pageNum');
+        const convertBtn = document.getElementById('convertBtn');
+        const resultArea = document.getElementById('resultArea');
+        const imagePreview = document.getElementById('imagePreview');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const canvas = document.getElementById('pdfCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let pdfDoc = null;
+
+        pdfUpload.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file || file.type !== 'application/pdf') return;
+
+            fileInfo.textContent = 'Loading PDF...';
+            settingsArea.style.display = 'block';
+            resultArea.style.display = 'none';
+
+            const arrayBuffer = await file.arrayBuffer();
+            pdfDoc = await pdfjsLib.getDocument(arrayBuffer).promise;
+            
+            const pageCount = pdfDoc.numPages;
+            fileInfo.textContent = `PDF loaded with ${pageCount} pages.`;
+            pageNumInput.max = pageCount;
+        });
+
+        convertBtn.addEventListener('click', async () => {
+            if (!pdfDoc) return;
+            
+            const pageNum = parseInt(pageNumInput.value);
+            if (pageNum <= 0 || pageNum > pdfDoc.numPages) {
+                alert('Invalid page number.');
+                return;
+            }
+
+            convertBtn.disabled = true;
+            convertBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Converting...';
+
+            try {
+                const page = await pdfDoc.getPage(pageNum);
+                const scale = 2.0; // Higher scale for better quality
+                const viewport = page.getViewport({ scale: scale });
+
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                const renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport
+                };
+                await page.render(renderContext).promise;
+
+                const dataUrl = canvas.toDataURL('image/jpeg', 0.9); // 0.9 is high quality
+                imagePreview.src = dataUrl;
+                downloadBtn.href = dataUrl;
+                resultArea.style.display = 'block';
+
+            } catch (error) {
+                alert('Failed to convert page.');
+                console.error(error);
+            } finally {
+                convertBtn.disabled = false;
+                convertBtn.innerHTML = '<i class="fas fa-file-image me-2"></i>Convert to JPG';
+            }
+        });
+    </script>
+</body>
+</html>

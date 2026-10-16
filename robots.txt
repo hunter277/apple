@@ -1,5 +1,12 @@
 User-agent: *
 Allow: /
+Disallow: /apple/
+Disallow: /iphone/
+Disallow: /*?fbclid=*
+
+User-agent: Googlebot
+Disallow: /apple/
+Disallow: /iphone/
+Disallow: /*?fbclid=*
 
 Sitemap: https://marsgiveaway.pw/sitemap.xml
-

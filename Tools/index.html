@@ -40,7 +40,7 @@
             <p class="fade-in delay-1">ToolHub offers free online tools for calculations, conversions, file management, content creation, and more. No downloads required!</p>
             <div class="search-box fade-in delay-2">
                 <input type="text" id="searchInput" class="form-control" placeholder="Search for a tool (e.g., 'pdf', 'color')...">
-                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                <button type="button" id="searchButton" class="btn btn-primary" aria-label="Search tools"><i class="fas fa-search"></i></button>
             </div>
         </div>
     </section>
@@ -306,6 +306,14 @@
                 });
             }
             
+            const searchButton = document.getElementById('searchButton');
+            if (searchButton && searchInput) {
+                searchButton.addEventListener('click', () => {
+                    searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+                    searchInput.focus();
+                });
+            }
+
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
